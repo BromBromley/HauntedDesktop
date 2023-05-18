@@ -16,8 +16,7 @@ public class DragObject : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
     private Vector3 velocity = Vector3.zero;
     [SerializeField] private float dampingSpeed = 0.03f;
 
-    [HideInInspector] public Transform parentAfterDrag;
-    [SerializeField] private GridBehavior gridBehavior;
+    private GridBehavior gridBehavior;
     public float snapRange = 0.5f;
 
     public delegate void DragEndedDelegate(DragObject draggableObjects);
@@ -33,9 +32,6 @@ public class DragObject : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
     public void OnBeginDrag(PointerEventData eventData)
     {
         sprite.raycastTarget = false;
-        parentAfterDrag = transform.parent;
-        //transform.SetParent(transform.parent.parent);
-        //transform.SetAsLastSibling();
     }
 
     public void OnDrag(PointerEventData eventData)
@@ -52,12 +48,7 @@ public class DragObject : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        Debug.Log("placed");
         sprite.raycastTarget = true;
-        //dragEndedCallback(this);
-        //transform.SetParent(parentAfterDrag);
-        //sfx
-        //tracker
         //CheckForSnapPoints();
     }
     
