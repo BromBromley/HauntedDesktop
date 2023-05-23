@@ -4,15 +4,19 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public bool raumplanerIsActive = true;
+
+
+    private FurnitureTracker _furnitureTracker;
+
+    void Awake()
     {
-        
+        _furnitureTracker = GetComponent<FurnitureTracker>();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void RaumplanerOneDone()
     {
-        
+        raumplanerIsActive = false;
+        //FurnitureTracker.CheckFurniture();
     }
 }
