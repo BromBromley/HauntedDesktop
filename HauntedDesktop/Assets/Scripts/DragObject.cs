@@ -9,29 +9,35 @@ public class DragObject : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
 {
     // this script makes UI elements draggable
 
-    //private PlayerControls _playerControls;
-
     public Image sprite;
     private RectTransform draggableObject;
     private Vector3 velocity = Vector3.zero;
     [SerializeField] private float dampingSpeed = 0.03f;
+    private bool dragging = false;
 
-    private GridBehavior gridBehavior;
+    [SerializeField] private GameObject grid;
+    private GridBehavior _gridBehavior;
+
     public float snapRange = 0.5f;
-
-    public delegate void DragEndedDelegate(DragObject draggableObjects);
-    public DragEndedDelegate dragEndedCallback;
 
     private void Awake()
     {
-        //_playerControls = FindObjectOfType<PlayerControls>();
         draggableObject = transform as RectTransform;
-        gridBehavior = FindObjectOfType<GridBehavior>();
+        _gridBehavior = grid.GetComponent<GridBehavior>();
+    }
+
+    private void Update()
+    {
+        if (dragging == true)
+        {
+            RotateFurniture();
+        }
     }
 
     public void OnBeginDrag(PointerEventData eventData)
     {
         sprite.raycastTarget = false;
+        dragging = true;
     }
 
     public void OnDrag(PointerEventData eventData)
@@ -40,29 +46,34 @@ public class DragObject : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
         {
             draggableObject.position = Vector3.SmoothDamp(draggableObject.position, mousePosition, ref velocity, dampingSpeed);
         }
-        /*if (_playerControls.RightClick)
-        {
-            transform.Rotate(90.0f, 0.0f, 0.0f);
-        }*/
     }
 
     public void OnEndDrag(PointerEventData eventData)
     {
         sprite.raycastTarget = true;
+        dragging = false;
         //CheckForSnapPoints();
     }
-    
-    /*private void CheckForSnapPoints()
+
+    private void RotateFurniture()
+    {
+        if (Input.GetMouseButtonDown(1))
+        {
+            draggableObject.Rotate(0.0f, 0.0f, 90.0f);
+        }
+    }
+
+    /*private void CheckForSnapPoints(draggableObject)
     {
         float closestDistance = -1;
-        gridBehavior.Transform closestSnapPoint = null;
+        _gridBehavior.Transform closestSnapPoint = null;
 
-        foreach (gridBehavior.Transform snapPoint in gridBehavior.snapPoints)
+        foreach (_gridBehavior.Transform snapPoint in _gridBehavior.snapPoints)
         {
-            float currentDistance = Vector2.Distance(draggableObject.transform.position, gridBehavior.snapPoints.position);
+            float currentDistance = Vector2.Distance(draggableObject.transform.position, _gridBehavior.snapPoint.transform.position);
             if (closestSnapPoint == null || currentDistance < closestDistance)
             {
-                closestSnapPoint = gridBehavior.snapPoint;
+                closestSnapPoint = _gridBehavior.snapPoint;
                 closestDistance = currentDistance;
             }
         }
