@@ -28,7 +28,7 @@ public class SnapController : MonoBehaviour
             {
                 closestSnapPoint = snapPoint;
                 closestDistance = currentDistance;
-                print(snapPoint); //works up until this point
+                //print(snapPoint); //works up until this point
             }
         }
 

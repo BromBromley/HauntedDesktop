@@ -4,15 +4,26 @@ using UnityEngine;
 
 public class UIManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] private GameObject raumplaner;
+    [SerializeField] private GameObject verkaufsportal;
+    [SerializeField] private GameObject emailArthur;
+
+    public void openRaumplaner()
     {
-        
+        raumplaner.SetActive(true);
+    }
+    public void closeRaumplaner()
+    {
+        raumplaner.SetActive(false);
     }
 
-    // Update is called once per frame
-    void Update()
+    public void openVerkaufsportal()
     {
-        
+        verkaufsportal.SetActive(true);
+    }
+
+    public void openEmailArthur()
+    {
+        emailArthur.SetActive(true);
     }
 }

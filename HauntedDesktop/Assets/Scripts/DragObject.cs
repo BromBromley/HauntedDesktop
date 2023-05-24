@@ -7,7 +7,7 @@ using UnityEngine.UI;
 
 public class DragObject : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
-    // this script makes UI elements draggable
+    // this script makes the furniture draggable
 
     public Image sprite;
     private RectTransform draggableObject;
@@ -20,9 +20,12 @@ public class DragObject : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
 
     public float snapRange = 0.5f;
 
+    public Vector3 startPosition;
+
     private void Awake()
     {
         draggableObject = transform as RectTransform;
+        startPosition = draggableObject.position;
         _gridBehavior = grid.GetComponent<GridBehavior>();
     }
 
@@ -36,7 +39,6 @@ public class DragObject : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
 
     public void OnBeginDrag(PointerEventData eventData)
     {
-        sprite.raycastTarget = false;
         dragging = true;
     }
 
@@ -50,7 +52,6 @@ public class DragObject : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        sprite.raycastTarget = true;
         dragging = false;
         //CheckForSnapPoints();
     }
