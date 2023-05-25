@@ -12,6 +12,10 @@ public class Startscript : MonoBehaviour
     public GameObject finalAvatar6;
     public GameObject panel;
 
+    public GameObject invisibleButton;
+
+   
+
     // Start is called before the first frame update
     void Start()
     {
@@ -23,6 +27,7 @@ public class Startscript : MonoBehaviour
        finalAvatar6.SetActive(false);
 
        panel.SetActive(false);
+       invisibleButton.SetActive(false);
 
     }
 
@@ -31,4 +36,5 @@ public class Startscript : MonoBehaviour
     {
         
     }
+   
 }
