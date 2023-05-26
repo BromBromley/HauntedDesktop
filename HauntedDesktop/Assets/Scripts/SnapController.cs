@@ -7,7 +7,7 @@ public class SnapController : MonoBehaviour
     // this script manages the snapping of the ad pictures and descriptions
     public List<Transform> snapPoints;
     public List<DragAds> dragAds;
-    public float snapRange = 1f;
+    public float snapRange = 5f;
 
     void Start()
     {
@@ -28,14 +28,14 @@ public class SnapController : MonoBehaviour
             {
                 closestSnapPoint = snapPoint;
                 closestDistance = currentDistance;
-                //print(snapPoint); //works up until this point
+                //print(snapPoint);
             }
-        }
 
-        if (closestSnapPoint !=null && closestDistance <= snapRange)
-        {
-            print("should snap"); //never gets to this
-            draggable.transform.position = closestSnapPoint.transform.position;
+            /*if (closestSnapPoint !=null)
+            {
+                //&& closestDistance <= snapRange
+                draggable.transform.position = closestSnapPoint.transform.position;
+            }*/
         }
     }
 }

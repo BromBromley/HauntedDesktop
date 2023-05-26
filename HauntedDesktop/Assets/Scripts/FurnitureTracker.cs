@@ -28,6 +28,13 @@ public class FurnitureTracker : MonoBehaviour
     [SerializeField] GameObject pic_shelf;
     [SerializeField] GameObject pic_lamp;
 
+    [SerializeField] GameObject des_couch;
+    [SerializeField] GameObject des_armchair;
+    [SerializeField] GameObject des_table;
+    [SerializeField] GameObject des_sidetable;
+    [SerializeField] GameObject des_shelf;
+    [SerializeField] GameObject des_lamp;
+
     private Vector3 border = new Vector3(1000f, 0.0f, 0.0f);
 
 
@@ -74,26 +81,32 @@ public class FurnitureTracker : MonoBehaviour
         if (sellCouch == true)
         {
             pic_couch.SetActive(true);
+            des_couch.SetActive(false);
         }
         if (sellArmchair == true)
         {
             pic_armchair.SetActive(true);
+            des_armchair.SetActive(false);
         }
         if (sellTable == true)
         {
             pic_table.SetActive(true);
+            des_table.SetActive(false);
         }
         if (sellSidetable == true)
         {
             pic_sidetable.SetActive(true);
+            des_sidetable.SetActive(false);
         }
         if (sellShelf == true)
         {
             pic_shelf.SetActive(true);
+            des_shelf.SetActive(false);
         }
         if (sellLamp == true)
         {
             pic_lamp.SetActive(true);
+            des_lamp.SetActive(false);
         }
     }
 }

@@ -12,6 +12,8 @@ public class DragAds : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragH
     private Vector3 velocity = Vector3.zero;
     [SerializeField] private float dampingSpeed = 0.03f;
 
+    public Vector3 eboohyStartPosition;
+
     public float snapRange = 0.5f;
     public delegate void DragEndedDelegate(DragAds draggable);
     public DragEndedDelegate dragEndedCallback;
