@@ -35,6 +35,20 @@ public class FurnitureTracker : MonoBehaviour
     [SerializeField] GameObject des_shelf;
     [SerializeField] GameObject des_lamp;
 
+    [SerializeField] GameObject pic_vase01;
+    [SerializeField] GameObject pic_vase02;
+    [SerializeField] GameObject pic_tablelamp;
+    [SerializeField] GameObject pic_chair;
+    [SerializeField] GameObject pic_mirror;
+    [SerializeField] GameObject pic_stool;
+
+    [SerializeField] GameObject des_vase01;
+    [SerializeField] GameObject des_vase02;
+    [SerializeField] GameObject des_tablelamp;
+    [SerializeField] GameObject des_chair;
+    [SerializeField] GameObject des_mirror;
+    [SerializeField] GameObject des_stool;
+
     private Vector3 border = new Vector3(1000f, 0.0f, 0.0f);
 
 
@@ -81,32 +95,50 @@ public class FurnitureTracker : MonoBehaviour
         if (sellCouch == true)
         {
             pic_couch.SetActive(true);
-            des_couch.SetActive(false);
+            des_couch.SetActive(true);
+
+            pic_vase02.SetActive(false);
+            des_vase02.SetActive(false);
         }
         if (sellArmchair == true)
         {
             pic_armchair.SetActive(true);
-            des_armchair.SetActive(false);
+            des_armchair.SetActive(true);
+
+            pic_tablelamp.SetActive(false);
+            des_tablelamp.SetActive(false);
         }
         if (sellTable == true)
         {
             pic_table.SetActive(true);
-            des_table.SetActive(false);
+            des_table.SetActive(true);
+
+            pic_mirror.SetActive(false);
+            des_mirror.SetActive(false);
         }
         if (sellSidetable == true)
         {
             pic_sidetable.SetActive(true);
-            des_sidetable.SetActive(false);
+            des_sidetable.SetActive(true);
+
+            pic_vase01.SetActive(false);
+            des_vase01.SetActive(false);
         }
         if (sellShelf == true)
         {
             pic_shelf.SetActive(true);
-            des_shelf.SetActive(false);
+            des_shelf.SetActive(true);
+
+            pic_stool.SetActive(false);
+            des_stool.SetActive(false);
         }
         if (sellLamp == true)
         {
             pic_lamp.SetActive(true);
-            des_lamp.SetActive(false);
+            des_lamp.SetActive(true);
+
+            pic_chair.SetActive(false);
+            des_chair.SetActive(false);
         }
     }
 }
