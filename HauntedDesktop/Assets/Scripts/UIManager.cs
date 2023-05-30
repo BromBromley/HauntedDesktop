@@ -35,6 +35,11 @@ public class UIManager : MonoBehaviour
         verkaufsportal.SetActive(true);
     }
 
+    public void closeVerkaufsportal()
+    {
+        verkaufsportal.SetActive(false);
+    }
+
     public void openEmailArthur()
     {
         emailArthur.SetActive(true);

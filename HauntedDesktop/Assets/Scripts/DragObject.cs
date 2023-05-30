@@ -40,6 +40,7 @@ public class DragObject : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
     public void OnBeginDrag(PointerEventData eventData)
     {
         dragging = true;
+        draggableObject.SetAsLastSibling();
     }
 
     public void OnDrag(PointerEventData eventData)

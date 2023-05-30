@@ -8,11 +8,13 @@ public class GameManager : MonoBehaviour
 
     private FurnitureTracker _furnitureTracker;
     private UIManager _uiManager;
+    private AdChecker _adChecker;
 
     void Awake()
     {
         _furnitureTracker = GetComponent<FurnitureTracker>();
         _uiManager = FindObjectOfType<UIManager>();
+        _adChecker = FindObjectOfType<AdChecker>();
     }
 
     public void RaumplanerOneDone()
@@ -34,5 +36,13 @@ public class GameManager : MonoBehaviour
     {
         _furnitureTracker.SellFurniture();
         _uiManager.openVerkaufsportal();
+    }
+
+    public void VerkaufsportalDone()
+    {
+        if (_adChecker.correctlySorted)
+        {
+            _uiManager.closeVerkaufsportal();
+        }
     }
 }

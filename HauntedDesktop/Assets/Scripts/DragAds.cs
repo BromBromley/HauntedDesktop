@@ -11,8 +11,9 @@ public class DragAds : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragH
     private RectTransform draggableObject;
     private Vector3 velocity = Vector3.zero;
     [SerializeField] private float dampingSpeed = 0.03f;
+    private AdChecker _adChecker;
 
-    public Vector3 eboohyStartPosition;
+    // public Vector3 eboohyStartPosition;
 
     public float snapRange = 0.5f;
     public delegate void DragEndedDelegate(DragAds draggable);
@@ -21,11 +22,13 @@ public class DragAds : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragH
     private void Awake()
     {
         draggableObject = transform as RectTransform;
+        _adChecker = FindObjectOfType<AdChecker>();
     }
 
     public void OnBeginDrag(PointerEventData eventData)
     {
         sprite.raycastTarget = false;
+        draggableObject.SetAsLastSibling();
     }
 
     public void OnDrag(PointerEventData eventData)
@@ -40,5 +43,6 @@ public class DragAds : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragH
     {
         sprite.raycastTarget = true;
         dragEndedCallback(this);
+        _adChecker.CheckForCorrectFurniture();
     }
 }
