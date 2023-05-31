@@ -4,27 +4,24 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    public bool raumplanerIsActive = true;
-
-    private FurnitureTracker _furnitureTracker;
     private UIManager _uiManager;
+    private FurnitureTracker _furnitureTracker;
     private AdChecker _adChecker;
 
     void Awake()
     {
-        _furnitureTracker = GetComponent<FurnitureTracker>();
         _uiManager = FindObjectOfType<UIManager>();
-        _adChecker = FindObjectOfType<AdChecker>();
+        _furnitureTracker = GetComponent<FurnitureTracker>();
+        _adChecker = GetComponent<AdChecker>();
     }
 
     public void RaumplanerOneDone()
     {
-        raumplanerIsActive = false;
         _furnitureTracker.CheckFurniture();
-        StartCoroutine(closeRaumplanerOne());
+        StartCoroutine(closingRaumplanerOne());
     }
 
-    IEnumerator closeRaumplanerOne()
+    IEnumerator closingRaumplanerOne()
     {
         yield return new WaitForSeconds(1);
 
@@ -40,9 +37,11 @@ public class GameManager : MonoBehaviour
 
     public void VerkaufsportalDone()
     {
+        _adChecker.CheckIfSortedCorrectly();
         if (_adChecker.correctlySorted)
         {
             _uiManager.closeVerkaufsportal();
+            StartCoroutine(_uiManager.showingPopUpNewEmail());
         }
     }
 }
