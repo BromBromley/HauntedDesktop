@@ -16,7 +16,7 @@ public class DragObject : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
     private bool dragging = false;
 
     [SerializeField] private GameObject grid;
-    private GridBehavior _gridBehavior;
+    private GridController _gridController;
 
     public float snapRange = 0.5f;
 
@@ -26,7 +26,7 @@ public class DragObject : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
     {
         draggableObject = transform as RectTransform;
         startPosition = draggableObject.position;
-        _gridBehavior = grid.GetComponent<GridBehavior>();
+        _gridController = grid.GetComponent<GridController>();
     }
 
     private void Update()

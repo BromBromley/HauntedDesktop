@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class GridBehavior : MonoBehaviour
+public class GridController : MonoBehaviour
 {
     public List<Transform> snapPoints;
     //public List<DragObject> draggableObjects;
