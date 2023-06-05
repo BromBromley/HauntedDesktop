@@ -100,6 +100,14 @@ public class FurnitureTracker : MonoBehaviour
             pic_vase02.SetActive(false);
             des_vase02.SetActive(false);
         }
+        else
+        {
+            pic_couch.SetActive(false);
+            des_couch.SetActive(false);
+
+            pic_vase02.SetActive(true);
+            pic_vase02.SetActive(true);
+        }   
         if (sellArmchair == true)
         {
             pic_armchair.SetActive(true);

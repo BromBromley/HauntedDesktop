@@ -8,14 +8,17 @@ public class SnapController : MonoBehaviour
     // attached to the snapPoints parents
     public List<Transform> snapPoints;
     public List<DragAds> dragAds;
-    public float snapRange = 50f;
+    public int snapRange = 150;
+    private Vector3 startPosition;
 
     void Start()
     {
         foreach(DragAds draggable in dragAds)
         {
             draggable.dragEndedCallback = CheckForSnapPoints;
+            startPosition = draggable.transform.position;
         }
+        //startPosition = draggable.transform.position;
     }
     private void CheckForSnapPoints(DragAds draggable)
     {
@@ -30,20 +33,16 @@ public class SnapController : MonoBehaviour
                 closestSnapPoint = snapPoint;
                 closestDistance = currentDistance;
             }
-
-            /*if (closestSnapPoint !=null)
-            {
-                print(closestSnapPoint);
-                //&& closestDistance <= snapRange
-                draggable.transform.position = closestSnapPoint.transform.position;
-            }*/
         }
 
-        if (closestSnapPoint != null)
-            {
-                draggable.transform.position = closestSnapPoint.transform.position;
-                //change tag to the one from the snapPoint
-                draggable.tag = closestSnapPoint.tag;
-            }
+        if (closestSnapPoint != null && closestDistance <= snapRange)
+        {
+            draggable.transform.position = closestSnapPoint.transform.position;
+            draggable.tag = closestSnapPoint.tag;
+        }
+        /*else
+        {
+            draggable.transform.position = startPosition;
+        }*/
     }
 }

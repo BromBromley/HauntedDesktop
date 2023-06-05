@@ -28,6 +28,7 @@ public class DragAds : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragH
     public void OnBeginDrag(PointerEventData eventData)
     {
         sprite.raycastTarget = false;
+        draggableObject.tag = "Unassigned";
         draggableObject.SetAsLastSibling();
     }
 

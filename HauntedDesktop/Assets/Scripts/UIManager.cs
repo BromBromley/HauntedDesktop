@@ -14,15 +14,19 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject emailArthur;
     [SerializeField] private GameObject popUpNewEmail;
     [SerializeField] private GameObject newEmailArthur;
+    [SerializeField] private GameObject icon_errorMessage;
+    [SerializeField] private GameObject errorMessage;
     private void Start() 
     {
         documentFolder.SetActive(false);
         toDoListe.SetActive(false); 
         raumplaner.SetActive(false);
-        //verkaufsportal.SetActive(false);
+        verkaufsportal.SetActive(false);
         emailArthur.SetActive(false);
         popUpNewEmail.SetActive(false);
-        newEmailArthur.SetActive(false);
+        //newEmailArthur.SetActive(false);
+        icon_errorMessage.SetActive(false);
+        errorMessage.SetActive(false);
     }
 
     public void openDocuments()
@@ -60,6 +64,11 @@ public class UIManager : MonoBehaviour
         emailArthur.SetActive(true);
     }
 
+    public void closeEmailArthur()
+    {
+        emailArthur.SetActive(false);
+    }
+
     public IEnumerator showingPopUpNewEmail()
     {
         popUpNewEmail.SetActive(true);
@@ -72,5 +81,21 @@ public class UIManager : MonoBehaviour
     public void openNewEmailArthur()
     {
         newEmailArthur.SetActive(true);
+    }
+
+    public void closeNewEmailArthur()
+    {
+        newEmailArthur.SetActive(true);
+    }
+
+    public void showErrorMessageIcon()
+    {
+        icon_errorMessage.SetActive(true);
+    }
+
+    public void showErrorMessage()
+    {
+        verkaufsportal.SetActive(false);
+        errorMessage.SetActive(true);
     }
 }

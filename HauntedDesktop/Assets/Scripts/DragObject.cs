@@ -12,21 +12,25 @@ public class DragObject : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
     public Image sprite;
     private RectTransform draggableObject;
     private Vector3 velocity = Vector3.zero;
-    [SerializeField] private float dampingSpeed = 0.03f;
+    private float dampingSpeed = 0.03f;
     private bool dragging = false;
 
     [SerializeField] private GameObject grid;
     private GridController _gridController;
+    private GameManager _gameManager;
 
     public float snapRange = 0.5f;
 
     public Vector3 startPosition;
+    public Quaternion startRotation;
 
     private void Awake()
     {
         draggableObject = transform as RectTransform;
         startPosition = draggableObject.position;
+        startRotation = draggableObject.rotation;
         _gridController = grid.GetComponent<GridController>();
+        _gameManager = FindObjectOfType<GameManager>();
     }
 
     private void Update()
@@ -55,6 +59,28 @@ public class DragObject : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
     {
         dragging = false;
         //CheckForSnapPoints();
+
+        if (_gameManager.isBartyActive)
+        {
+            StartCoroutine(ReturnToStartPoint());
+        }
+    }
+
+    public IEnumerator ReturnToStartPoint()
+    {
+        yield return new WaitForSeconds(2);
+        float timeSinceStarted = 0f;
+        while (true)
+        {
+            timeSinceStarted += Time.deltaTime;
+            draggableObject.position = Vector3.Lerp(draggableObject.position, startPosition, timeSinceStarted);
+            draggableObject.rotation = Quaternion.Lerp(draggableObject.rotation, startRotation, timeSinceStarted);
+            if (draggableObject.position == startPosition)
+            {
+                yield break;
+            }
+            yield return null;
+        }
     }
 
     private void RotateFurniture()
