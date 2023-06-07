@@ -7,15 +7,18 @@ using UnityEngine.UI;
 public class DragAds : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
     // makes the ad photos and descritpions draggable 
+    // attached to each photo and description
+
     public Image sprite;
     private RectTransform draggableObject;
     private Vector3 velocity = Vector3.zero;
-    [SerializeField] private float dampingSpeed = 0.03f;
+    private float dampingSpeed = 0.03f;
     private AdChecker _adChecker;
 
-    // public Vector3 eboohyStartPosition;
+    private Transform originalParent;
 
     public float snapRange = 0.5f;
+
     public delegate void DragEndedDelegate(DragAds draggable);
     public DragEndedDelegate dragEndedCallback;
 
@@ -23,6 +26,7 @@ public class DragAds : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragH
     {
         draggableObject = transform as RectTransform;
         _adChecker = FindObjectOfType<AdChecker>();
+        originalParent = draggableObject.transform.parent;
     }
 
     public void OnBeginDrag(PointerEventData eventData)
@@ -30,6 +34,7 @@ public class DragAds : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragH
         sprite.raycastTarget = false;
         draggableObject.tag = "Unassigned";
         draggableObject.SetAsLastSibling();
+        draggableObject.SetParent(originalParent);
     }
 
     public void OnDrag(PointerEventData eventData)
