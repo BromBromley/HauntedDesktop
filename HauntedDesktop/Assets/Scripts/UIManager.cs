@@ -21,10 +21,10 @@ public class UIManager : MonoBehaviour
         documentFolder.SetActive(false);
         toDoListe.SetActive(false); 
         raumplaner.SetActive(false);
-        verkaufsportal.SetActive(false);
+        //verkaufsportal.SetActive(false);
         emailArthur.SetActive(false);
         popUpNewEmail.SetActive(false);
-        //newEmailArthur.SetActive(false);
+        newEmailArthur.SetActive(false);
         icon_errorMessage.SetActive(false);
         errorMessage.SetActive(false);
     }

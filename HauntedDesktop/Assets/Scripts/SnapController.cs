@@ -22,7 +22,7 @@ public class SnapController : MonoBehaviour
     }
     private void CheckForSnapPoints(DragAds draggable)
     {
-        float closestDistance = -1;
+        float closestDistance = -3;
         Transform closestSnapPoint = null;
 
         foreach (Transform snapPoint in snapPoints)
@@ -38,6 +38,7 @@ public class SnapController : MonoBehaviour
         if (closestSnapPoint != null && closestDistance <= snapRange)
         {
             draggable.transform.position = closestSnapPoint.transform.position;
+            print(closestDistance);
             draggable.tag = closestSnapPoint.tag;
         }
         /*else

@@ -3989,7 +3989,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &384265885
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5896,7 +5896,7 @@ GameObject:
   - component: {fileID: 557071749}
   - component: {fileID: 557071750}
   m_Layer: 5
-  m_Name: pic_snapPoints
+  m_Name: snapPoints_pic
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5954,7 +5954,7 @@ MonoBehaviour:
   - {fileID: 856194545}
   - {fileID: 340110337}
   - {fileID: 961512304}
-  snapRange: 50
+  snapRange: 150
 --- !u!1 &575872770
 GameObject:
   m_ObjectHideFlags: 0
@@ -6114,7 +6114,7 @@ GameObject:
   - component: {fileID: 604257778}
   - component: {fileID: 604257779}
   m_Layer: 5
-  m_Name: pic_snapPoints_raumplaner
+  m_Name: snapPoints_pic_raumplaner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6172,7 +6172,7 @@ MonoBehaviour:
   - {fileID: 1312719388}
   - {fileID: 1963169713}
   - {fileID: 337032421}
-  snapRange: 50
+  snapRange: 150
 --- !u!1001 &614572049
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12594,7 +12594,7 @@ GameObject:
   - component: {fileID: 1177224309}
   - component: {fileID: 1177224310}
   m_Layer: 5
-  m_Name: des_snapPoints
+  m_Name: snapPoints_des
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -12652,7 +12652,7 @@ MonoBehaviour:
   - {fileID: 1426574617}
   - {fileID: 1019556687}
   - {fileID: 2037721963}
-  snapRange: 50
+  snapRange: 150
 --- !u!1 &1193101129
 GameObject:
   m_ObjectHideFlags: 0
@@ -16691,7 +16691,7 @@ GameObject:
   - component: {fileID: 1593003791}
   - component: {fileID: 1593003792}
   m_Layer: 5
-  m_Name: des_snapPoints_raumplaner
+  m_Name: snapPoints_des_raumplaner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -16749,7 +16749,7 @@ MonoBehaviour:
   - {fileID: 796966071}
   - {fileID: 1781040050}
   - {fileID: 2075869514}
-  snapRange: 50
+  snapRange: 150
 --- !u!1 &1605376253
 GameObject:
   m_ObjectHideFlags: 0

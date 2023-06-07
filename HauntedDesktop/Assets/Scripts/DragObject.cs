@@ -8,6 +8,7 @@ using UnityEngine.UI;
 public class DragObject : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
     // this script makes the furniture draggable
+    // attached to each draggable object
 
     public Image sprite;
     private RectTransform draggableObject;
