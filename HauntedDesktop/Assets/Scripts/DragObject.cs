@@ -22,8 +22,11 @@ public class DragObject : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
 
     public float snapRange = 0.5f;
 
-    public Vector3 startPosition;
-    public Quaternion startRotation;
+    public  Vector3 startPosition;
+    private Quaternion startRotation;
+
+    private float timeSinceStartedReturning = 0f;
+    private int timeBeforeReturning;
 
     private void Awake()
     {
@@ -69,13 +72,13 @@ public class DragObject : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
 
     public IEnumerator ReturnToStartPoint()
     {
-        yield return new WaitForSeconds(2);
-        float timeSinceStarted = 0f;
+        timeBeforeReturning = Random.Range(1, 4);
+        yield return new WaitForSeconds(timeBeforeReturning);
         while (true)
         {
-            timeSinceStarted += Time.deltaTime;
-            draggableObject.position = Vector3.Lerp(draggableObject.position, startPosition, timeSinceStarted);
-            draggableObject.rotation = Quaternion.Lerp(draggableObject.rotation, startRotation, timeSinceStarted);
+            timeSinceStartedReturning += Time.deltaTime;
+            draggableObject.position = Vector3.Lerp(draggableObject.position, startPosition, timeSinceStartedReturning);
+            draggableObject.rotation = Quaternion.Lerp(draggableObject.rotation, startRotation, timeSinceStartedReturning);
             if (draggableObject.position == startPosition)
             {
                 yield break;

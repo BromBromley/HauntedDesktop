@@ -2,25 +2,77 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class MouseBehaviour : MonoBehaviour
 {
-    // under construction
+    // this script influences the mouse behavior during the second Raumplaner minigame
     // attached to [GameManager]
 
-    //public bool isBartyActive; -> moved to GameManager
-    /*private float speed = 5f;
-    private Vector2 currentPosition;
+    [SerializeField] public GameObject fakeCursor;
     private Vector3 velocity = Vector3.zero;
-    [SerializeField] private float dampingSpeed = 0.03f;*/
+    private Vector3 mousePosition;
+    private float dragSpeed = 0.01f;
+    private int timeActive = 0;
+    private bool isBartyActive = false;
 
-    private void WarpingCursor()
+    void Awake() 
     {
-        /*currentPosition = Mouse.current.position;
+        fakeCursor.SetActive(false);
+    }
+
+    void Update()
+    {
         if (isBartyActive)
-        {
-            currentPosition += Vector2.left * speed * Time.deltaTime;
-            Mouse.current.WarpCursorPosition(currentPosition);
-        }*/
+        {   
+            mousePosition = Mouse.current.position.ReadValue();
+            fakeCursor.transform.position = Vector3.SmoothDamp(fakeCursor.transform.position, mousePosition, ref velocity, dragSpeed);
+            fakeCursor.transform.SetAsLastSibling();
+            dragSpeed += 0.001f;
+        }
+    }
+
+    public IEnumerator BartyActivity()
+    {
+        yield return new WaitForSeconds(5);
+
+        ShowFakeCursor();
+
+        timeActive = Random.Range(3, 8);
+        yield return new WaitForSeconds(timeActive);
+
+        HideFakeCursor();
+
+        timeActive = Random.Range(10, 12);
+        yield return new WaitForSeconds(timeActive);
+
+        ShowFakeCursor();
+        dragSpeed = 0.05f;
+
+        timeActive = Random.Range(8, 13);
+        yield return new WaitForSeconds(timeActive);
+
+        HideFakeCursor();
+
+        timeActive = Random.Range(5, 8);
+        yield return new WaitForSeconds(timeActive);
+
+        ShowFakeCursor();
+
+        yield return null;
+    }
+
+    private void ShowFakeCursor()
+    {
+        Cursor.visible = false;
+        fakeCursor.SetActive(true);
+        isBartyActive = true;
+    }
+
+    public void HideFakeCursor()
+    {
+        Cursor.visible = true;
+        fakeCursor.SetActive(false);
+        isBartyActive = false;
     }
 }

@@ -11,7 +11,7 @@ public class GameManager : MonoBehaviour
 
     public bool isBartyActive;
 
-    public Texture2D planchette;
+    //public Texture2D planchette;
 
     void Awake()
     {
@@ -19,16 +19,18 @@ public class GameManager : MonoBehaviour
         _furnitureTracker = GetComponent<FurnitureTracker>();
         _adChecker = GetComponent<AdChecker>();
         _mouseBehaviour = GetComponent<MouseBehaviour>();
-    }
+        _mouseBehaviour.enabled = false;        
+   }
 
-    void Start()
+    /*void Start()
     {
         Cursor.SetCursor(planchette, Vector2.zero, CursorMode.Auto);
-    }
+    }*/
 
     public void StartRaumplaner()
     {
         _uiManager.closeEmailArthur();
+        _uiManager.openBrowser();
         _uiManager.openRaumplaner();
     }
 
@@ -43,12 +45,14 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(1);
 
         _uiManager.closeRaumplaner();
+        _uiManager.closeBrowser();
         _furnitureTracker.ResetPosition();
     }
 
     public void StartVerkaufsportal()
     {
         _furnitureTracker.SellFurniture();
+        _uiManager.openBrowser();
         _uiManager.openVerkaufsportal();
     }
 
@@ -57,30 +61,41 @@ public class GameManager : MonoBehaviour
         _adChecker.CheckIfSortedCorrectly();
         if (_adChecker.correctlySorted)
         {
-            _uiManager.closeVerkaufsportal();
-            StartCoroutine(_uiManager.showingPopUpNewEmail());
+            StartCoroutine(closingVerkaufsportal());
         }
+    }
+
+    IEnumerator closingVerkaufsportal()
+    {
+        yield return new WaitForSeconds(1);
+        _uiManager.closeVerkaufsportal();
+        _uiManager.closeBrowser();
+        yield return new WaitForSeconds(3);
+        StartCoroutine(_uiManager.showingPopUpNewEmail());
     }
 
     public void StartRaumplanerAgain()
     {
-        _uiManager.openRaumplaner();
         _uiManager.closeNewEmailArthur();
+        _uiManager.openBrowser();
+        _uiManager.openRaumplaner();
         StartCoroutine(HauntingInAction());
     }
 
     IEnumerator HauntingInAction()
     {
-        // activate Barty's haunting behaviour
-        // activate furniture returning to its original position
         isBartyActive = true;
-        print("haunt is starting");
+        _mouseBehaviour.enabled = true;
+        StartCoroutine(_mouseBehaviour.BartyActivity());
+        //print("haunt is starting");
 
-        yield return new WaitForSeconds(40);
+        yield return new WaitForSeconds(45);
 
-        // show Verkaufsportal pop up
+        _mouseBehaviour.fakeCursor.SetActive(false);
+        _mouseBehaviour.enabled = false;
+        Cursor.visible = true;
         _uiManager.showErrorMessageIcon();
-        print("haunt is over... for now");
+        //print("haunt is over... for now");
     }
 
     public void OpenVerkaufsportalError()

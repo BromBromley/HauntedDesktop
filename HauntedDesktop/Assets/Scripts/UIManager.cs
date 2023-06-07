@@ -9,6 +9,7 @@ public class UIManager : MonoBehaviour
 
     [SerializeField] private GameObject documentFolder;
     [SerializeField] private GameObject toDoListe;
+    [SerializeField] private GameObject browser;
     [SerializeField] private GameObject raumplaner;
     [SerializeField] private GameObject verkaufsportal;
     [SerializeField] private GameObject emailArthur;
@@ -20,11 +21,12 @@ public class UIManager : MonoBehaviour
     {
         documentFolder.SetActive(false);
         toDoListe.SetActive(false); 
+        browser.SetActive(false);
         raumplaner.SetActive(false);
-        //verkaufsportal.SetActive(false);
+        verkaufsportal.SetActive(false);
         emailArthur.SetActive(false);
         popUpNewEmail.SetActive(false);
-        newEmailArthur.SetActive(false);
+        //newEmailArthur.SetActive(false);
         icon_errorMessage.SetActive(false);
         errorMessage.SetActive(false);
     }
@@ -37,6 +39,16 @@ public class UIManager : MonoBehaviour
     public void openToDos()
     {
         toDoListe.SetActive(true);
+    }
+
+    public void openBrowser()
+    {
+        browser.SetActive(true);
+    }
+
+    public void closeBrowser()
+    {
+        browser.SetActive(false);
     }
 
     public void openRaumplaner()
