@@ -5,9 +5,11 @@ using UnityEngine;
 public class SnapController : MonoBehaviour
 {
     // this script manages the snapping of the ad pictures and descriptions
+    // attached to the snapPoints parents
+
     public List<Transform> snapPoints;
     public List<DragAds> dragAds;
-    public float snapRange = 1f;
+    public int snapRange = 150;
 
     void Start()
     {
@@ -16,9 +18,11 @@ public class SnapController : MonoBehaviour
             draggable.dragEndedCallback = CheckForSnapPoints;
         }
     }
+
     private void CheckForSnapPoints(DragAds draggable)
     {
         float closestDistance = -1;
+
         Transform closestSnapPoint = null;
 
         foreach (Transform snapPoint in snapPoints)
@@ -28,14 +32,14 @@ public class SnapController : MonoBehaviour
             {
                 closestSnapPoint = snapPoint;
                 closestDistance = currentDistance;
-                //print(snapPoint); //works up until this point
             }
         }
 
-        if (closestSnapPoint !=null && closestDistance <= snapRange)
+        if (closestSnapPoint != null && closestDistance <= snapRange && closestSnapPoint.transform.childCount == 0)
         {
-            print("should snap"); //never gets to this
             draggable.transform.position = closestSnapPoint.transform.position;
+            draggable.tag = closestSnapPoint.tag;
+            draggable.transform.SetParent(closestSnapPoint);
         }
     }
 }

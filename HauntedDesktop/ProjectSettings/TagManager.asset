@@ -3,7 +3,14 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Ad01
+  - Ad02
+  - Ad03
+  - Ad04
+  - Ad05
+  - Ad06
+  - Unassigned
   layers:
   - Default
   - TransparentFX
