@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.30692244, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028305, g: 0.22571313, b: 0.3069213, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -6300,6 +6300,9 @@ MonoBehaviour:
   newEmailArthur: {fileID: 548476190}
   icon_errorMessage: {fileID: 386554779}
   errorMessage: {fileID: 627545191}
+  geisterscannerWebsite: {fileID: 0}
+  geisterscannerApp: {fileID: 0}
+  medienWebsite: {fileID: 0}
 --- !u!4 &626236259
 Transform:
   m_ObjectHideFlags: 0
@@ -6434,7 +6437,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &627545192
 RectTransform:
   m_ObjectHideFlags: 0
@@ -13638,6 +13641,12 @@ MonoBehaviour:
   geisterscanner: {fileID: 1151663775}
   boogle: {fileID: 816482287}
   medien: {fileID: 425637861}
+  tabArtikelVorbesitzer: {fileID: 0}
+  tabRaumplaner: {fileID: 0}
+  tabVerkaufsportal: {fileID: 0}
+  tabGeisterscanner: {fileID: 0}
+  tabBoogle: {fileID: 0}
+  tabMedien: {fileID: 0}
 --- !u!1 &1302527011
 GameObject:
   m_ObjectHideFlags: 0
