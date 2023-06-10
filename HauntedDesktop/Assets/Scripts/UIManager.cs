@@ -26,7 +26,7 @@ public class UIManager : MonoBehaviour
         verkaufsportal.SetActive(false);
         emailArthur.SetActive(false);
         popUpNewEmail.SetActive(false);
-        //newEmailArthur.SetActive(false);
+        newEmailArthur.SetActive(false);
         icon_errorMessage.SetActive(false);
         errorMessage.SetActive(false);
     }

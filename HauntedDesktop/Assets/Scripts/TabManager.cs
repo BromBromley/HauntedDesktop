@@ -25,7 +25,7 @@ public class TabManager : MonoBehaviour
 
     public void PutVerkaufsportalOnFront()
     {
-        verkaufsportal.SetActive(true);
+        //verkaufsportal.SetActive(true);
         verkaufsportal.GetComponent<RectTransform>().SetAsLastSibling();
     }
 
