@@ -16,7 +16,11 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject popUpNewEmail;
     [SerializeField] private GameObject newEmailArthur;
     [SerializeField] private GameObject icon_errorMessage;
-    [SerializeField] private GameObject errorMessage;
+    [SerializeField] public GameObject errorMessage;
+    [SerializeField] private GameObject geisterscannerWebsite;
+    [SerializeField] private GameObject geisterscannerApp;
+    [SerializeField] private GameObject medienWebsite;
+
     private void Start() 
     {
         documentFolder.SetActive(false);
@@ -29,59 +33,63 @@ public class UIManager : MonoBehaviour
         newEmailArthur.SetActive(false);
         icon_errorMessage.SetActive(false);
         errorMessage.SetActive(false);
+        geisterscannerWebsite.SetActive(false);
+        geisterscannerApp.SetActive(false);
+        medienWebsite.SetActive(false);
     }
 
-    public void openDocuments()
+
+    public void OpenDocuments()
     {
         documentFolder.SetActive(true);
     }
 
-    public void openToDos()
+    public void OpenToDos()
     {
         toDoListe.SetActive(true);
     }
 
-    public void openBrowser()
+    public void OpenBrowser()
     {
         browser.SetActive(true);
     }
 
-    public void closeBrowser()
+    public void CloseBrowser()
     {
         browser.SetActive(false);
     }
 
-    public void openRaumplaner()
+    public void OpenRaumplaner()
     {
         raumplaner.SetActive(true);
         documentFolder.SetActive(false);
     }
-    public void closeRaumplaner()
+    public void CloseRaumplaner()
     {
         raumplaner.SetActive(false);
     }
 
-    public void openVerkaufsportal()
+    public void OpenVerkaufsportal()
     {
         verkaufsportal.SetActive(true);
     }
 
-    public void closeVerkaufsportal()
+    public void CloseVerkaufsportal()
     {
         verkaufsportal.SetActive(false);
     }
 
-    public void openEmailArthur()
+    public void OpenEmailArthur()
     {
         emailArthur.SetActive(true);
     }
 
-    public void closeEmailArthur()
+    public void CloseEmailArthur()
     {
         emailArthur.SetActive(false);
     }
 
-    public IEnumerator showingPopUpNewEmail()
+    public IEnumerator ShowingPopUpNewEmail()
     {
         popUpNewEmail.SetActive(true);
 
@@ -90,24 +98,29 @@ public class UIManager : MonoBehaviour
         popUpNewEmail.SetActive(false);
     }
 
-    public void openNewEmailArthur()
+    public void OpenNewEmailArthur()
     {
         newEmailArthur.SetActive(true);
     }
 
-    public void closeNewEmailArthur()
+    public void CloseNewEmailArthur()
     {
         newEmailArthur.SetActive(true);
     }
 
-    public void showErrorMessageIcon()
+    public void ShowErrorMessageIcon()
     {
         icon_errorMessage.SetActive(true);
     }
 
-    public void showErrorMessage()
+    public void ShowErrorMessage()
     {
         verkaufsportal.SetActive(false);
         errorMessage.SetActive(true);
+    }
+
+    public void OpenGeisterscannerWebsite()
+    {
+        geisterscannerWebsite.SetActive(true);
     }
 }

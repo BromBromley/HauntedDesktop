@@ -5,6 +5,7 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     private UIManager _uiManager;
+    private TabManager _tabManager;
     private FurnitureTracker _furnitureTracker;
     private AdChecker _adChecker;
     private MouseBehaviour _mouseBehaviour;
@@ -16,6 +17,7 @@ public class GameManager : MonoBehaviour
     void Awake()
     {
         _uiManager = FindObjectOfType<UIManager>();
+        _tabManager = FindObjectOfType<TabManager>();
         _furnitureTracker = GetComponent<FurnitureTracker>();
         _adChecker = GetComponent<AdChecker>();
         _mouseBehaviour = GetComponent<MouseBehaviour>();
@@ -29,31 +31,33 @@ public class GameManager : MonoBehaviour
 
     public void StartRaumplaner()
     {
-        _uiManager.closeEmailArthur();
-        _uiManager.openBrowser();
-        _uiManager.openRaumplaner();
+        _uiManager.CloseEmailArthur();
+        _uiManager.OpenBrowser();
+        _uiManager.OpenRaumplaner();
+        _tabManager.ShowRaumplanerTab();
     }
 
     public void RaumplanerOneDone()
     {
         _furnitureTracker.CheckFurniture();
-        StartCoroutine(closingRaumplanerOne());
+        StartCoroutine(ClosingRaumplanerOne());
     }
 
-    IEnumerator closingRaumplanerOne()
+    IEnumerator ClosingRaumplanerOne()
     {
         yield return new WaitForSeconds(1);
 
-        _uiManager.closeRaumplaner();
-        _uiManager.closeBrowser();
+        //_uiManager.CloseRaumplaner();
+        _uiManager.CloseBrowser();
         _furnitureTracker.ResetPosition();
     }
 
     public void StartVerkaufsportal()
     {
         _furnitureTracker.SellFurniture();
-        _uiManager.openBrowser();
-        _uiManager.openVerkaufsportal();
+        _uiManager.OpenBrowser();
+        _uiManager.OpenVerkaufsportal();
+        _tabManager.ShowVerkaufsportalTab();
     }
 
     public void VerkaufsportalDone()
@@ -61,24 +65,25 @@ public class GameManager : MonoBehaviour
         _adChecker.CheckIfSortedCorrectly();
         if (_adChecker.correctlySorted)
         {
-            StartCoroutine(closingVerkaufsportal());
+            StartCoroutine(ClosingVerkaufsportal());
         }
     }
 
-    IEnumerator closingVerkaufsportal()
+    IEnumerator ClosingVerkaufsportal()
     {
         yield return new WaitForSeconds(1);
-        _uiManager.closeVerkaufsportal();
-        _uiManager.closeBrowser();
+        //_uiManager.CloseVerkaufsportal();
+        _uiManager.CloseBrowser();
         yield return new WaitForSeconds(3);
-        StartCoroutine(_uiManager.showingPopUpNewEmail());
+        StartCoroutine(_uiManager.ShowingPopUpNewEmail());
     }
 
     public void StartRaumplanerAgain()
     {
-        _uiManager.closeNewEmailArthur();
-        _uiManager.openBrowser();
-        _uiManager.openRaumplaner();
+        _uiManager.CloseNewEmailArthur();
+        _uiManager.OpenBrowser();
+        //_uiManager.OpenRaumplaner();
+        _tabManager.PutRaumplanerOnFront();
         StartCoroutine(HauntingInAction());
     }
 
@@ -94,7 +99,7 @@ public class GameManager : MonoBehaviour
         _mouseBehaviour.fakeCursor.SetActive(false);
         _mouseBehaviour.enabled = false;
         Cursor.visible = true;
-        _uiManager.showErrorMessageIcon();
+        _uiManager.ShowErrorMessageIcon();
         //print("haunt is over... for now");
     }
 
@@ -102,12 +107,20 @@ public class GameManager : MonoBehaviour
     {
         if (isBartyActive)
         {
-            _uiManager.showErrorMessage();
+            _uiManager.ShowErrorMessage();
+            _uiManager.CloseRaumplaner();
             isBartyActive = false;
         }
         else
         {
-            _uiManager.openVerkaufsportal();
+            _uiManager.OpenVerkaufsportal();
         }
+    }
+
+    public void ClickOnGeisterscannerAd()
+    {
+        _uiManager.OpenGeisterscannerWebsite();
+        _tabManager.ShowGeisterscannerTab();
+        _tabManager.HideRaumplanerTab();
     }
 }
