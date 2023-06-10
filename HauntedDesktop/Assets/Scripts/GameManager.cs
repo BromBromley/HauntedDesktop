@@ -105,5 +105,9 @@ public class GameManager : MonoBehaviour
             _uiManager.showErrorMessage();
             isBartyActive = false;
         }
+        else
+        {
+            _uiManager.openVerkaufsportal();
+        }
     }
 }
