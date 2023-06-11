@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class DragAds : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
-    // makes the ad photos and descritpions draggable 
+    // this script makes the ad photos and descritpions draggable 
     // attached to each photo and description
 
     public Image sprite;
@@ -16,8 +16,6 @@ public class DragAds : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragH
     private AdChecker _adChecker;
 
     private Transform originalParent;
-
-    public float snapRange = 0.5f;
 
     public delegate void DragEndedDelegate(DragAds draggable);
     public DragEndedDelegate dragEndedCallback;
@@ -31,7 +29,7 @@ public class DragAds : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragH
 
     public void OnBeginDrag(PointerEventData eventData)
     {
-        sprite.raycastTarget = false;
+        //sprite.raycastTarget = false;
         draggableObject.tag = "Unassigned";
         draggableObject.SetAsLastSibling();
         draggableObject.SetParent(originalParent);
@@ -47,7 +45,7 @@ public class DragAds : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragH
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        sprite.raycastTarget = true;
+        //sprite.raycastTarget = true;
         dragEndedCallback(this);
         _adChecker.CheckForCorrectFurniture();
     }

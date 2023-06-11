@@ -8,6 +8,7 @@ public class UIManager : MonoBehaviour
     // attached to [UserInterface]
 
     [SerializeField] private GameObject documentFolder;
+    [SerializeField] private GameObject emails;
     [SerializeField] private GameObject toDoListe;
     [SerializeField] private GameObject browser;
     [SerializeField] private GameObject raumplaner;
@@ -24,6 +25,7 @@ public class UIManager : MonoBehaviour
     private void Start() 
     {
         documentFolder.SetActive(false);
+        emails.SetActive(false);
         toDoListe.SetActive(false); 
         browser.SetActive(false);
         raumplaner.SetActive(false);
@@ -42,6 +44,11 @@ public class UIManager : MonoBehaviour
     public void OpenDocuments()
     {
         documentFolder.SetActive(true);
+    }
+
+    public void OpenEmails()
+    {
+        emails.SetActive(true);
     }
 
     public void OpenToDos()
@@ -81,12 +88,14 @@ public class UIManager : MonoBehaviour
 
     public void OpenEmailArthur()
     {
+        emails.SetActive(true);
         emailArthur.SetActive(true);
     }
 
     public void CloseEmailArthur()
     {
         emailArthur.SetActive(false);
+        emails.SetActive(false);
     }
 
     public IEnumerator ShowingPopUpNewEmail()
@@ -100,12 +109,14 @@ public class UIManager : MonoBehaviour
 
     public void OpenNewEmailArthur()
     {
+        emails.SetActive(true);
         newEmailArthur.SetActive(true);
     }
 
     public void CloseNewEmailArthur()
     {
-        newEmailArthur.SetActive(true);
+        newEmailArthur.SetActive(false);
+        emails.SetActive(false);
     }
 
     public void ShowErrorMessageIcon()

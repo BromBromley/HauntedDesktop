@@ -11,6 +11,7 @@ TagManager:
   - Ad05
   - Ad06
   - Unassigned
+  - Sell
   layers:
   - Default
   - TransparentFX

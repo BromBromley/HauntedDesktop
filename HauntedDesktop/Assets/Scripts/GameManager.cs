@@ -39,7 +39,7 @@ public class GameManager : MonoBehaviour
 
     public void RaumplanerOneDone()
     {
-        _furnitureTracker.CheckFurniture();
+        //_furnitureTracker.CheckFurniture();
         StartCoroutine(ClosingRaumplanerOne());
     }
 

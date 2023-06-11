@@ -16,11 +16,9 @@ public class DragObject : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
     private float dampingSpeed = 0.03f;
     private bool dragging = false;
 
-    [SerializeField] private GameObject grid;
-    private GridController _gridController;
     private GameManager _gameManager;
 
-    public float snapRange = 0.5f;
+    private Transform originalParent;
 
     public  Vector3 startPosition;
     private Quaternion startRotation;
@@ -28,12 +26,16 @@ public class DragObject : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
     private float timeSinceStartedReturning = 0f;
     private int timeBeforeReturning;
 
+    public delegate void FurniturePlacedDelegate(DragObject draggable);
+    public FurniturePlacedDelegate furniturePlacedCallback;
+
     private void Awake()
     {
         draggableObject = transform as RectTransform;
         startPosition = draggableObject.position;
         startRotation = draggableObject.rotation;
-        _gridController = grid.GetComponent<GridController>();
+        //_gridController = grid.GetComponent<GridController>();
+        originalParent = draggableObject.transform.parent;
         _gameManager = FindObjectOfType<GameManager>();
     }
 
@@ -48,7 +50,9 @@ public class DragObject : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
     public void OnBeginDrag(PointerEventData eventData)
     {
         dragging = true;
+        draggableObject.tag = "Unassigned";
         draggableObject.SetAsLastSibling();
+        draggableObject.SetParent(originalParent);
     }
 
     public void OnDrag(PointerEventData eventData)
@@ -62,7 +66,7 @@ public class DragObject : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
     public void OnEndDrag(PointerEventData eventData)
     {
         dragging = false;
-        //CheckForSnapPoints();
+        furniturePlacedCallback(this);
 
         if (_gameManager.isBartyActive)
         {
@@ -94,25 +98,4 @@ public class DragObject : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
             draggableObject.Rotate(0.0f, 0.0f, 90.0f);
         }
     }
-
-    /*private void CheckForSnapPoints(draggableObject)
-    {
-        float closestDistance = -1;
-        _gridBehavior.Transform closestSnapPoint = null;
-
-        foreach (_gridBehavior.Transform snapPoint in _gridBehavior.snapPoints)
-        {
-            float currentDistance = Vector2.Distance(draggableObject.transform.position, _gridBehavior.snapPoint.transform.position);
-            if (closestSnapPoint == null || currentDistance < closestDistance)
-            {
-                closestSnapPoint = _gridBehavior.snapPoint;
-                closestDistance = currentDistance;
-            }
-        }
-
-        if (closestSnapPoint !=null && closestDistance <= snapRange)
-        {
-            draggableObject.transform.position = closestSnapPoint.position;
-        }
-    }*/
 }
