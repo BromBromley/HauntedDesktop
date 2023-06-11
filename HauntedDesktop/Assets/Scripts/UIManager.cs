@@ -27,7 +27,7 @@ public class UIManager : MonoBehaviour
         documentFolder.SetActive(false);
         emails.SetActive(false);
         toDoListe.SetActive(false); 
-        browser.SetActive(false);
+        //browser.SetActive(false);
         raumplaner.SetActive(false);
         verkaufsportal.SetActive(false);
         emailArthur.SetActive(false);
@@ -37,7 +37,7 @@ public class UIManager : MonoBehaviour
         errorMessage.SetActive(false);
         geisterscannerWebsite.SetActive(false);
         geisterscannerApp.SetActive(false);
-        medienWebsite.SetActive(false);
+        //medienWebsite.SetActive(false);
     }
 
 

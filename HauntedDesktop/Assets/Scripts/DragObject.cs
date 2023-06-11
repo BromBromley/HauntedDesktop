@@ -10,7 +10,6 @@ public class DragObject : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
     // this script makes the furniture draggable
     // attached to each draggable object
 
-    public Image sprite;
     private RectTransform draggableObject;
     private Vector3 velocity = Vector3.zero;
     private float dampingSpeed = 0.03f;
@@ -21,7 +20,7 @@ public class DragObject : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
     private Transform originalParent;
 
     public  Vector3 startPosition;
-    private Quaternion startRotation;
+    public Quaternion startRotation;
 
     private float timeSinceStartedReturning = 0f;
     private int timeBeforeReturning;
@@ -34,7 +33,6 @@ public class DragObject : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
         draggableObject = transform as RectTransform;
         startPosition = draggableObject.position;
         startRotation = draggableObject.rotation;
-        //_gridController = grid.GetComponent<GridController>();
         originalParent = draggableObject.transform.parent;
         _gameManager = FindObjectOfType<GameManager>();
     }

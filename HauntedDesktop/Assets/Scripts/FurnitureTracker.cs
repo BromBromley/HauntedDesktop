@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class FurnitureTracker : MonoBehaviour
 {
@@ -13,20 +14,13 @@ public class FurnitureTracker : MonoBehaviour
     [SerializeField] GameObject[] verkaufsportalPics;
     [SerializeField] GameObject[] verkaufsportalDes;
 
-    private Vector3 border = new Vector3(1000f, 0.0f, 0.0f);
-
     public void ResetPosition()
     {
         foreach (GameObject furniture in raumplanerIcons)
         {
             furniture.transform.position = furniture.GetComponent<DragObject>().startPosition;
-        }
-        /*icon_couch.transform.position = icon_couch.GetComponent<DragObject>().startPosition;
-        icon_armchair.transform.position = icon_armchair.GetComponent<DragObject>().startPosition;
-        icon_table.transform.position = icon_table.GetComponent<DragObject>().startPosition;
-        icon_sidetable.transform.position = icon_sidetable.GetComponent<DragObject>().startPosition;
-        icon_shelf.transform.position = icon_shelf.GetComponent<DragObject>().startPosition;
-        icon_lamp.transform.position = icon_lamp.GetComponent<DragObject>().startPosition;*/
+            furniture.transform.rotation = furniture.GetComponent<DragObject>().startRotation;
+        } 
     }
 
     public void SellFurniture()

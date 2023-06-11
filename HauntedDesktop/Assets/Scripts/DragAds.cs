@@ -9,7 +9,6 @@ public class DragAds : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragH
     // this script makes the ad photos and descritpions draggable 
     // attached to each photo and description
 
-    public Image sprite;
     private RectTransform draggableObject;
     private Vector3 velocity = Vector3.zero;
     private float dampingSpeed = 0.03f;
@@ -29,7 +28,6 @@ public class DragAds : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragH
 
     public void OnBeginDrag(PointerEventData eventData)
     {
-        //sprite.raycastTarget = false;
         draggableObject.tag = "Unassigned";
         draggableObject.SetAsLastSibling();
         draggableObject.SetParent(originalParent);
@@ -45,7 +43,6 @@ public class DragAds : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragH
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        //sprite.raycastTarget = true;
         dragEndedCallback(this);
         _adChecker.CheckForCorrectFurniture();
     }
