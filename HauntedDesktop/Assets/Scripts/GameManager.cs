@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject dragBlocker;
     private UIManager _uiManager;
     private TabManager _tabManager;
+    private EmailManager _emailManager;
     private FurnitureTracker _furnitureTracker;
     private AdChecker _adChecker;
     private MouseBehaviour _mouseBehaviour;
@@ -19,6 +20,7 @@ public class GameManager : MonoBehaviour
     {
         _uiManager = FindObjectOfType<UIManager>();
         _tabManager = FindObjectOfType<TabManager>();
+        _emailManager = FindObjectOfType<EmailManager>();
         _furnitureTracker = GetComponent<FurnitureTracker>();
         _adChecker = GetComponent<AdChecker>();
         _mouseBehaviour = GetComponent<MouseBehaviour>();
@@ -30,6 +32,14 @@ public class GameManager : MonoBehaviour
     {
         Cursor.SetCursor(planchette, Vector2.zero, CursorMode.Auto);
     }*/
+
+    // activated when link in Katy's email is clicked
+    public void FindArticleReginald()
+    {
+        _uiManager.OpenBrowser();
+        _uiManager.OpenArticleReginald();
+        _tabManager.ShowArtikelTab();
+    }
 
     // activated when link in email is clicked
     public void StartRaumplaner()
@@ -85,7 +95,8 @@ public class GameManager : MonoBehaviour
         _mouseBehaviour.fakeCursor.SetActive(false);
         _mouseBehaviour.enabled = false;
         Cursor.visible = true;
-        _uiManager.ShowErrorMessageIcon();
+        StartCoroutine(_uiManager.ShowingPopUpNewEmail());
+        _uiManager.OpenEmailError();
     }
 
     // shows error instead of Verkaufsportal after the haunt
@@ -94,7 +105,6 @@ public class GameManager : MonoBehaviour
         if (isBartyActive)
         {
             _uiManager.CloseVerkaufsportal();
-            _uiManager.ShowErrorMessage();
             _tabManager.HideRaumplanerTab();
             _uiManager.CloseRaumplaner();
             isBartyActive = false;
@@ -113,8 +123,25 @@ public class GameManager : MonoBehaviour
         _tabManager.HideRaumplanerTab();
     }
 
+    // opens Geisterscanner program
     public void DownloadGeisterscanner()
     {
         // Programmicon anzeigen
+    }
+
+    // shows Boogle after Geisterscanner suggested it
+    public void StartBoogleSearch()
+    {
+        _uiManager.OpenBoogleSearch();
+        _tabManager.ShowBoogleTab();
+        _tabManager.PutBoogleOnFront();
+    }
+
+    // opens MediumMatch when ad is clicked
+    public void StartMediumMatch()
+    {
+        _uiManager.OpenMediumWebsite();
+        _tabManager.ShowMedienTab();
+        _tabManager.PutMedienOnFront();
     }
 }

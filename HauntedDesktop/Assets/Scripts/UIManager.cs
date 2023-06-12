@@ -11,15 +11,18 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject emails;
     [SerializeField] private GameObject toDoListe;
     [SerializeField] private GameObject browser;
+    [SerializeField] private GameObject articleReginald;
     [SerializeField] private GameObject raumplaner;
     [SerializeField] private GameObject verkaufsportal;
     [SerializeField] private GameObject emailArthur;
     [SerializeField] private GameObject popUpNewEmail;
     [SerializeField] private GameObject newEmailArthur;
-    [SerializeField] private GameObject icon_errorMessage;
-    [SerializeField] public GameObject errorMessage;
+    [SerializeField] public GameObject emailError;
     [SerializeField] private GameObject geisterscannerWebsite;
     [SerializeField] private GameObject geisterscannerApp;
+    [SerializeField] private GameObject boogle;
+    [SerializeField] private GameObject boogleSearch;
+    [SerializeField] private GameObject boogleResults;
     [SerializeField] private GameObject medienWebsite;
 
     private void Start() 
@@ -27,17 +30,18 @@ public class UIManager : MonoBehaviour
         documentFolder.SetActive(false);
         emails.SetActive(false);
         toDoListe.SetActive(false); 
-        //browser.SetActive(false);
+        browser.SetActive(false);
+        articleReginald.SetActive(false);
         raumplaner.SetActive(false);
         verkaufsportal.SetActive(false);
-        emailArthur.SetActive(false);
         popUpNewEmail.SetActive(false);
         newEmailArthur.SetActive(false);
-        icon_errorMessage.SetActive(false);
-        errorMessage.SetActive(false);
+        emailError.SetActive(false);
         geisterscannerWebsite.SetActive(false);
         geisterscannerApp.SetActive(false);
-        //medienWebsite.SetActive(false);
+        boogle.SetActive(false);
+        boogleResults.SetActive(false);
+        medienWebsite.SetActive(false);
     }
 
 
@@ -64,6 +68,11 @@ public class UIManager : MonoBehaviour
     public void CloseBrowser()
     {
         browser.SetActive(false);
+    }
+
+    public void OpenArticleReginald()
+    {
+        articleReginald.SetActive(true);
     }
 
     public void OpenRaumplaner()
@@ -119,19 +128,36 @@ public class UIManager : MonoBehaviour
         emails.SetActive(false);
     }
 
-    public void ShowErrorMessageIcon()
+    public void OpenEmailError()
     {
-        icon_errorMessage.SetActive(true);
-    }
-
-    public void ShowErrorMessage()
-    {
-        verkaufsportal.SetActive(false);
-        errorMessage.SetActive(true);
+        emailError.SetActive(true);
     }
 
     public void OpenGeisterscannerWebsite()
     {
         geisterscannerWebsite.SetActive(true);
+    }
+
+    public void OpenBoogleSearch()
+    {
+        boogle.SetActive(true);
+        boogleSearch.SetActive(true);
+        boogleResults.SetActive(false);
+    }
+
+    public void StartBoogleSearch()
+    {
+        StartCoroutine(StartSearch());
+    }
+
+    IEnumerator StartSearch()
+    {
+        yield return new WaitForSeconds(2);
+        boogleResults.SetActive(true);
+    }
+
+    public void OpenMediumWebsite()
+    {
+        medienWebsite.SetActive(true);
     }
 }
