@@ -12,6 +12,9 @@ TagManager:
   - Ad06
   - Unassigned
   - Sell
+  - Witch
+  - Hippie
+  - Cyber
   layers:
   - Default
   - TransparentFX
