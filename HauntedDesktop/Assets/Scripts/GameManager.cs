@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     private EmailManager _emailManager;
     private FurnitureTracker _furnitureTracker;
     private AdChecker _adChecker;
+    private GhostScanner _ghostScanner;
     private MouseBehaviour _mouseBehaviour;
 
     public bool isBartyActive;
@@ -23,6 +24,7 @@ public class GameManager : MonoBehaviour
         _emailManager = FindObjectOfType<EmailManager>();
         _furnitureTracker = GetComponent<FurnitureTracker>();
         _adChecker = GetComponent<AdChecker>();
+        _ghostScanner = FindObjectOfType<GhostScanner>();
         _mouseBehaviour = GetComponent<MouseBehaviour>();
         _mouseBehaviour.enabled = false; 
         dragBlocker.SetActive(false);       
@@ -134,9 +136,15 @@ public class GameManager : MonoBehaviour
         _uiManager.CloseBrowser();
     }
 
+    public void StartGhostScan()
+    {
+        _ghostScanner.StartScanning();
+    }
+
     // shows Boogle after Geisterscanner suggested it
     public void StartBoogleSearch()
     {
+        _uiManager.OpenBrowser();
         _uiManager.OpenBoogleSearch();
         _tabManager.ShowBoogleTab();
         _tabManager.PutBoogleOnFront();

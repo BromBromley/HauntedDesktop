@@ -48,7 +48,7 @@ public class UIManager : MonoBehaviour
         geisterscannerApp.SetActive(false);
         boogle.SetActive(false);
         boogleResults.SetActive(false);
-        medienWebsite.SetActive(false);
+        //medienWebsite.SetActive(false);
     }
 
 

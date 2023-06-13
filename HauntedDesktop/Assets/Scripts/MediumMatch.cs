@@ -10,6 +10,7 @@ public class MediumMatch : MonoBehaviour
     [SerializeField] private GameObject button1;
     [SerializeField] private GameObject button2;
     [SerializeField] private GameObject button3;
+    [SerializeField] private GameObject toSelection;
     TMP_Text textButton1;
     TMP_Text textButton2;
     TMP_Text textButton3;
@@ -39,6 +40,11 @@ public class MediumMatch : MonoBehaviour
         resultsText = resultsText.GetComponent<TMP_Text>();
         displayedQuestion = displayedQuestion.GetComponent<TMP_Text>();
 
+        button1.SetActive(false);
+        button2.SetActive(false);
+        button3.SetActive(false);
+        toSelection.SetActive(false);
+
         questions[0] = "Welche Eigenschaft schätzt du an dir?";
         questions[1] = "Was sind deine Lieblingsfarben?";
         questions[2] = "Wo verbringst du am liebsten deine Freizeit?";
@@ -66,6 +72,13 @@ public class MediumMatch : MonoBehaviour
         results[0] = "Witch";
         results[1] = "Hippie";
         results[2] = "Cyber";
+    }
+
+    public void ShowAnswerButtons()
+    {
+        button1.SetActive(true);
+        button2.SetActive(true);
+        button3.SetActive(true);
     }
 
     public void ShowNextQuestion()
@@ -218,5 +231,6 @@ public class MediumMatch : MonoBehaviour
 
         displayedQuestion.text = "";
         resultsText.text = "Dir kann am besten " + results[resultsInt] + " helfen!";
+        toSelection.SetActive(true);
     }
 }
