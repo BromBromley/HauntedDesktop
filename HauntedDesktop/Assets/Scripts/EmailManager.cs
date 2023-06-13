@@ -65,4 +65,12 @@ public class EmailManager : MonoBehaviour
         newEmailArthur.SetActive(false);
         emailError.SetActive(true);
     }
+
+    public void ShowNoEmail()
+    {
+        emailKaty.SetActive(false);
+        emailArthur.SetActive(false);
+        newEmailArthur.SetActive(false);
+        emailError.SetActive(false);
+    }
 }

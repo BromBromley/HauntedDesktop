@@ -233,4 +233,18 @@ public class MediumMatch : MonoBehaviour
         resultsText.text = "Dir kann am besten " + results[resultsInt] + " helfen!";
         toSelection.SetActive(true);
     }
+
+    public void StartAgain()
+    {
+        toSelection.SetActive(false);
+        resultsText.text = "";
+        button1.SetActive(true);
+        button2.SetActive(true);
+        button3.SetActive(true);
+        currentQuestion = 0;
+        witchScore = 0;
+        hippieScore = 0;
+        cyberScore = 0;
+        ShowFirstQuestion();
+    }
 }

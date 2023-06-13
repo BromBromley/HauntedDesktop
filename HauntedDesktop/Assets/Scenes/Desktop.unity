@@ -9928,7 +9928,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1970001935}
         m_TargetAssemblyTypeName: TabManager, Assembly-CSharp
-        m_MethodName: PutRaumplanerOnFront
+        m_MethodName: PutVerkaufsportalOnFront
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -27294,9 +27294,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1970001927}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: StartMediumMatch
+      - m_Target: {fileID: 1970001933}
+        m_TargetAssemblyTypeName: MediumMatch, Assembly-CSharp
+        m_MethodName: StartAgain
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

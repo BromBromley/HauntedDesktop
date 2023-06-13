@@ -75,6 +75,7 @@ public class GameManager : MonoBehaviour
         {
             StartCoroutine(_uiManager.ShowingPopUpArthur());
             _emailManager.ShowNewEmailArthurTab();
+            _emailManager.ShowNoEmail();
         }
     }
 
@@ -105,22 +106,6 @@ public class GameManager : MonoBehaviour
         _emailManager.PutEmailErrorOnTop();
         _uiManager.OpenVerkaufsportalAfterError();
     }
-
-    /* shows error instead of Verkaufsportal after the haunt
-    public void OpenVerkaufsportalError()
-    {
-        if (isBartyActive)
-        {
-            _uiManager.CloseVerkaufsportal();
-            _tabManager.HideRaumplanerTab();
-            _uiManager.CloseRaumplaner();
-            isBartyActive = false;
-        }
-        else
-        {
-            _tabManager.PutVerkaufsportalOnFront();
-        }
-    }*/
 
     // opens the Geisterscanner website when ad/pop-up is clicked
     public void ClickOnGeisterscannerAd()
@@ -162,7 +147,7 @@ public class GameManager : MonoBehaviour
 
     public void CheckMediumSelection()
     {
-        if (_mediumSelection.gameObject.tag == "Witch" || this.gameObject.tag == "Cyber")
+        if (_mediumSelection.gameObject.tag == "Witch" || _mediumSelection.gameObject.tag == "Cyber")
         {
             _mediumSelection.OpenErrorMessage();
         }

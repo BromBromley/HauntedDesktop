@@ -48,7 +48,7 @@ public class UIManager : MonoBehaviour
         geisterscannerApp.SetActive(false);
         boogle.SetActive(false);
         boogleResults.SetActive(false);
-        //medienWebsite.SetActive(false);
+        medienWebsite.SetActive(false);
     }
 
 
@@ -155,7 +155,6 @@ public class UIManager : MonoBehaviour
 
     public void OpenVerkaufsportalAfterError()
     {
-        raumplaner.SetActive(false);
         minigameLayout.SetActive(false);
         adGeisterscanner.SetActive(true);
     }

@@ -12,10 +12,11 @@ public class MediumSelection : MonoBehaviour
     [SerializeField] private GameObject errorMessage;
     [SerializeField] private GameObject communicationScreen;
 
-    void Start()
+    void Awake()
     {
         mediumSelection.SetActive(false);
         errorMessage.SetActive(false);
+        mediumMatch.SetActive(true);
     }
 
     public void OpenSelection()
