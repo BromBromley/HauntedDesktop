@@ -98,7 +98,7 @@ public class GameManager : MonoBehaviour
         Cursor.visible = true;
         StartCoroutine(_uiManager.ShowingPopUpError());
         _emailManager.ShowEmailErrorTab();
-        _uiManager.OpenEmailError();
+        _emailManager.PutEmailErrorOnTop();
         _uiManager.OpenVerkaufsportalAfterError();
     }
 
