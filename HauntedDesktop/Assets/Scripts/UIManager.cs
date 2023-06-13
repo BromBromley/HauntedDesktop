@@ -14,11 +14,15 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject articleReginald;
     [SerializeField] private GameObject raumplaner;
     [SerializeField] private GameObject verkaufsportal;
+    [SerializeField] private GameObject minigameLayout;
     [SerializeField] private GameObject emailArthur;
-    [SerializeField] private GameObject popUpNewEmail;
+    [SerializeField] private GameObject popUpEmailArthur;
+    [SerializeField] private GameObject popUpEmailError;
     [SerializeField] private GameObject newEmailArthur;
     [SerializeField] public GameObject emailError;
+    [SerializeField] private GameObject adGeisterscanner;
     [SerializeField] private GameObject geisterscannerWebsite;
+    [SerializeField] public GameObject iconGeisterscanner;
     [SerializeField] private GameObject geisterscannerApp;
     [SerializeField] private GameObject boogle;
     [SerializeField] private GameObject boogleSearch;
@@ -34,10 +38,13 @@ public class UIManager : MonoBehaviour
         articleReginald.SetActive(false);
         raumplaner.SetActive(false);
         verkaufsportal.SetActive(false);
-        popUpNewEmail.SetActive(false);
+        popUpEmailArthur.SetActive(false);
+        popUpEmailError.SetActive(false);
         newEmailArthur.SetActive(false);
         emailError.SetActive(false);
+        adGeisterscanner.SetActive(false);
         geisterscannerWebsite.SetActive(false);
+        iconGeisterscanner.SetActive(false);
         geisterscannerApp.SetActive(false);
         boogle.SetActive(false);
         boogleResults.SetActive(false);
@@ -107,13 +114,15 @@ public class UIManager : MonoBehaviour
         emails.SetActive(false);
     }
 
-    public IEnumerator ShowingPopUpNewEmail()
+    public IEnumerator ShowingPopUpArthur()
     {
-        popUpNewEmail.SetActive(true);
+        yield return new WaitForSeconds(4);
+
+        popUpEmailArthur.SetActive(true);
 
         yield return new WaitForSeconds(5);
 
-        popUpNewEmail.SetActive(false);
+        popUpEmailArthur.SetActive(false);
     }
 
     public void OpenNewEmailArthur()
@@ -128,14 +137,37 @@ public class UIManager : MonoBehaviour
         emails.SetActive(false);
     }
 
+    public IEnumerator ShowingPopUpError()
+    {
+        yield return new WaitForSeconds(3);
+
+        popUpEmailError.SetActive(true);
+
+        yield return new WaitForSeconds(5);
+
+        popUpEmailError.SetActive(false);
+    }
+
     public void OpenEmailError()
     {
         emailError.SetActive(true);
     }
 
+    public void OpenVerkaufsportalAfterError()
+    {
+        raumplaner.SetActive(false);
+        minigameLayout.SetActive(false);
+        adGeisterscanner.SetActive(true);
+    }
+
     public void OpenGeisterscannerWebsite()
     {
         geisterscannerWebsite.SetActive(true);
+    }
+
+    public void OpenGeisterscannerApp()
+    {
+        geisterscannerApp.SetActive(true);
     }
 
     public void OpenBoogleSearch()

@@ -44,7 +44,7 @@ public class GameManager : MonoBehaviour
     // activated when link in email is clicked
     public void StartRaumplaner()
     {
-        _uiManager.CloseEmailArthur();
+        //_uiManager.CloseEmailArthur();
         _uiManager.OpenBrowser();
         _uiManager.OpenRaumplaner();
         _tabManager.ShowRaumplanerTab();
@@ -69,7 +69,8 @@ public class GameManager : MonoBehaviour
         _adChecker.CheckIfSortedCorrectly();
         if (_adChecker.correctlySorted)
         {
-            StartCoroutine(_uiManager.ShowingPopUpNewEmail());
+            StartCoroutine(_uiManager.ShowingPopUpArthur());
+            _emailManager.ShowNewEmailArthurTab();
         }
     }
 
@@ -95,11 +96,13 @@ public class GameManager : MonoBehaviour
         _mouseBehaviour.fakeCursor.SetActive(false);
         _mouseBehaviour.enabled = false;
         Cursor.visible = true;
-        StartCoroutine(_uiManager.ShowingPopUpNewEmail());
+        StartCoroutine(_uiManager.ShowingPopUpError());
+        _emailManager.ShowEmailErrorTab();
         _uiManager.OpenEmailError();
+        _uiManager.OpenVerkaufsportalAfterError();
     }
 
-    // shows error instead of Verkaufsportal after the haunt
+    /* shows error instead of Verkaufsportal after the haunt
     public void OpenVerkaufsportalError()
     {
         if (isBartyActive)
@@ -113,7 +116,7 @@ public class GameManager : MonoBehaviour
         {
             _tabManager.PutVerkaufsportalOnFront();
         }
-    }
+    }*/
 
     // opens the Geisterscanner website when ad/pop-up is clicked
     public void ClickOnGeisterscannerAd()
@@ -126,7 +129,9 @@ public class GameManager : MonoBehaviour
     // opens Geisterscanner program
     public void DownloadGeisterscanner()
     {
-        // Programmicon anzeigen
+        _uiManager.iconGeisterscanner.SetActive(true);
+        _uiManager.OpenGeisterscannerApp();
+        _uiManager.CloseBrowser();
     }
 
     // shows Boogle after Geisterscanner suggested it

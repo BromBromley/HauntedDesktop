@@ -18,6 +18,8 @@ public class EmailManager : MonoBehaviour
     {
         tabNewEmailArthur.SetActive(false);
         tabEmailError.SetActive(false);
+        emailKaty.SetActive(false);
+        emailArthur.SetActive(false);
     }
 
     // makes the tabs to emails visible when GameManager calls the method
