@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
     private FurnitureTracker _furnitureTracker;
     private AdChecker _adChecker;
     private GhostScanner _ghostScanner;
+    private MediumSelection _mediumSelection;
     private MouseBehaviour _mouseBehaviour;
 
     public bool isBartyActive;
@@ -25,6 +26,7 @@ public class GameManager : MonoBehaviour
         _furnitureTracker = GetComponent<FurnitureTracker>();
         _adChecker = GetComponent<AdChecker>();
         _ghostScanner = FindObjectOfType<GhostScanner>();
+        _mediumSelection = FindObjectOfType<MediumSelection>();
         _mouseBehaviour = GetComponent<MouseBehaviour>();
         _mouseBehaviour.enabled = false; 
         dragBlocker.SetActive(false);       
@@ -156,5 +158,23 @@ public class GameManager : MonoBehaviour
         _uiManager.OpenMediumWebsite();
         _tabManager.ShowMedienTab();
         _tabManager.PutMedienOnFront();
+    }
+
+    public void CheckMediumSelection()
+    {
+        if (_mediumSelection.gameObject.tag == "Witch" || this.gameObject.tag == "Cyber")
+        {
+            _mediumSelection.OpenErrorMessage();
+        }
+        if(_mediumSelection.gameObject.tag == "Hippie")
+        {
+            _mediumSelection.OpenCommunication();
+            StartCommunicationBarty();
+        }
+    }
+
+    public void StartCommunicationBarty()
+    {
+        print("seance in session");
     }
 }
