@@ -73,7 +73,7 @@ public class TabManager : MonoBehaviour
         tabVerkaufsportal.SetActive(false);
     }
 
-    //  whatever tab has been pressed on front
+    // puts whatever tab has been pressed on front
     public void PutArtikelOnFront()
     {
         artikelVorbesitzer.GetComponent<RectTransform>().SetAsLastSibling();
