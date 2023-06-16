@@ -43,6 +43,7 @@ public class GameManager : MonoBehaviour
         _uiManager.OpenBrowser();
         _uiManager.OpenArticleReginald();
         _tabManager.ShowArtikelTab();
+        _tabManager.PutArtikelOnFront();
     }
 
     // activated when link in email is clicked
@@ -52,6 +53,7 @@ public class GameManager : MonoBehaviour
         _uiManager.OpenBrowser();
         _uiManager.OpenRaumplaner();
         _tabManager.ShowRaumplanerTab();
+        _tabManager.PutRaumplanerOnFront();
     }
     //activated when 'Submit' button is clicked
     public void RaumplanerOneDone()
@@ -66,6 +68,7 @@ public class GameManager : MonoBehaviour
         _uiManager.OpenBrowser();
         _uiManager.OpenVerkaufsportal();
         _tabManager.ShowVerkaufsportalTab();
+        _tabManager.PutVerkaufsportalOnFront();
     }
     // activated when 'Post' button is clicked
     public void VerkaufsportalDone()
@@ -76,6 +79,7 @@ public class GameManager : MonoBehaviour
             StartCoroutine(_uiManager.ShowingPopUpArthur());
             _emailManager.ShowNewEmailArthurTab();
             _emailManager.ShowNoEmail();
+            // show checkmark
         }
     }
 
@@ -107,10 +111,18 @@ public class GameManager : MonoBehaviour
         _uiManager.OpenVerkaufsportalAfterError();
     }
 
-    // opens the Geisterscanner website when ad/pop-up is clicked
+    public void VerkaufsportalAfterError()
+    {
+        _uiManager.OpenBrowser();
+        _uiManager.OpenVerkaufsportal();
+        _uiManager.OpenVerkaufsportalAfterError();
+    }
+
+    // opens the Geisterscanner website when ad is clicked
     public void ClickOnGeisterscannerAd()
     {
         _uiManager.OpenGeisterscannerWebsite();
+        // put on top?
         _tabManager.ShowGeisterscannerTab();
         _tabManager.HideRaumplanerTab();
     }
@@ -145,6 +157,7 @@ public class GameManager : MonoBehaviour
         _tabManager.PutMedienOnFront();
     }
 
+    // checks which medium was chosen
     public void CheckMediumSelection()
     {
         if (_mediumSelection.gameObject.tag == "Witch" || _mediumSelection.gameObject.tag == "Cyber")
@@ -158,6 +171,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    // starts the communication phase with barty
     public void StartCommunicationBarty()
     {
         print("seance in session");

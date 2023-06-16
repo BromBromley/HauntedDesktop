@@ -16,13 +16,22 @@ public class EmailManager : MonoBehaviour
 
     void Start()
     {
-        tabNewEmailArthur.SetActive(false);
-        tabEmailError.SetActive(false);
-        emailKaty.SetActive(false);
-        emailArthur.SetActive(false);
+        ShowNoEmail();
+        newEmailArthur.SetActive(false);
+        emailError.SetActive(false);
     }
 
-    // makes the tabs to emails visible when GameManager calls the method
+    // hides all emails, but not their tabs
+    public void ShowNoEmail()
+    {
+        emailKaty.SetActive(false);
+        emailArthur.SetActive(false);
+        newEmailArthur.SetActive(false);
+        emailError.SetActive(false);
+    }
+
+    // makes the tabs to emails visible when unlocked in game
+    // called by GameManager
     public void ShowNewEmailArthurTab()
     {
         tabNewEmailArthur.SetActive(true);
@@ -64,13 +73,5 @@ public class EmailManager : MonoBehaviour
         emailArthur.SetActive(false);
         newEmailArthur.SetActive(false);
         emailError.SetActive(true);
-    }
-
-    public void ShowNoEmail()
-    {
-        emailKaty.SetActive(false);
-        emailArthur.SetActive(false);
-        newEmailArthur.SetActive(false);
-        emailError.SetActive(false);
     }
 }

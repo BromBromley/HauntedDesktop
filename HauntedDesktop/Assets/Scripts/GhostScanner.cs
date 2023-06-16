@@ -5,7 +5,7 @@ using UnityEngine;
 public class GhostScanner : MonoBehaviour
 {
     // this script manages the animations of the ghost scanner
-    // attached to 05_Geisterscanner
+    // attached to [GameManager]
 
     [SerializeField] private GameObject startButton;
     [SerializeField] private GameObject loadingIcon;
