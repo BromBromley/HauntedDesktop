@@ -2,10 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TabManager : MonoBehaviour
+public class BrowserManager : MonoBehaviour
 {
-    // this script manages which tabs are visible and puts them on front when clicked
-    // attached to 00_Tabs
+    // this script manages the website and tabs of the browser
+    // attached to [GameManager]
+
+    [SerializeField] GameObject browser;
 
     [SerializeField] GameObject artikelVorbesitzer;
     [SerializeField] GameObject raumplaner;
@@ -22,6 +24,22 @@ public class TabManager : MonoBehaviour
     [SerializeField] GameObject tabMedien;
 
     void Start()
+    {
+        CloseBrowser();
+        HideAllTabs();
+    }
+
+    public void OpenBrowser()
+    {
+        browser.SetActive(true);
+    }
+
+    public void CloseBrowser()
+    {
+        browser.SetActive(false);
+    }
+
+    private void HideAllTabs()
     {
         tabArtikelVorbesitzer.SetActive(false);
         tabRaumplaner.SetActive(false);
@@ -71,6 +89,7 @@ public class TabManager : MonoBehaviour
     public void HideVerkaufsportalTab()
     {
         tabVerkaufsportal.SetActive(false);
+        // show some weird glitchy thing
     }
 
     // puts whatever tab has been pressed on front

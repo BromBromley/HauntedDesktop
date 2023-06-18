@@ -4,8 +4,11 @@ using UnityEngine;
 
 public class EmailManager : MonoBehaviour
 {
-    // this script manages which emails are visible and puts them on front when clicked
-    // attached to 04_E-mail
+    // this script manages which emails are visible
+    // attached to [GameManager]
+
+    [SerializeField] GameObject emails;
+    
     [SerializeField] GameObject emailKaty;
     [SerializeField] GameObject emailArthur;
     [SerializeField] GameObject newEmailArthur;
@@ -16,9 +19,21 @@ public class EmailManager : MonoBehaviour
 
     void Start()
     {
+        emails.SetActive(false);
+        tabNewEmailArthur.SetActive(false);
+        tabEmailError.SetActive(false);
         ShowNoEmail();
-        newEmailArthur.SetActive(false);
-        emailError.SetActive(false);
+    }
+
+    public void OpenEmails()
+    {
+        emails.SetActive(true);
+        ShowNoEmail();
+    }
+
+    public void CloseEmails()
+    {
+        emails.SetActive(false);
     }
 
     // hides all emails, but not their tabs

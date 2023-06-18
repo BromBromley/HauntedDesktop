@@ -4,13 +4,12 @@ using UnityEngine;
 
 public class UIManager : MonoBehaviour
 {
-    // this script manages the status of all UI objects, functions are called by the Game Manager
+    // this script manages the status of all UI objects except for emails and browser
+    // functions are called by GameManager
     // attached to [UserInterface]
 
     [SerializeField] private GameObject documentFolder;
-    [SerializeField] private GameObject emails;
     [SerializeField] private GameObject toDoListe;
-    [SerializeField] private GameObject browser;
     [SerializeField] private GameObject articleReginald;
     [SerializeField] private GameObject raumplaner;
     [SerializeField] private GameObject verkaufsportal;
@@ -18,8 +17,6 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject emailArthur;
     [SerializeField] private GameObject popUpEmailArthur;
     [SerializeField] private GameObject popUpEmailError;
-    [SerializeField] private GameObject newEmailArthur;
-    [SerializeField] public GameObject emailError;
     [SerializeField] private GameObject adGeisterscanner;
     [SerializeField] private GameObject geisterscannerWebsite;
     [SerializeField] public GameObject iconGeisterscanner;
@@ -32,16 +29,12 @@ public class UIManager : MonoBehaviour
     private void Start() 
     {
         documentFolder.SetActive(false);
-        emails.SetActive(false);
         toDoListe.SetActive(false); 
-        browser.SetActive(false);
         articleReginald.SetActive(false);
         raumplaner.SetActive(false);
         verkaufsportal.SetActive(false);
         popUpEmailArthur.SetActive(false);
         popUpEmailError.SetActive(false);
-        newEmailArthur.SetActive(false);
-        emailError.SetActive(false);
         adGeisterscanner.SetActive(false);
         geisterscannerWebsite.SetActive(false);
         iconGeisterscanner.SetActive(false);
@@ -57,24 +50,9 @@ public class UIManager : MonoBehaviour
         documentFolder.SetActive(true);
     }
 
-    public void OpenEmails()
-    {
-        emails.SetActive(true);
-    }
-
     public void OpenToDos()
     {
         toDoListe.SetActive(true);
-    }
-
-    public void OpenBrowser()
-    {
-        browser.SetActive(true);
-    }
-
-    public void CloseBrowser()
-    {
-        browser.SetActive(false);
     }
 
     public void OpenArticleReginald()
@@ -102,18 +80,6 @@ public class UIManager : MonoBehaviour
         verkaufsportal.SetActive(false);
     }
 
-    public void OpenEmailArthur()
-    {
-        emails.SetActive(true);
-        emailArthur.SetActive(true);
-    }
-
-    public void CloseEmailArthur()
-    {
-        emailArthur.SetActive(false);
-        emails.SetActive(false);
-    }
-
     public IEnumerator ShowingPopUpArthur()
     {
         yield return new WaitForSeconds(4);
@@ -125,18 +91,6 @@ public class UIManager : MonoBehaviour
         popUpEmailArthur.SetActive(false);
     }
 
-    public void OpenNewEmailArthur()
-    {
-        emails.SetActive(true);
-        newEmailArthur.SetActive(true);
-    }
-
-    public void CloseNewEmailArthur()
-    {
-        newEmailArthur.SetActive(false);
-        emails.SetActive(false);
-    }
-
     public IEnumerator ShowingPopUpError()
     {
         yield return new WaitForSeconds(3);
@@ -146,11 +100,6 @@ public class UIManager : MonoBehaviour
         yield return new WaitForSeconds(5);
 
         popUpEmailError.SetActive(false);
-    }
-
-    public void OpenEmailError()
-    {
-        emailError.SetActive(true);
     }
 
     public void OpenVerkaufsportalAfterError()

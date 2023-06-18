@@ -208,20 +208,8 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1970001934}
         m_TargetAssemblyTypeName: EmailManager, Assembly-CSharp
-        m_MethodName: ShowNoEmail
+        m_MethodName: CloseEmails
         m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 675948246}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -7624,9 +7612,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   documentFolder: {fileID: 1911228127}
-  emails: {fileID: 675948246}
   toDoListe: {fileID: 149876098}
-  browser: {fileID: 1722012750}
   articleReginald: {fileID: 1355823632}
   raumplaner: {fileID: 1928926898}
   verkaufsportal: {fileID: 384265884}
@@ -7634,8 +7620,6 @@ MonoBehaviour:
   emailArthur: {fileID: 771517118}
   popUpEmailArthur: {fileID: 454584511}
   popUpEmailError: {fileID: 1376285287}
-  newEmailArthur: {fileID: 548476190}
-  emailError: {fileID: 182760826}
   adGeisterscanner: {fileID: 1038293148}
   geisterscannerWebsite: {fileID: 1151663775}
   iconGeisterscanner: {fileID: 1583608080}
@@ -10660,8 +10644,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 626236258}
-        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
+      - m_Target: {fileID: 1970001934}
+        m_TargetAssemblyTypeName: EmailManager, Assembly-CSharp
         m_MethodName: OpenEmails
         m_Mode: 1
         m_Arguments:
@@ -12179,17 +12163,17 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1722012750}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 1970001935}
+        m_TargetAssemblyTypeName: BrowserManager, Assembly-CSharp
+        m_MethodName: OpenBrowser
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
-          m_BoolArgument: 1
+          m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &913016778
 MonoBehaviour:
@@ -17441,9 +17425,21 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 626236258}
-        m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
-        m_MethodName: OpenEmailArthur
+      - m_Target: {fileID: 1970001934}
+        m_TargetAssemblyTypeName: EmailManager, Assembly-CSharp
+        m_MethodName: OpenEmails
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 1970001934}
+        m_TargetAssemblyTypeName: EmailManager, Assembly-CSharp
+        m_MethodName: PutEmailArthurOnTop
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -25936,10 +25932,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1722012750}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 1970001935}
+        m_TargetAssemblyTypeName: BrowserManager, Assembly-CSharp
+        m_MethodName: CloseBrowser
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -26497,6 +26493,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4dc850696549b4944b6af42307f2bb96, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  emails: {fileID: 675948246}
   emailKaty: {fileID: 1164348986}
   emailArthur: {fileID: 771517118}
   newEmailArthur: {fileID: 548476190}
@@ -26515,6 +26512,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db30dea34f7cd4386bc365e2073f7142, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  browser: {fileID: 1722012750}
   artikelVorbesitzer: {fileID: 1355823632}
   raumplaner: {fileID: 1928926898}
   verkaufsportal: {fileID: 384265884}
