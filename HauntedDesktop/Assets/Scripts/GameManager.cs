@@ -15,6 +15,7 @@ public class GameManager : MonoBehaviour
     private AdChecker _adChecker;
     private GhostScanner _ghostScanner;
     private MediumSelection _mediumSelection;
+    private CommunicationPhase _communicationPhase;
     private MouseBehaviour _mouseBehaviour;
 
     public bool isBartyActive;
@@ -30,6 +31,7 @@ public class GameManager : MonoBehaviour
         _adChecker = GetComponent<AdChecker>();
         _ghostScanner = FindObjectOfType<GhostScanner>();
         _mediumSelection = FindObjectOfType<MediumSelection>();
+        _communicationPhase = FindObjectOfType<CommunicationPhase>();
         _mouseBehaviour = GetComponent<MouseBehaviour>();
         _mouseBehaviour.enabled = false; 
         dragBlocker.SetActive(false);       
@@ -178,6 +180,6 @@ public class GameManager : MonoBehaviour
     // starts the communication phase with barty
     public void StartCommunicationBarty()
     {
-        print("seance in session");
+        _communicationPhase.StartConversation();
     }
 }
