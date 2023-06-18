@@ -10,7 +10,7 @@ public class SnapController : MonoBehaviour
     public List<Transform> snapPoints;
     public List<DragAds> dragAds;
     public List<DragObject> dragObject;
-    public int snapRange = 150;
+    public int snapRange = 175;
 
     void Start()
     {

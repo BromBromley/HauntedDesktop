@@ -4,14 +4,18 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    // this script connects all other managers
+    // functions are (mostly) written in chronological order 
+
     [SerializeField] private GameObject dragBlocker;
     private UIManager _uiManager;
-    private TabManager _tabManager;
+    private BrowserManager _browserManager;
     private EmailManager _emailManager;
     private FurnitureTracker _furnitureTracker;
     private AdChecker _adChecker;
     private GhostScanner _ghostScanner;
     private MediumSelection _mediumSelection;
+    private CommunicationPhase _communicationPhase;
     private MouseBehaviour _mouseBehaviour;
 
     public bool isBartyActive;
@@ -21,12 +25,13 @@ public class GameManager : MonoBehaviour
     void Awake()
     {
         _uiManager = FindObjectOfType<UIManager>();
-        _tabManager = FindObjectOfType<TabManager>();
+        _browserManager = FindObjectOfType<BrowserManager>();
         _emailManager = FindObjectOfType<EmailManager>();
         _furnitureTracker = GetComponent<FurnitureTracker>();
         _adChecker = GetComponent<AdChecker>();
         _ghostScanner = FindObjectOfType<GhostScanner>();
         _mediumSelection = FindObjectOfType<MediumSelection>();
+        _communicationPhase = FindObjectOfType<CommunicationPhase>();
         _mouseBehaviour = GetComponent<MouseBehaviour>();
         _mouseBehaviour.enabled = false; 
         dragBlocker.SetActive(false);       
@@ -40,19 +45,21 @@ public class GameManager : MonoBehaviour
     // activated when link in Katy's email is clicked
     public void FindArticleReginald()
     {
-        _uiManager.OpenBrowser();
+        _browserManager.OpenBrowser();
         _uiManager.OpenArticleReginald();
-        _tabManager.ShowArtikelTab();
+        _browserManager.ShowArtikelTab();
+        _browserManager.PutArtikelOnFront();
     }
 
     // activated when link in email is clicked
     public void StartRaumplaner()
     {
-        //_uiManager.CloseEmailArthur();
-        _uiManager.OpenBrowser();
+        _browserManager.OpenBrowser();
         _uiManager.OpenRaumplaner();
-        _tabManager.ShowRaumplanerTab();
+        _browserManager.ShowRaumplanerTab();
+        _browserManager.PutRaumplanerOnFront();
     }
+
     //activated when 'Submit' button is clicked
     public void RaumplanerOneDone()
     {
@@ -63,10 +70,12 @@ public class GameManager : MonoBehaviour
     public void StartVerkaufsportal()
     {
         _furnitureTracker.SellFurniture();
-        _uiManager.OpenBrowser();
+        _browserManager.OpenBrowser();
         _uiManager.OpenVerkaufsportal();
-        _tabManager.ShowVerkaufsportalTab();
+        _browserManager.ShowVerkaufsportalTab();
+        _browserManager.PutVerkaufsportalOnFront();
     }
+
     // activated when 'Post' button is clicked
     public void VerkaufsportalDone()
     {
@@ -75,7 +84,8 @@ public class GameManager : MonoBehaviour
         {
             StartCoroutine(_uiManager.ShowingPopUpArthur());
             _emailManager.ShowNewEmailArthurTab();
-            _emailManager.ShowNoEmail();
+            //_emailManager.ShowNoEmail();
+            // show checkmark
         }
     }
 
@@ -84,11 +94,11 @@ public class GameManager : MonoBehaviour
     {
         dragBlocker.SetActive(false);
         _furnitureTracker.ResetPosition();
-        _uiManager.CloseNewEmailArthur();
-        _uiManager.OpenBrowser();
-        _tabManager.PutRaumplanerOnFront();
+        _browserManager.OpenBrowser();
+        _browserManager.PutRaumplanerOnFront();
         StartCoroutine(HauntingInAction());
     }
+
     // manages Barty's behaviour upon reopening the Raumplaner
     IEnumerator HauntingInAction()
     {
@@ -107,12 +117,20 @@ public class GameManager : MonoBehaviour
         _uiManager.OpenVerkaufsportalAfterError();
     }
 
-    // opens the Geisterscanner website when ad/pop-up is clicked
+    public void VerkaufsportalAfterError()
+    {
+        _browserManager.OpenBrowser();
+        _uiManager.OpenVerkaufsportal();
+        _uiManager.OpenVerkaufsportalAfterError();
+    }
+
+    // opens the Geisterscanner website when ad is clicked
     public void ClickOnGeisterscannerAd()
     {
         _uiManager.OpenGeisterscannerWebsite();
-        _tabManager.ShowGeisterscannerTab();
-        _tabManager.HideRaumplanerTab();
+        // put on top?
+        _browserManager.ShowGeisterscannerTab();
+        _browserManager.HideRaumplanerTab();
     }
 
     // opens Geisterscanner program
@@ -120,7 +138,7 @@ public class GameManager : MonoBehaviour
     {
         _uiManager.iconGeisterscanner.SetActive(true);
         _uiManager.OpenGeisterscannerApp();
-        _uiManager.CloseBrowser();
+        _browserManager.CloseBrowser();
     }
 
     public void StartGhostScan()
@@ -131,20 +149,21 @@ public class GameManager : MonoBehaviour
     // shows Boogle after Geisterscanner suggested it
     public void StartBoogleSearch()
     {
-        _uiManager.OpenBrowser();
+        _browserManager.OpenBrowser();
         _uiManager.OpenBoogleSearch();
-        _tabManager.ShowBoogleTab();
-        _tabManager.PutBoogleOnFront();
+        _browserManager.ShowBoogleTab();
+        _browserManager.PutBoogleOnFront();
     }
 
     // opens MediumMatch when ad is clicked
     public void StartMediumMatch()
     {
         _uiManager.OpenMediumWebsite();
-        _tabManager.ShowMedienTab();
-        _tabManager.PutMedienOnFront();
+        _browserManager.ShowMedienTab();
+        _browserManager.PutMedienOnFront();
     }
 
+    // checks which medium was chosen
     public void CheckMediumSelection()
     {
         if (_mediumSelection.gameObject.tag == "Witch" || _mediumSelection.gameObject.tag == "Cyber")
@@ -158,8 +177,9 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    // starts the communication phase with barty
     public void StartCommunicationBarty()
     {
-        print("seance in session");
+        _communicationPhase.StartConversation();
     }
 }

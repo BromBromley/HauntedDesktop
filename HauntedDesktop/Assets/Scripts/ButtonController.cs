@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ButtonController : MonoBehaviour
 {
@@ -8,10 +9,13 @@ public class ButtonController : MonoBehaviour
     // attached to each answer button
 
     private MediumMatch _mediumMatch;
+    private Button button;
 
     void Start()
     {
         _mediumMatch = FindObjectOfType<MediumMatch>();
+        button = this.gameObject.GetComponent<Button>();
+        button.onClick.AddListener(ChoseAnswer);
     }
 
     // checks which tag the pressed button had

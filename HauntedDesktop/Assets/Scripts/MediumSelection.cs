@@ -5,7 +5,7 @@ using UnityEngine;
 public class MediumSelection : MonoBehaviour
 {
     // this script handles the medium selection
-    // attached to 06_Medien
+    // attached to [GameManager]
 
     [SerializeField] private GameObject mediumMatch;
     [SerializeField] private GameObject mediumSelection;

@@ -25,7 +25,7 @@ public class MediumMatch : MonoBehaviour
 
     public int currentQuestion = 0;
 
-    public string[] questions = new string[5];
+    string[] questions = new string[5]; //war public?
     string[] witchAnswers = new string[5];
     string[] hippieAnswers = new string[5];
     string[] cyberAnswers = new string[5];
