@@ -5,7 +5,8 @@ using TMPro;
 
 public class MediumMatch : MonoBehaviour
 {
-    // this script scores the answers of the medium match
+    // this script manages the questions of the medium match and scores them
+    // attached to [GameManager]
 
     [SerializeField] private GameObject button1;
     [SerializeField] private GameObject button2;

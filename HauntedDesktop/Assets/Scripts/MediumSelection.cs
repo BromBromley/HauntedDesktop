@@ -16,6 +16,7 @@ public class MediumSelection : MonoBehaviour
     {
         mediumSelection.SetActive(false);
         errorMessage.SetActive(false);
+        communicationScreen.SetActive(false);
         mediumMatch.SetActive(true);
     }
 

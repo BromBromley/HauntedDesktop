@@ -166,11 +166,12 @@ public class GameManager : MonoBehaviour
     // checks which medium was chosen
     public void CheckMediumSelection()
     {
-        if (_mediumSelection.gameObject.tag == "Witch" || _mediumSelection.gameObject.tag == "Cyber")
+        print("checking");
+        if (this.gameObject.tag == "Witch" || this.gameObject.tag == "Cyber")
         {
             _mediumSelection.OpenErrorMessage();
         }
-        if(_mediumSelection.gameObject.tag == "Hippie")
+        if(this.gameObject.tag == "Hippie")
         {
             _mediumSelection.OpenCommunication();
             StartCommunicationBarty();
