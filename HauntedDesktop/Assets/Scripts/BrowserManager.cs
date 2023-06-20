@@ -27,6 +27,7 @@ public class BrowserManager : MonoBehaviour
     {
         CloseBrowser();
         HideAllTabs();
+        HideAllWebsites();
     }
 
     public void OpenBrowser()
@@ -37,6 +38,16 @@ public class BrowserManager : MonoBehaviour
     public void CloseBrowser()
     {
         browser.SetActive(false);
+    }
+
+    private void HideAllWebsites()
+    {
+        artikelVorbesitzer.SetActive(false);
+        raumplaner.SetActive(false);
+        verkaufsportal.SetActive(false);
+        geisterscanner.SetActive(false);
+        boogle.SetActive(false);
+        medien.SetActive(false);
     }
 
     private void HideAllTabs()

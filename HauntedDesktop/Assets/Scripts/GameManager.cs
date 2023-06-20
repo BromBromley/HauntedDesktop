@@ -163,24 +163,10 @@ public class GameManager : MonoBehaviour
         _browserManager.PutMedienOnFront();
     }
 
-    // checks which medium was chosen
-    public void CheckMediumSelection()
-    {
-        print("checking");
-        if (this.gameObject.tag == "Witch" || this.gameObject.tag == "Cyber")
-        {
-            _mediumSelection.OpenErrorMessage();
-        }
-        if(this.gameObject.tag == "Hippie")
-        {
-            _mediumSelection.OpenCommunication();
-            StartCommunicationBarty();
-        }
-    }
-
     // starts the communication phase with barty
     public void StartCommunicationBarty()
     {
         _communicationPhase.StartConversation();
+        _mediumSelection.OpenCommunication();
     }
 }

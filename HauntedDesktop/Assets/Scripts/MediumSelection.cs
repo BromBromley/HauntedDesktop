@@ -11,6 +11,9 @@ public class MediumSelection : MonoBehaviour
     [SerializeField] private GameObject mediumSelection;
     [SerializeField] private GameObject errorMessage;
     [SerializeField] private GameObject communicationScreen;
+    [SerializeField] private GameObject overviewWitch;
+    [SerializeField] private GameObject overviewHippie;
+    [SerializeField] private GameObject overviewCyber;
 
     void Awake()
     {
@@ -18,6 +21,9 @@ public class MediumSelection : MonoBehaviour
         errorMessage.SetActive(false);
         communicationScreen.SetActive(false);
         mediumMatch.SetActive(true);
+        overviewWitch.SetActive(false);
+        overviewHippie.SetActive(false);
+        overviewCyber.SetActive(false);
     }
 
     public void OpenSelection()
@@ -26,11 +32,32 @@ public class MediumSelection : MonoBehaviour
         mediumSelection.SetActive(true);
     }
 
+    // opens the confirmation screen for each medium
+    public void ChooseWitch()
+    {
+        overviewWitch.SetActive(true);
+    }
+
+    public void ChooseHippie()
+    {
+        overviewHippie.SetActive(true);
+    }
+
+    public void ChooseCyber()
+    {
+        overviewCyber.SetActive(true);
+    }
+
+    // opens an error message if you select the witch or cyber
     public void OpenErrorMessage()
     {
+        overviewWitch.SetActive(false);
+        overviewCyber.SetActive(false);
         errorMessage.SetActive(true);
     }
 
+    // brings you back to start the medium match again 
+    // currently not used
     public void StartMatchAgain()
     {
         errorMessage.SetActive(false);
