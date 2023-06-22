@@ -6,6 +6,11 @@ using UnityEngine.UI;
 
 public class CommunicationPhase : MonoBehaviour
 {
+    // this script manages the conversation with Barty
+    // attached to [GameManager]
+
+    [SerializeField] GameObject textMedium;
+
     [SerializeField] private Button buttonLeft;
     [SerializeField] private Button buttonRight;
     [SerializeField] private Button buttonMiddle;
@@ -19,9 +24,9 @@ public class CommunicationPhase : MonoBehaviour
     [SerializeField] private int angerScore;
     [SerializeField] private int currentDialogue;
 
-    public bool doingA;
-    public bool doingB;
-    public bool doingC;
+    private bool doingA;
+    private bool doingB;
+    private bool doingC;
     private bool doingC0;
     private bool doingX;
     private bool doingD;
@@ -29,6 +34,7 @@ public class CommunicationPhase : MonoBehaviour
     private bool completedA;
     private bool completedB;
     private bool completedC;
+    private bool completedC0;
 
     string[] bartyA = new string[4];
     string[] answerLeftA = new string[3];
@@ -65,6 +71,8 @@ public class CommunicationPhase : MonoBehaviour
         buttonRight.gameObject.SetActive(false);
         buttonMiddle.gameObject.SetActive(false);
 
+        textMedium.SetActive(true);
+
         textBarty = textBarty.GetComponent<TMP_Text>();
         textBarty.text = "";
     }
@@ -88,11 +96,11 @@ public class CommunicationPhase : MonoBehaviour
         answerLeftB[0] = "Bist du hier gestorben?";
         answerLeftB[1] = "Bist du Reginald Montgomery?";
         answerRightB[0] = "Wohnst du hier?";
-        answerRightB[1] = "Bist du Bartholomew Montgomery";
+        answerRightB[1] = "Bist du Bartholomew Montgomery?";
 
         bartyC[0] = "Woran denkst du?";
         bartyC[1] = "Das stimmt, mein Bruder lässt für mich im Haus alles so, wie es immer war";
-        bartyA[2] = "Was? Was ist mit meinem Bruder?";
+        bartyC[2] = "Was? Was ist mit meinem Bruder?";
         answerLeftC[0] = "Im Haus hat sich doch nichts veränder, seit du ein Geist bist";
         answerLeftC[1] = "Jetzt wohne ich aber hier";
         answerRightC[0] = "Du magst es nicht, wenn sich im Haus Dinge verändern";
@@ -133,22 +141,22 @@ public class CommunicationPhase : MonoBehaviour
     public void StartConversation()
     {
         AssignArrays();
-        buttonMiddle.gameObject.SetActive(true);
+        ShowMiddleButton();
         buttonMiddle.onClick.AddListener(BartyAppears);
         textAnswerMiddle.text = "Hallo";
+        textMedium.SetActive(true);
     }
 
     private void BartyAppears()
     {
-        buttonMiddle.gameObject.SetActive(false);
-
+        textMedium.SetActive(false);
+        
         textBarty.text = "Wer ist da?";
+        ShowTwoButtons();
 
-        buttonLeft.gameObject.SetActive(true);
         textAnswerLeft.text = "Jemand, der mit dir reden möchte";
         buttonLeft.onClick.AddListener(StartA);
         
-        buttonRight.gameObject.SetActive(true);
         textAnswerRight.text = "Jemand, der dich kennenlernen möchte";
         buttonRight.onClick.AddListener(StartB);
     }
@@ -158,6 +166,8 @@ public class CommunicationPhase : MonoBehaviour
         currentDialogue = 0;
         doingA = true;
         RemoveListeners();
+        ShowTwoButtons();
+
         buttonLeft.onClick.AddListener(ChoseLeft);
         buttonRight.onClick.AddListener(ChoseRight);
 
@@ -180,10 +190,7 @@ public class CommunicationPhase : MonoBehaviour
         {
             textBarty.text = bartyA[currentDialogue];
 
-            buttonLeft.gameObject.SetActive(false);
-            buttonRight.gameObject.SetActive(false);
-
-            buttonMiddle.gameObject.SetActive(true);
+            ShowMiddleButton();
             textAnswerMiddle.text = "Lass es uns gemeinsam herausfinden";
 
             sadnessScore += 2;
@@ -208,6 +215,8 @@ public class CommunicationPhase : MonoBehaviour
         currentDialogue = 0;
         doingB = true;
         RemoveListeners();
+        ShowTwoButtons();
+
         buttonLeft.onClick.AddListener(ChoseLeft);
         buttonRight.onClick.AddListener(ChoseRight);
 
@@ -230,11 +239,7 @@ public class CommunicationPhase : MonoBehaviour
         {
             textBarty.text = bartyB[currentDialogue];
 
-            buttonLeft.gameObject.SetActive(false);
-            buttonRight.gameObject.SetActive(false);
-
-            buttonMiddle.gameObject.SetActive(true);
-            buttonMiddle.onClick.AddListener(StartA);
+            ShowMiddleButton();
             textAnswerMiddle.text = "Hallo, Barty";
 
             sadnessScore++;
@@ -250,7 +255,7 @@ public class CommunicationPhase : MonoBehaviour
             }
             else
             {
-                buttonMiddle.onClick.AddListener(StartB);
+                buttonMiddle.onClick.AddListener(StartA);
             }
         }
     }
@@ -259,24 +264,35 @@ public class CommunicationPhase : MonoBehaviour
     {
         currentDialogue = 0;
         RemoveListeners();
+        buttonMiddle.gameObject.SetActive(false);
 
         textBarty.text = "Warum kann ich hier bloß nicht weg?";
 
-        textAnswerLeft.text = "Vielleicht hängt es mit deiner Todesursache zusammen";
-        buttonLeft.onClick.AddListener(ContinueC0);
-        textAnswerRight.text = "Vielleicht gibt es etwas, was dich hier hält";
-        buttonRight.onClick.AddListener(ContinueC);
+        if (completedC == false)
+        {
+            buttonRight.gameObject.SetActive(true);
+            textAnswerRight.text = "Vielleicht gibt es etwas, was dich hier hält";
+            buttonRight.onClick.AddListener(ContinueC);
+        }
+        if (completedC0 == false)
+        {
+            buttonLeft.gameObject.SetActive(true);
+            textAnswerLeft.text = "Vielleicht hängt es mit deiner Todesursache zusammen";
+            buttonLeft.onClick.AddListener(ContinueC0);
+        }
     }
 
     private void ContinueC()
     {
         doingC = true;
         RemoveListeners();
-        buttonLeft.onClick.AddListener(ChoseLeft);
-        buttonRight.onClick.AddListener(ChoseRight);
 
         if (currentDialogue < 2)
         {
+            ShowTwoButtons();
+            buttonLeft.onClick.AddListener(ChoseLeft);
+            buttonRight.onClick.AddListener(ChoseRight);
+
             textBarty.text = bartyC[currentDialogue];
 
             textAnswerLeft.text = answerLeftC[currentDialogue];
@@ -286,11 +302,7 @@ public class CommunicationPhase : MonoBehaviour
         {
             textBarty.text = bartyC[currentDialogue];
 
-            buttonLeft.gameObject.SetActive(false);
-            buttonRight.gameObject.SetActive(false);
-
-            buttonMiddle.gameObject.SetActive(true);
-            buttonMiddle.onClick.AddListener(StartA);
+            ShowMiddleButton();
             textAnswerMiddle.text = "Er ist vor einem Jahr gestorben";
 
             sadnessScore -= 4;
@@ -300,22 +312,108 @@ public class CommunicationPhase : MonoBehaviour
 
             if (angerScore <= -3)
             {
-                StartX();
+                buttonMiddle.onClick.AddListener(StartX);
             }
             else
             {
-                StartD();
+                buttonMiddle.onClick.AddListener(StartD);
             }
         }
     }
+
     private void ContinueC0()
     {
+        doingC0 = true;
+        RemoveListeners();
 
+        if (currentDialogue < 1)
+        {
+            ShowTwoButtons();
+            textBarty.text = bartyC0[0];
+
+            buttonLeft.onClick.AddListener(ChoseLeft);
+            buttonRight.onClick.AddListener(ChoseRight);
+
+            textAnswerLeft.text = "Ein Gegenstand war involviert";
+            textAnswerRight.text = "Die Vase hat dich umgebracht";
+        }
+        else if (currentDialogue == 1)
+        {
+            currentDialogue++;
+            textBarty.text = bartyC0[1];
+
+            ShowMiddleButton();
+            buttonMiddle.onClick.AddListener(ContinueC0);
+            textAnswerMiddle.text = "Was hälst du davon, wenn ich die Vase zerstöre?";
+        }
+        else if (currentDialogue > 1)
+        {
+            textBarty.text = bartyC0[2];
+            textAnswerMiddle.text = "Okay!";
+
+            sadnessScore -= 2;
+            angerScore -= 2;
+
+            doingC0 = false;
+            completedC0 = true;
+
+            if (angerScore <= -3)
+            {
+                buttonMiddle.onClick.AddListener(StartX);
+            }
+            else
+            {
+                buttonMiddle.onClick.AddListener(StartC);
+            }
+        }
     }
 
     private void StartX()
     {
+        currentDialogue = 0;
+        doingX = true;
+        RemoveListeners();
+        ShowTwoButtons();
 
+        buttonLeft.onClick.AddListener(ChoseLeft);
+        buttonRight.onClick.AddListener(ChoseRight);
+
+        textBarty.text = bartyX[currentDialogue];
+
+        textAnswerLeft.text = answerLeftX[currentDialogue];
+        textAnswerRight.text = answerRightX[currentDialogue];
+    }
+
+    private void NextDialogueX()
+    {
+        if (currentDialogue < 2)
+        {
+            textBarty.text = bartyX[currentDialogue];
+
+            textAnswerLeft.text = answerLeftX[currentDialogue];
+            textAnswerRight.text = answerRightX[currentDialogue];
+        }
+        else
+        {
+            textBarty.text = bartyX[currentDialogue];
+
+            ShowMiddleButton();
+            textAnswerMiddle.text = "Nein, da liegst du falsch";
+
+            sadnessScore++;
+            angerScore++;
+
+            doingX = false;
+
+            if (completedC)
+            {
+                buttonMiddle.onClick.AddListener(StartC);
+            }
+            else
+            {
+                buttonMiddle.onClick.AddListener(StartD);
+            }
+        }
     }
 
     private void StartD()
@@ -323,6 +421,8 @@ public class CommunicationPhase : MonoBehaviour
         currentDialogue = 0;
         doingD = true;
         RemoveListeners();
+        ShowTwoButtons();
+
         buttonLeft.onClick.AddListener(ChoseLeft);
         buttonRight.onClick.AddListener(ChoseRight);
 
@@ -386,8 +486,33 @@ public class CommunicationPhase : MonoBehaviour
             }
             ContinueC();
         }
+        if (doingC0)
+        {
+            if (currentDialogue == 1)
+            {
+                sadnessScore -= 2;
+                angerScore--;
+                ContinueC0();
+            }
+        }
+        if (doingX)
+        {
+            sadnessScore++;
+            angerScore++;
+            NextDialogueX();
+        }
         if (doingD)
         {
+            if (currentDialogue <= 2)
+            {
+                sadnessScore -= 2;
+                angerScore--;
+            }
+            else
+            {
+                sadnessScore--;
+                angerScore--;
+            }
             NextDialogueD();
         }
     }
@@ -420,10 +545,49 @@ public class CommunicationPhase : MonoBehaviour
             }
             ContinueC();
         }
+        if (doingC0)
+        {
+            if (currentDialogue == 1)
+            {
+                sadnessScore -= 2;
+                angerScore -= 2;
+                ContinueC0();
+            }
+        }
+        if (doingX)
+        {
+            sadnessScore++;
+            angerScore++;
+            NextDialogueX();
+        }
         if (doingD)
         {
+            if (currentDialogue <= 2)
+            {
+                sadnessScore++;
+                angerScore++;
+            }
+            else
+            {
+                sadnessScore += 2;
+                angerScore++;
+            }
             NextDialogueD();
         }
+    }
+
+    private void ShowTwoButtons()
+    {
+        buttonLeft.gameObject.SetActive(true);
+        buttonRight.gameObject.SetActive(true);
+        buttonMiddle.gameObject.SetActive(false);
+    }
+
+    private void ShowMiddleButton()
+    {
+        buttonLeft.gameObject.SetActive(false);
+        buttonRight.gameObject.SetActive(false);
+        buttonMiddle.gameObject.SetActive(true);
     }
 
     private void RemoveListeners()
