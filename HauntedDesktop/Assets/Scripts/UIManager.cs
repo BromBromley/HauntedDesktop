@@ -25,6 +25,15 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject boogleSearch;
     [SerializeField] private GameObject boogleResults;
     [SerializeField] private GameObject medienWebsite;
+    [SerializeField] private GameObject documentFotoHall;
+    [SerializeField] private GameObject documentErbschein;
+    
+    [SerializeField] private GameObject documentStammBaum;
+    [SerializeField] private GameObject documentGrundriss;
+    [SerializeField] private GameObject documentFotoFront;
+
+
+    
 
     private void Start() 
     {
@@ -42,6 +51,11 @@ public class UIManager : MonoBehaviour
         boogle.SetActive(false);
         boogleResults.SetActive(false);
         medienWebsite.SetActive(false);
+        documentFotoHall.SetActive(false);
+        documentStammBaum.SetActive(false);
+        documentErbschein.SetActive(false);
+        documentGrundriss.SetActive(false);
+        documentFotoFront.SetActive(false);
     }
 
 
