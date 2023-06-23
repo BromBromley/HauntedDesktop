@@ -79,63 +79,63 @@ public class CommunicationPhase : MonoBehaviour
 
     private void AssignArrays()
     {
-        bartyA[0] = "Mit mir hat schon lange keiner mehr gesprochen";
-        bartyA[1] = "Ja";
-        bartyA[2] = "Es ist wie ein Alptraum, aus dem man nicht aufwachen kann";
-        bartyA[3] = "Ich weiß nicht, wie das funktionieren soll";
-        answerLeftA[0] = "Du bist ja auch ein Geist";
-        answerLeftA[1] = "Es ist bestimmt irgendwie cool ein Geist zu sein";
-        answerLeftA[2] = "Warum gehst du nicht einfach?";
-        answerRightA[0] = "Du bist bestimmt einsam";
-        answerRightA[1] = "Ich stelle es mir schrecklich vor ein Geist zu sein";
-        answerRightA[2] = "Kannst du nicht gehen?";
+        bartyA[0] = "It has been a long time since someone has spoken to me.";
+        bartyA[1] = "Yes.";
+        bartyA[2] = "It feels like a nightmare you cannot wake up from.";
+        bartyA[3] = "I don't know how.";
+        answerLeftA[0] = "Because you are a ghost.";
+        answerLeftA[1] = "I bet it's kind of cool to be a ghost.";
+        answerLeftA[2] = "Why don't you just leave?";
+        answerRightA[0] = "You must be lonely.";
+        answerRightA[1] = "It must be horrible to be a ghost.";
+        answerRightA[2] = "You can't leave?";
 
-        bartyB[0] = "Wenn du wissen willst, wer ich bin, dann stell mir Fragen";
-        bartyB[1] = "Ja";
-        bartyB[2] = "Ich bin Barty, Reginald ist mein Bruder";
-        answerLeftB[0] = "Bist du hier gestorben?";
-        answerLeftB[1] = "Bist du Reginald Montgomery?";
-        answerRightB[0] = "Wohnst du hier?";
-        answerRightB[1] = "Bist du Bartholomew Montgomery?";
+        bartyB[0] = "If you want to know who I am, try to find out.";
+        bartyB[1] = "Yes.";
+        bartyB[2] = "I am Barty, Reginald is my brother.";
+        answerLeftB[0] = "Did you die here?";
+        answerLeftB[1] = "Are you Reginald Montgomery?";
+        answerRightB[0] = "Do you live here?";
+        answerRightB[1] = "Are you Bartholomew Montgomery?";
 
-        bartyC[0] = "Woran denkst du?";
-        bartyC[1] = "Das stimmt, mein Bruder lässt für mich im Haus alles so, wie es immer war";
-        bartyC[2] = "Was? Was ist mit meinem Bruder?";
-        answerLeftC[0] = "Im Haus hat sich doch nichts veränder, seit du ein Geist bist";
-        answerLeftC[1] = "Jetzt wohne ich aber hier";
-        answerRightC[0] = "Du magst es nicht, wenn sich im Haus Dinge verändern";
-        answerRightC[1] = "Dein Bruder ist nicht mehr hier";
+        bartyC[0] = "What are you thinking of?";
+        bartyC[1] = "That's true. My brother keeps everything in order.";
+        bartyC[2] = "hat?! What happened to my brother?";
+        answerLeftC[0] = "Since you became a ghost, nothing changed in the house.";
+        answerLeftC[1] = "But this is my house now.";
+        answerRightC[0] = "You don't like it when things are rearranged in the house.";
+        answerRightC[1] = "Your brother isn't here anymore.";
 
-        bartyC0[0] = "Wie meinst du das?";
-        bartyC0[1] = "Ja";
-        bartyC0[2] = "Spinnst du?! Hier bleibt alles so, wie es ist!";
+        bartyC0[0] = "What do you mean?";
+        bartyC0[1] = "Yes.";
+        bartyC0[2] = "Are you crazy?! You don't touch anything in the house!!";
 
-        bartyX[0] = "Ich will nicht mehr mit dir reden, ich glaube dir gar nichts mehr!";
-        bartyX[1] = "Warum soll ich dir das glauben?";
-        bartyX[2] = "Und ich dachte, du wärst ein Einbrecher oder Hausbesetzer";
-        answerLeftX[0] = "Sei doch nicht wütend, ich will dir nur helfen";
-        answerLeftX[1] = "Du bist mein Urgroßcousin, ich bin Teil deiner Familie";
-        answerRightX[0] = "Ich will dir nichts böses";
-        answerRightX[1] = "Wir sind verwandt, ich bekomme das Familienerbe";
+        bartyX[0] = "I do not want to talk to you anymore!";
+        bartyX[1] = "Why should I believe you?";
+        bartyX[2] = "And I thought you were an intruder.";
+        answerLeftX[0] = "Don't be mad at me, I'm just trying to help you!";
+        answerLeftX[1] = "You are my great great cousin, I'm part of your family.";
+        answerRightX[0] = "I don't want to harm you in any way!";
+        answerRightX[1] = "We are related, I am the one who inherits this house.";
 
-        bartyD[0] = "Reginald tot? Das darf nicht sein!";
-        bartyD[1] = "Wie alt war er?";
-        bartyD[2] = "So alt... Das heißt ja, dass ich schon seit 94 Jahren tot bin";
-        bartyD[3] = "Alles ist so anders, das wollte ich doch verhindern";
-        bartyD[4] = "Ich muss doch auf alles aufpasssen";
-        bartyD[5] = "Du meinst, ich kann einfach gehen?";
-        answerLeftD[0] = "Wir müssen alle irgendwann sterben";
-        answerLeftD[1] = "Er ist 102 geworden, am Ende war er sehr alleine";
-        answerLeftD[2] = "Du solltest endlich gehen";
-        answerLeftD[3] = "Veränderung ist nichts schlechtes";
-        answerLeftD[4] = "Das musst du nicht";
-        answerLeftD[5] = "Du hättest die ganze Zeit gehen können";
-        answerRightD[0] = "Er war schon sehr alt";
-        answerRightD[1] = "Er wurde 102, sein Leben war lang und erfüllt";
-        answerRightD[2] = "Ja, es ist Zeit für dich loszulassen";
-        answerRightD[3] = "Ich kann verstehen, dass dir das Angst macht";
-        answerRightD[4] = "Ich bin jetzt hier, ich passe auf";
-        answerRightD[5] = "Ja, geh zu Reginald";
+        bartyD[0] = "Reginald dead? This can't be true!";
+        bartyD[1] = "How old was he?";
+        bartyD[2] = "This old... That means that I have been dead for 94 years now.";
+        bartyD[3] = "It all changed so much although I tried so hard to preserve everthing.";
+        bartyD[4] = "But I have to take care of everything.";
+        bartyD[5] = "You mean that I can just leave?";
+        answerLeftD[0] = "We all have to die one day.";
+        answerLeftD[1] = "102 years old, he was very lonely.";
+        answerLeftD[2] = "Yes, you should leave.";
+        answerLeftD[3] = "Change isn't bad.";
+        answerLeftD[4] = "You don't.";
+        answerLeftD[5] = "You could have left this place the whole time.";
+        answerRightD[0] = "He was very old.";
+        answerRightD[1] = "102 years old, a long and fulfilled life.";
+        answerRightD[2] = "Yes, I think it is time for you to let go.";
+        answerRightD[3] = "I can understand that you are afraid.";
+        answerRightD[4] = "Now I am here, I can take care.";
+        answerRightD[5] = "Yes, go to Reginald";
     }
 
     public void StartConversation()
@@ -143,7 +143,7 @@ public class CommunicationPhase : MonoBehaviour
         AssignArrays();
         ShowMiddleButton();
         buttonMiddle.onClick.AddListener(BartyAppears);
-        textAnswerMiddle.text = "Hallo";
+        textAnswerMiddle.text = "Hello";
         textMedium.SetActive(true);
     }
 
@@ -151,13 +151,13 @@ public class CommunicationPhase : MonoBehaviour
     {
         textMedium.SetActive(false);
         
-        textBarty.text = "Wer ist da?";
+        textBarty.text = "Who is this?";
         ShowTwoButtons();
 
-        textAnswerLeft.text = "Jemand, der mit dir reden möchte";
+        textAnswerLeft.text = "Someone who wants to talk to you.";
         buttonLeft.onClick.AddListener(StartA);
         
-        textAnswerRight.text = "Jemand, der dich kennenlernen möchte";
+        textAnswerRight.text = "Someone who wants to get to know you.";
         buttonRight.onClick.AddListener(StartB);
     }
 
@@ -191,7 +191,7 @@ public class CommunicationPhase : MonoBehaviour
             textBarty.text = bartyA[currentDialogue];
 
             ShowMiddleButton();
-            textAnswerMiddle.text = "Lass es uns gemeinsam herausfinden";
+            textAnswerMiddle.text = "Let's find out together.";
 
             sadnessScore += 2;
             angerScore += 2;
@@ -240,7 +240,7 @@ public class CommunicationPhase : MonoBehaviour
             textBarty.text = bartyB[currentDialogue];
 
             ShowMiddleButton();
-            textAnswerMiddle.text = "Hallo, Barty";
+            textAnswerMiddle.text = "Hello Barty";
 
             sadnessScore++;
             angerScore++;
@@ -266,18 +266,18 @@ public class CommunicationPhase : MonoBehaviour
         RemoveListeners();
         buttonMiddle.gameObject.SetActive(false);
 
-        textBarty.text = "Warum kann ich hier bloß nicht weg?";
+        textBarty.text = "Why am I unable to leave this world?";
 
         if (completedC == false)
         {
             buttonRight.gameObject.SetActive(true);
-            textAnswerRight.text = "Vielleicht gibt es etwas, was dich hier hält";
+            textAnswerRight.text = "Maybe something is holding you back.";
             buttonRight.onClick.AddListener(ContinueC);
         }
         if (completedC0 == false)
         {
             buttonLeft.gameObject.SetActive(true);
-            textAnswerLeft.text = "Vielleicht hängt es mit deiner Todesursache zusammen";
+            textAnswerLeft.text = "Maybe it has something to do with how you died.";
             buttonLeft.onClick.AddListener(ContinueC0);
         }
     }
@@ -303,7 +303,7 @@ public class CommunicationPhase : MonoBehaviour
             textBarty.text = bartyC[currentDialogue];
 
             ShowMiddleButton();
-            textAnswerMiddle.text = "Er ist vor einem Jahr gestorben";
+            textAnswerMiddle.text = "He died one year ago.";
 
             sadnessScore -= 4;
 
@@ -334,8 +334,8 @@ public class CommunicationPhase : MonoBehaviour
             buttonLeft.onClick.AddListener(ChoseLeft);
             buttonRight.onClick.AddListener(ChoseRight);
 
-            textAnswerLeft.text = "Ein Gegenstand war involviert";
-            textAnswerRight.text = "Die Vase hat dich umgebracht";
+            textAnswerLeft.text = "An object was involved in you death.";
+            textAnswerRight.text = "The vase killed you.";
         }
         else if (currentDialogue == 1)
         {
@@ -344,7 +344,7 @@ public class CommunicationPhase : MonoBehaviour
 
             ShowMiddleButton();
             buttonMiddle.onClick.AddListener(ContinueC0);
-            textAnswerMiddle.text = "Was hälst du davon, wenn ich die Vase zerstöre?";
+            textAnswerMiddle.text = "I could destroy the vase. What do you think?";
         }
         else if (currentDialogue > 1)
         {
@@ -398,7 +398,7 @@ public class CommunicationPhase : MonoBehaviour
             textBarty.text = bartyX[currentDialogue];
 
             ShowMiddleButton();
-            textAnswerMiddle.text = "Nein, da liegst du falsch";
+            textAnswerMiddle.text = "No, definetly not.";
 
             sadnessScore++;
             angerScore++;
@@ -448,11 +448,11 @@ public class CommunicationPhase : MonoBehaviour
 
             if (sadnessScore < -4)
             {
-                textBarty.text = "Weißt du was, ich vertraue dir nicht. Ich bleibe hier und werde für iimer auf diese Haus aufpassen.";
+                textBarty.text = "You know what, I don't trust you. I will stay here forever and keep an eye on everything. I will watch you and you won't change anything in the house!";
             }
             else
             {
-                textBarty.text = "Danke für deine Hilfe, mach's gut!";
+                textBarty.text = "Thank you for your help, goodbye!";
             }
         }
     }

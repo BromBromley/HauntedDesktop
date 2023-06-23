@@ -46,33 +46,33 @@ public class MediumMatch : MonoBehaviour
         button3.SetActive(false);
         toSelection.SetActive(false);
 
-        questions[0] = "Welche Eigenschaft schätzt du an dir?";
-        questions[1] = "Was sind deine Lieblingsfarben?";
-        questions[2] = "Wo verbringst du am liebsten deine Freizeit?";
-        questions[3] = "Wovor hast du Angst?";
-        questions[4] = "Womit soll das Medium dir helfen?";
+        questions[0] = "Which trait describes you?";
+        questions[1] = "What are your favourite colours?";
+        questions[2] = "How do you spend your free time?";
+        questions[3] = "What are you afraid of?";
+        questions[4] = "What should the medium help you with?";
 
-        witchAnswers[0] = "Raffinesse";
-        witchAnswers[1] = "Tiefschwarz und Blutrot";
-        witchAnswers[2] = "Waldhütte mit meiner Katze";
-        witchAnswers[3] = "Dunkelheit";
-        witchAnswers[4] = "Dämon austreiben";
+        witchAnswers[0] = "slyness";
+        witchAnswers[1] = "pitch black and blood red";
+        witchAnswers[2] = "cabin in the woods with my cat";
+        witchAnswers[3] = "darkness";
+        witchAnswers[4] = "exorcism";
 
-        hippieAnswers[0] = "Weltoffenheit";
-        hippieAnswers[1] = "Avocadogrün und Sonnengelb";
-        hippieAnswers[2] = "Yoga Retreat";
-        hippieAnswers[3] = "Einsamkeit";
-        hippieAnswers[4] = "mit Geistwesen sprechen";
+        hippieAnswers[0] = "impartiality";
+        hippieAnswers[1] = "avocado green andsunshine yellow";
+        hippieAnswers[2] = "yoga retreat";
+        hippieAnswers[3] = "loneliness";
+        hippieAnswers[4] = "supernatural conversation";
 
-        cyberAnswers[0] = "Logik";
-        cyberAnswers[1] = "Electric Violet und Smart Green";
-        cyberAnswers[2] = "LAN Party bei meinen Freunden";
-        cyberAnswers[3] = "Kontrollverlust";
-        cyberAnswers[4] = "Computerproblem lösen";
+        cyberAnswers[0] = "logic";
+        cyberAnswers[1] = "electric violet and smart green";
+        cyberAnswers[2] = "LAN party with my friends";
+        cyberAnswers[3] = "loss of control";
+        cyberAnswers[4] = "hardware problem";
 
-        results[0] = "Witch";
-        results[1] = "Hippie";
-        results[2] = "Cyber";
+        results[0] = "Pythia Alcina Cerridwen Feiticeira";
+        results[1] = "Vyasa";
+        results[2] = "Q";
     }
 
     public void ShowAnswerButtons()

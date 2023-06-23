@@ -1166,7 +1166,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: "Hi,\nThe floor plan looks the same as before. Did you change your mind
-    about keeping the furniture? Or did you have any problems with the planning tool?\n\nPlease
+    about keeping the furniture? Or do you have any problems with the planning tool?\n\nPlease
     let me know so I can help you.\n\nKind regards \LArthur"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -2449,7 +2449,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Opsie Daisy, something went wrong!
+  m_text: 'Oopsie Daisy, something went wrong!
 
     We could not upload your ads.
     :(
@@ -2623,7 +2623,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &182760827
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3132,10 +3132,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\n1. \tErbschein abholen\n2.  \tBestandsaufnahmen M\xF6bel und Deko \n\t(Fotos
-    nicht vergessen!)\n3. \t Raumplan f\xFCr Innenarchitekten\n\n4. \t M\xF6bel loswerden\n\t(am
-    bestien hier versteigern:             )\n5. \t Geb\xE4ude pr\xFCfen lassen\n6.
-    \t Gegebenenfalls Sarnierung planen\n7."
+  m_text: "\n1. \tPick up certificate of inheritance\n2.  \tGo through all furniture
+    and make a list \n\t(Don't forget the photos!)\n3. \t Floor plan for the interior
+    designer\n\t(see: Arthur's email)\n4. \t Get rid of furniture\n\t(                                                                    
+    )\n5. \tGet stability check\n6. \tPlan renovations\n7."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -13210,7 +13210,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 123, y: -66}
+  m_AnchoredPosition: {x: 120.09, y: -65.2}
   m_SizeDelta: {x: 400, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &835090675
@@ -13638,10 +13638,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Hey,\n\nThank you for the floor plans and photos. Could you send me the
-    one of the living room too with all the furniture you want to keep and the preferred
-    positions? \n\nI will adapt the rest of the designs accordingly.\nIf you want
-    to, you can use the planning tool on my website:\n\n\nKind regards \LArthur"
+  m_text: "Hey,\n\nThank you for the floor plans and photos. Now I need a new floor
+    plan containing all the furniture you want to keep and the preferred positions.\n\nI
+    will adapt the rest of the design accordingly.\nIf you want to, you can use the
+    planning tool on my website:\n\n\nKind regards \LArthur"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -17257,10 +17257,10 @@ RectTransform:
   m_Father: {fileID: 835090674}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -10, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -99.5, y: 0}
+  m_SizeDelta: {x: 400, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1050708146
 MonoBehaviour:
@@ -17282,7 +17282,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: eboohy
+  m_text: www.ebooh.marketplace/user21QrL9F.com
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -18076,7 +18076,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 179, y: 42}
+  m_AnchoredPosition: {x: 185.6, y: 53.5}
   m_SizeDelta: {x: 50, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1079424634
@@ -20068,7 +20068,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1231319817
 RectTransform:
   m_ObjectHideFlags: 0
@@ -20571,7 +20571,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 190, y: 1}
+  m_AnchoredPosition: {x: 186.3, y: 1}
   m_SizeDelta: {x: 400, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1288459297
@@ -23578,7 +23578,7 @@ Canvas:
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
-  m_AdditionalShaderChannelsFlag: 0
+  m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
   m_SortingOrder: 3
   m_TargetDisplay: 0
@@ -24432,7 +24432,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1505825355}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
@@ -26835,7 +26835,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 17, y: 78}
+  m_AnchoredPosition: {x: 124.6, y: 73.7}
   m_SizeDelta: {x: 50, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1655835148
@@ -26985,10 +26985,10 @@ RectTransform:
   m_Father: {fileID: 1288459296}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -264, y: -20}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -217.3, y: -20}
+  m_SizeDelta: {x: 400, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1666336240
 MonoBehaviour:
@@ -27010,7 +27010,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: (siehe Chat mit Arthur)
+  m_text: email
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -28522,7 +28522,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1722012751
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29480,7 +29480,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 130, y: 3}
+  m_AnchoredPosition: {x: 145.8, y: 5}
   m_SizeDelta: {x: 50, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1828979126
@@ -30598,7 +30598,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1911228128
 RectTransform:
   m_ObjectHideFlags: 0
@@ -32533,7 +32533,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 179, y: -41}
+  m_AnchoredPosition: {x: 6.6, y: -41}
   m_SizeDelta: {x: 50, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &2014796789
@@ -34221,7 +34221,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Opsie Daisy \r\nsomething went wrong :(\nwe couldn\u2018t upload your
+  m_text: "Oopsie Daisy \r\nsomething went wrong :(\nwe couldn\u2018t upload your
     offer \r\n\r\n\n\nError code: x399109"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
