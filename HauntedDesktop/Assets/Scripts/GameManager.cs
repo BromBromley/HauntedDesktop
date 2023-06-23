@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
     // functions are (mostly) written in chronological order 
 
     [SerializeField] private GameObject dragBlocker;
+    
     private UIManager _uiManager;
     private BrowserManager _browserManager;
     private EmailManager _emailManager;
@@ -19,6 +20,10 @@ public class GameManager : MonoBehaviour
     private MouseBehaviour _mouseBehaviour;
 
     public bool isBartyActive;
+
+// Feedback for buttins (raumplaner 1 und Ebuy 1) (added by alina)
+    [SerializeField] private GameObject feedbackeBuy;
+    [SerializeField] private GameObject feedbackraumPlan;
 
     //public Texture2D planchette;
 
@@ -64,6 +69,7 @@ public class GameManager : MonoBehaviour
     public void RaumplanerOneDone()
     {
         dragBlocker.SetActive(true);
+        feedbackraumPlan.SetActive(true);
     }
 
     // activated when link on to do list is pressed
@@ -84,6 +90,7 @@ public class GameManager : MonoBehaviour
         {
             StartCoroutine(_uiManager.ShowingPopUpArthur());
             _emailManager.ShowNewEmailArthurTab();
+            feedbackeBuy.SetActive(true);
             //_emailManager.ShowNoEmail();
             // show checkmark
         }
