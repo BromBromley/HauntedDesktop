@@ -80,6 +80,7 @@ public class GameManager : MonoBehaviour
         _uiManager.OpenVerkaufsportal();
         _browserManager.ShowVerkaufsportalTab();
         _browserManager.PutVerkaufsportalOnFront();
+        feedbackraumPlan.SetActive(false);
     }
 
     // activated when 'Post' button is clicked
