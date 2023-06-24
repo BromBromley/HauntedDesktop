@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private GameObject dragBlocker;
     
+    private AudioManager _audioManager;
     private UIManager _uiManager;
     private BrowserManager _browserManager;
     private EmailManager _emailManager;
@@ -29,6 +30,7 @@ public class GameManager : MonoBehaviour
 
     void Awake()
     {
+        _audioManager = FindObjectOfType<AudioManager>();
         _uiManager = FindObjectOfType<UIManager>();
         _browserManager = FindObjectOfType<BrowserManager>();
         _emailManager = FindObjectOfType<EmailManager>();

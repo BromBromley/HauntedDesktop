@@ -8,6 +8,8 @@ public class UIManager : MonoBehaviour
     // functions are called by GameManager
     // attached to [UserInterface]
 
+    private AudioManager _audioManager;
+    [SerializeField] private GameObject settings;
     [SerializeField] private GameObject documentFolder;
     [SerializeField] private GameObject toDoListe;
     [SerializeField] private GameObject articleReginald;
@@ -40,6 +42,8 @@ public class UIManager : MonoBehaviour
 
     private void Start() 
     {
+        _audioManager = FindObjectOfType<AudioManager>();
+        settings.SetActive(false);
         documentFolder.SetActive(false);
         toDoListe.SetActive(false); 
         articleReginald.SetActive(false);
@@ -102,6 +106,7 @@ public class UIManager : MonoBehaviour
     public IEnumerator ShowingPopUpArthur()
     {
         yield return new WaitForSeconds(4);
+        _audioManager.PlayNotificationSound();
 
         popUpEmailArthur.SetActive(true);
 
@@ -115,6 +120,7 @@ public class UIManager : MonoBehaviour
         yield return new WaitForSeconds(3);
 
         popUpEmailError.SetActive(true);
+        _audioManager.PlayNotificationSound();
 
         yield return new WaitForSeconds(5);
 
