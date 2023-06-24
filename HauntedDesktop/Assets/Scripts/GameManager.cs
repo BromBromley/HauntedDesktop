@@ -116,6 +116,7 @@ public class GameManager : MonoBehaviour
 
         yield return new WaitForSeconds(45);
 
+        isBartyActive = false;
         _mouseBehaviour.fakeCursor.SetActive(false);
         _mouseBehaviour.enabled = false;
         Cursor.visible = true;
@@ -123,6 +124,26 @@ public class GameManager : MonoBehaviour
         _emailManager.ShowEmailErrorTab();
         _emailManager.PutEmailErrorOnTop();
         _uiManager.OpenVerkaufsportalAfterError();
+        _browserManager.blocker.SetActive(false);
+    }
+
+    public void ClosingBrowser()
+    {
+        if (isBartyActive)
+        {
+            StartCoroutine(OpenBrowserAgain());
+        }
+        else 
+        {
+            _browserManager.OpenBrowser();
+        }
+    }
+
+    IEnumerator OpenBrowserAgain()
+    {
+        yield return new WaitForSeconds(2);
+        _browserManager.OpenBrowser();
+        _browserManager.blocker.SetActive(true);
     }
 
     public void VerkaufsportalAfterError()
@@ -136,7 +157,7 @@ public class GameManager : MonoBehaviour
     public void ClickOnGeisterscannerAd()
     {
         _uiManager.OpenGeisterscannerWebsite();
-        // put on top?
+        _browserManager.PutGeisterscannerOnFront();
         _browserManager.ShowGeisterscannerTab();
         _browserManager.HideRaumplanerTab();
     }

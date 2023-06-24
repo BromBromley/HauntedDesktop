@@ -8,6 +8,7 @@ public class BrowserManager : MonoBehaviour
     // attached to [GameManager]
 
     [SerializeField] GameObject browser;
+    [SerializeField] public GameObject blocker;
 
     [SerializeField] GameObject artikelVorbesitzer;
     [SerializeField] GameObject raumplaner;
@@ -28,6 +29,7 @@ public class BrowserManager : MonoBehaviour
         CloseBrowser();
         HideAllTabs();
         HideAllWebsites();
+        blocker.SetActive(false);
     }
 
     public void OpenBrowser()
