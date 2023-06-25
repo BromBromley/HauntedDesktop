@@ -24,6 +24,30 @@ public class CommunicationPhase : MonoBehaviour
     [SerializeField] private int angerScore;
     [SerializeField] private int currentDialogue;
 
+    // Score visualization
+    [SerializeField] private GameObject sadnessMeter;
+    [SerializeField] private GameObject angerMeter;
+    [SerializeField] private GameObject sadnessScoreMinusEight;
+    [SerializeField] private GameObject sadnessScoreMinusSix;
+    [SerializeField] private GameObject sadnessScoreMinusFour;
+    [SerializeField] private GameObject sadnessScoreMinusTwo;
+    [SerializeField] private GameObject sadnessScoreZero;
+    [SerializeField] private GameObject sadnessScoreTwo;
+    [SerializeField] private GameObject sadnessScoreFour;
+    [SerializeField] private GameObject sadnessScoreSix;
+    [SerializeField] private GameObject sadnessScoreEight;
+
+    [SerializeField] private GameObject angerScoreMinusEight;
+    [SerializeField] private GameObject angerScoreMinusSix;
+    [SerializeField] private GameObject angerScoreMinusFour;
+    [SerializeField] private GameObject angerScoreMinusTwo;
+    [SerializeField] private GameObject angerScoreZero;
+    [SerializeField] private GameObject angerScoreTwo;
+    [SerializeField] private GameObject angerScoreFour;
+    [SerializeField] private GameObject angerScoreSix;
+    [SerializeField] private GameObject angerScoreEight;
+    
+
     private bool doingA;
     private bool doingB;
     private bool doingC;
@@ -72,6 +96,9 @@ public class CommunicationPhase : MonoBehaviour
         buttonMiddle.gameObject.SetActive(false);
 
         textMedium.SetActive(true);
+
+        angerMeter.SetActive(false);
+        sadnessMeter.SetActive(false);
 
         textBarty = textBarty.GetComponent<TMP_Text>();
         textBarty.text = "";
@@ -145,6 +172,7 @@ public class CommunicationPhase : MonoBehaviour
         buttonMiddle.onClick.AddListener(BartyAppears);
         textAnswerMiddle.text = "Hello";
         textMedium.SetActive(true);
+        
     }
 
     private void BartyAppears()
@@ -159,6 +187,9 @@ public class CommunicationPhase : MonoBehaviour
         
         textAnswerRight.text = "Someone who wants to get to know you.";
         buttonRight.onClick.AddListener(StartB);
+        
+        MeterTracking();
+
     }
 
     private void StartA()
@@ -175,6 +206,8 @@ public class CommunicationPhase : MonoBehaviour
 
         textAnswerLeft.text = answerLeftA[currentDialogue];
         textAnswerRight.text = answerRightA[currentDialogue];
+        MeterTracking();
+    
     }
 
     private void NextDialogueA()
@@ -185,6 +218,7 @@ public class CommunicationPhase : MonoBehaviour
 
             textAnswerLeft.text = answerLeftA[currentDialogue];
             textAnswerRight.text = answerRightA[currentDialogue];
+            MeterTracking();
         }
         else
         {
@@ -195,6 +229,7 @@ public class CommunicationPhase : MonoBehaviour
 
             sadnessScore += 2;
             angerScore += 2;
+            MeterTracking();
 
             doingA = false;
             completedA = true;
@@ -224,6 +259,7 @@ public class CommunicationPhase : MonoBehaviour
 
         textAnswerLeft.text = answerLeftB[currentDialogue];
         textAnswerRight.text = answerRightB[currentDialogue];
+        MeterTracking();
     }
 
     private void NextDialogueB()
@@ -234,6 +270,7 @@ public class CommunicationPhase : MonoBehaviour
 
             textAnswerLeft.text = answerLeftB[currentDialogue];
             textAnswerRight.text = answerRightB[currentDialogue];
+            MeterTracking();
         }
         else
         {
@@ -244,6 +281,7 @@ public class CommunicationPhase : MonoBehaviour
 
             sadnessScore++;
             angerScore++;
+            MeterTracking();
 
             doingB = false;
             completedB = true;
@@ -273,12 +311,14 @@ public class CommunicationPhase : MonoBehaviour
             buttonRight.gameObject.SetActive(true);
             textAnswerRight.text = "Maybe something is holding you back.";
             buttonRight.onClick.AddListener(ContinueC);
+            MeterTracking();
         }
         if (completedC0 == false)
         {
             buttonLeft.gameObject.SetActive(true);
             textAnswerLeft.text = "Maybe it has something to do with how you died.";
             buttonLeft.onClick.AddListener(ContinueC0);
+            MeterTracking();
         }
     }
 
@@ -297,6 +337,7 @@ public class CommunicationPhase : MonoBehaviour
 
             textAnswerLeft.text = answerLeftC[currentDialogue];
             textAnswerRight.text = answerRightC[currentDialogue];
+            MeterTracking();
         }
         else
         {
@@ -309,14 +350,17 @@ public class CommunicationPhase : MonoBehaviour
 
             doingC = false;
             completedC = true;
+            MeterTracking();
 
             if (angerScore <= -3)
             {
                 buttonMiddle.onClick.AddListener(StartX);
+                MeterTracking();
             }
             else
             {
                 buttonMiddle.onClick.AddListener(StartD);
+                MeterTracking();
             }
         }
     }
@@ -336,6 +380,7 @@ public class CommunicationPhase : MonoBehaviour
 
             textAnswerLeft.text = "An object was involved in you death.";
             textAnswerRight.text = "The vase killed you.";
+            MeterTracking();
         }
         else if (currentDialogue == 1)
         {
@@ -345,6 +390,7 @@ public class CommunicationPhase : MonoBehaviour
             ShowMiddleButton();
             buttonMiddle.onClick.AddListener(ContinueC0);
             textAnswerMiddle.text = "I could destroy the vase. What do you think?";
+            MeterTracking();
         }
         else if (currentDialogue > 1)
         {
@@ -353,6 +399,7 @@ public class CommunicationPhase : MonoBehaviour
 
             sadnessScore -= 2;
             angerScore -= 2;
+            MeterTracking();
 
             doingC0 = false;
             completedC0 = true;
@@ -382,6 +429,7 @@ public class CommunicationPhase : MonoBehaviour
 
         textAnswerLeft.text = answerLeftX[currentDialogue];
         textAnswerRight.text = answerRightX[currentDialogue];
+        MeterTracking();
     }
 
     private void NextDialogueX()
@@ -392,6 +440,7 @@ public class CommunicationPhase : MonoBehaviour
 
             textAnswerLeft.text = answerLeftX[currentDialogue];
             textAnswerRight.text = answerRightX[currentDialogue];
+            MeterTracking();
         }
         else
         {
@@ -402,16 +451,19 @@ public class CommunicationPhase : MonoBehaviour
 
             sadnessScore++;
             angerScore++;
+            MeterTracking();
 
             doingX = false;
 
             if (completedC)
             {
                 buttonMiddle.onClick.AddListener(StartD);
+                MeterTracking();
             }
             else
             {
                 buttonMiddle.onClick.AddListener(StartC);
+                MeterTracking();
             }
         }
     }
@@ -430,6 +482,7 @@ public class CommunicationPhase : MonoBehaviour
 
         textAnswerLeft.text = answerLeftD[currentDialogue];
         textAnswerRight.text = answerRightD[currentDialogue];
+        MeterTracking();
     }
 
     private void NextDialogueD()
@@ -440,6 +493,7 @@ public class CommunicationPhase : MonoBehaviour
 
             textAnswerLeft.text = answerLeftD[currentDialogue];
             textAnswerRight.text = answerRightD[currentDialogue];
+            MeterTracking();
         }
         else
         {
@@ -449,10 +503,12 @@ public class CommunicationPhase : MonoBehaviour
             if (sadnessScore < -4)
             {
                 textBarty.text = "You know what, I don't trust you. I will stay here forever and keep an eye on everything. I will watch you and you won't change anything in the house!";
+            MeterTracking();
             }
             else
             {
                 textBarty.text = "Thank you for your help, goodbye!";
+                MeterTracking();
             }
         }
     }
@@ -464,12 +520,15 @@ public class CommunicationPhase : MonoBehaviour
         {
             sadnessScore--;
             angerScore--;
+            MeterTracking();
             NextDialogueA();
+            
         }
         if (doingB)
         {
             sadnessScore--;
             angerScore--;
+            MeterTracking();
             NextDialogueB();
         }
         if (doingC)
@@ -478,11 +537,13 @@ public class CommunicationPhase : MonoBehaviour
             {
                 sadnessScore--;
                 angerScore++;
+                MeterTracking();
             }
             if (currentDialogue == 2)
             {
                 sadnessScore--;
                 angerScore++;
+                MeterTracking();
             }
             ContinueC();
         }
@@ -492,6 +553,7 @@ public class CommunicationPhase : MonoBehaviour
             {
                 sadnessScore -= 2;
                 angerScore--;
+                MeterTracking();
                 ContinueC0();
             }
         }
@@ -499,6 +561,7 @@ public class CommunicationPhase : MonoBehaviour
         {
             sadnessScore++;
             angerScore++;
+            MeterTracking();
             NextDialogueX();
         }
         if (doingD)
@@ -507,11 +570,13 @@ public class CommunicationPhase : MonoBehaviour
             {
                 sadnessScore -= 2;
                 angerScore--;
+                MeterTracking();
             }
             else
             {
                 sadnessScore--;
                 angerScore--;
+                MeterTracking();
             }
             NextDialogueD();
         }
@@ -524,12 +589,14 @@ public class CommunicationPhase : MonoBehaviour
         {
             sadnessScore--;
             angerScore++;
+            MeterTracking();
             NextDialogueA();
         }
         if (doingB)
         {
             sadnessScore++;
             angerScore++;
+            MeterTracking();
             NextDialogueB();
         }
         if (doingC)
@@ -538,10 +605,12 @@ public class CommunicationPhase : MonoBehaviour
             {
                 sadnessScore++;
                 angerScore--;
+                MeterTracking();
             }
             if (currentDialogue == 2)
             {
                 sadnessScore--;
+                MeterTracking();
             }
             ContinueC();
         }
@@ -551,6 +620,7 @@ public class CommunicationPhase : MonoBehaviour
             {
                 sadnessScore -= 2;
                 angerScore -= 2;
+                MeterTracking();
                 ContinueC0();
             }
         }
@@ -558,6 +628,7 @@ public class CommunicationPhase : MonoBehaviour
         {
             sadnessScore++;
             angerScore++;
+            MeterTracking();
             NextDialogueX();
         }
         if (doingD)
@@ -566,11 +637,13 @@ public class CommunicationPhase : MonoBehaviour
             {
                 sadnessScore++;
                 angerScore++;
+                MeterTracking();
             }
             else
             {
                 sadnessScore += 2;
                 angerScore++;
+                MeterTracking();
             }
             NextDialogueD();
         }
@@ -595,5 +668,313 @@ public class CommunicationPhase : MonoBehaviour
         buttonLeft.onClick.RemoveAllListeners();
         buttonRight.onClick.RemoveAllListeners();
         buttonMiddle.onClick.RemoveAllListeners();   
+    }
+
+    private void MeterTracking()
+    {
+        sadnessMeter.SetActive(true);
+        angerMeter.SetActive(true);
+        sadnessScoreEight.SetActive(false);
+        sadnessScoreSix.SetActive(false);
+        sadnessScoreFour.SetActive(false);
+        sadnessScoreTwo.SetActive(false);
+        sadnessScoreZero.SetActive(true);
+        sadnessScoreMinusTwo.SetActive(false);
+        sadnessScoreMinusFour.SetActive(false);
+        sadnessScoreMinusSix.SetActive(false);
+        sadnessScoreMinusEight.SetActive(false);
+
+        angerScoreEight.SetActive(false);
+        angerScoreSix.SetActive(false);
+        angerScoreFour.SetActive(false);
+        angerScoreTwo.SetActive(false);
+        angerScoreZero.SetActive(true);
+        angerScoreMinusTwo.SetActive(false);
+        angerScoreMinusFour.SetActive(false);
+        angerScoreMinusSix.SetActive(false);
+        angerScoreMinusEight.SetActive(false);
+        // Sadness_Meter 
+      if (sadnessScore== -8)
+      {
+        sadnessScoreMinusEight.SetActive(true);
+        sadnessScoreEight.SetActive(false);
+        sadnessScoreSix.SetActive(false);
+        sadnessScoreFour.SetActive(false);
+        sadnessScoreTwo.SetActive(false);
+        sadnessScoreZero.SetActive(false);
+        sadnessScoreMinusTwo.SetActive(false);
+        sadnessScoreMinusFour.SetActive(false);
+        sadnessScoreMinusSix.SetActive(false);
+        }
+
+        if (sadnessScore== -7)
+      {
+        sadnessScoreMinusEight.SetActive(true);
+        sadnessScoreEight.SetActive(false);
+        sadnessScoreSix.SetActive(false);
+        sadnessScoreFour.SetActive(false);
+        sadnessScoreTwo.SetActive(false);
+        sadnessScoreZero.SetActive(false);
+        sadnessScoreMinusTwo.SetActive(false);
+        sadnessScoreMinusFour.SetActive(false);
+        sadnessScoreMinusSix.SetActive(false);
+        }
+        
+
+        if (sadnessScore== -6)
+        {
+        sadnessScoreEight.SetActive(false);
+        sadnessScoreSix.SetActive(false);
+        sadnessScoreFour.SetActive(false);
+        sadnessScoreTwo.SetActive(false);
+        sadnessScoreZero.SetActive(false);
+        sadnessScoreMinusTwo.SetActive(false);
+        sadnessScoreMinusFour.SetActive(false);
+        sadnessScoreMinusSix.SetActive(true);
+        sadnessScoreMinusEight.SetActive(false);
+        }
+
+        if (sadnessScore== -5)
+        {
+        sadnessScoreEight.SetActive(false);
+        sadnessScoreSix.SetActive(false);
+        sadnessScoreFour.SetActive(false);
+        sadnessScoreTwo.SetActive(false);
+        sadnessScoreZero.SetActive(false);
+        sadnessScoreMinusTwo.SetActive(false);
+        sadnessScoreMinusFour.SetActive(false);
+        sadnessScoreMinusSix.SetActive(true);
+        sadnessScoreMinusEight.SetActive(false);
+        }
+
+        if (sadnessScore== -4)
+        {
+        sadnessScoreEight.SetActive(false);
+        sadnessScoreSix.SetActive(false);
+        sadnessScoreFour.SetActive(false);
+        sadnessScoreTwo.SetActive(false);
+        sadnessScoreZero.SetActive(false);
+        sadnessScoreMinusTwo.SetActive(false);
+        sadnessScoreMinusFour.SetActive(true);
+        sadnessScoreMinusSix.SetActive(false);
+        sadnessScoreMinusEight.SetActive(false);
+        }
+        
+        if (sadnessScore== -3)
+        {
+        sadnessScoreEight.SetActive(false);
+        sadnessScoreSix.SetActive(false);
+        sadnessScoreFour.SetActive(false);
+        sadnessScoreTwo.SetActive(false);
+        sadnessScoreZero.SetActive(false);
+        sadnessScoreMinusTwo.SetActive(false);
+        sadnessScoreMinusFour.SetActive(true);
+        sadnessScoreMinusSix.SetActive(false);
+        sadnessScoreMinusEight.SetActive(false);
+        }
+        
+        if (sadnessScore== -2)
+        {
+        sadnessScoreEight.SetActive(false);
+        sadnessScoreSix.SetActive(false);
+        sadnessScoreFour.SetActive(false);
+        sadnessScoreTwo.SetActive(false);
+        sadnessScoreZero.SetActive(false);
+        sadnessScoreMinusTwo.SetActive(true);
+        sadnessScoreMinusFour.SetActive(false);
+        sadnessScoreMinusSix.SetActive(false);
+        sadnessScoreMinusEight.SetActive(false);
+        }
+        if (sadnessScore== -1)
+        {
+        sadnessScoreEight.SetActive(false);
+        sadnessScoreSix.SetActive(false);
+        sadnessScoreFour.SetActive(false);
+        sadnessScoreTwo.SetActive(false);
+        sadnessScoreZero.SetActive(false);
+        sadnessScoreMinusTwo.SetActive(true);
+        sadnessScoreMinusFour.SetActive(false);
+        sadnessScoreMinusSix.SetActive(false);
+        sadnessScoreMinusEight.SetActive(false);
+        }
+        
+      if (sadnessScore== 0)
+        {
+        sadnessScoreEight.SetActive(false);
+        sadnessScoreSix.SetActive(false);
+        sadnessScoreFour.SetActive(false);
+        sadnessScoreTwo.SetActive(false);
+        sadnessScoreZero.SetActive(true);
+        sadnessScoreMinusTwo.SetActive(false);
+        sadnessScoreMinusFour.SetActive(false);
+        sadnessScoreMinusSix.SetActive(false);
+        sadnessScoreMinusEight.SetActive(false);
+        }
+
+        if (sadnessScore== 1)
+        {
+        sadnessScoreEight.SetActive(false);
+        sadnessScoreSix.SetActive(false);
+        sadnessScoreFour.SetActive(false);
+        sadnessScoreTwo.SetActive(false);
+        sadnessScoreZero.SetActive(true);
+        sadnessScoreMinusTwo.SetActive(false);
+        sadnessScoreMinusFour.SetActive(false);
+        sadnessScoreMinusSix.SetActive(false);
+        sadnessScoreMinusEight.SetActive(false);
+        }
+
+        if (sadnessScore== 2)
+        {
+        sadnessScoreEight.SetActive(false);
+        sadnessScoreSix.SetActive(false);
+        sadnessScoreFour.SetActive(false);
+        sadnessScoreTwo.SetActive(true);
+        sadnessScoreZero.SetActive(false);
+        sadnessScoreMinusTwo.SetActive(false);
+        sadnessScoreMinusFour.SetActive(false);
+        sadnessScoreMinusSix.SetActive(false);
+        sadnessScoreMinusEight.SetActive(false);
+        }
+        
+        if (sadnessScore== 3)
+        {
+        sadnessScoreEight.SetActive(false);
+        sadnessScoreSix.SetActive(false);
+        sadnessScoreFour.SetActive(false);
+        sadnessScoreTwo.SetActive(true);
+        sadnessScoreZero.SetActive(false);
+        sadnessScoreMinusTwo.SetActive(false);
+        sadnessScoreMinusFour.SetActive(false);
+        sadnessScoreMinusSix.SetActive(false);
+        sadnessScoreMinusEight.SetActive(false);
+        }
+
+        if (sadnessScore== 4)
+        {
+        sadnessScoreEight.SetActive(false);
+        sadnessScoreSix.SetActive(false);
+        sadnessScoreFour.SetActive(true);
+        sadnessScoreTwo.SetActive(false);
+        sadnessScoreZero.SetActive(false);
+        sadnessScoreMinusTwo.SetActive(false);
+        sadnessScoreMinusFour.SetActive(false);
+        sadnessScoreMinusSix.SetActive(false);
+        sadnessScoreMinusEight.SetActive(false);
+        }
+
+        if (sadnessScore== 5)
+        {
+        sadnessScoreEight.SetActive(false);
+        sadnessScoreSix.SetActive(false);
+        sadnessScoreFour.SetActive(true);
+        sadnessScoreTwo.SetActive(false);
+        sadnessScoreZero.SetActive(false);
+        sadnessScoreMinusTwo.SetActive(false);
+        sadnessScoreMinusFour.SetActive(false);
+        sadnessScoreMinusSix.SetActive(false);
+        sadnessScoreMinusEight.SetActive(false);
+        }
+
+        if (sadnessScore== 6)
+        {
+        sadnessScoreEight.SetActive(false);
+        sadnessScoreSix.SetActive(true);
+        sadnessScoreFour.SetActive(false);
+        sadnessScoreTwo.SetActive(false);
+        sadnessScoreZero.SetActive(false);
+        sadnessScoreMinusTwo.SetActive(false);
+        sadnessScoreMinusFour.SetActive(false);
+        sadnessScoreMinusSix.SetActive(false);
+        sadnessScoreMinusEight.SetActive(false);
+        }
+         if (sadnessScore== 7)
+        {
+        sadnessScoreEight.SetActive(false);
+        sadnessScoreSix.SetActive(true);
+        sadnessScoreFour.SetActive(false);
+        sadnessScoreTwo.SetActive(false);
+        sadnessScoreZero.SetActive(false);
+        sadnessScoreMinusTwo.SetActive(false);
+        sadnessScoreMinusFour.SetActive(false);
+        sadnessScoreMinusSix.SetActive(false);
+        sadnessScoreMinusEight.SetActive(false);
+        }
+
+        if (sadnessScore== 8)
+      {
+        sadnessScoreEight.SetActive(true);
+        sadnessScoreSix.SetActive(false);
+        sadnessScoreFour.SetActive(false);
+        sadnessScoreTwo.SetActive(false);
+        sadnessScoreZero.SetActive(false);
+        sadnessScoreMinusTwo.SetActive(false);
+        sadnessScoreMinusFour.SetActive(false);
+        sadnessScoreMinusSix.SetActive(false);
+        sadnessScoreMinusEight.SetActive(false);
+        }
+
+        // Anger_Meter 
+      if (angerScore>-8& angerScore<-7)
+      {
+        angerScoreMinusEight.SetActive(true);
+        angerScoreMinusSix.SetActive(false);
+        }
+
+        if (angerScore>-6& angerScore<=-5)
+        {
+          angerScoreMinusSix.SetActive(true);
+          angerScoreMinusEight.SetActive(false);
+          angerScoreMinusFour.SetActive(false);
+        }
+
+        if (angerScore>-4& angerScore<-3)
+       {
+          angerScoreMinusFour.SetActive(true);
+          angerScoreMinusTwo.SetActive(false);
+          angerScoreMinusSix.SetActive(false);
+        }
+        if (angerScore>-2& angerScore<-1)
+       {
+          angerScoreMinusTwo.SetActive(true);
+          angerScoreZero.SetActive(false);
+          angerScoreMinusFour.SetActive(false);
+        }
+        
+        if (angerScore>0& angerScore<1)
+       {
+         angerScoreZero.SetActive(true);
+          angerScoreMinusTwo.SetActive(false);
+          angerScoreTwo.SetActive(false);
+        }
+
+        if (angerScore>2& angerScore<3)
+       {
+          angerScoreTwo.SetActive(true);
+          angerScoreZero.SetActive(false);
+          angerScoreFour.SetActive(false);
+        }
+
+        if (angerScore>4& angerScore<5)
+       {
+          angerScoreFour.SetActive(true);
+         angerScoreTwo.SetActive(false);
+         angerScoreSix.SetActive(false);
+        }
+
+        if (angerScore>5& angerScore<6)
+        {
+          angerScoreSix.SetActive(true);
+          angerScoreEight.SetActive(false);
+          angerScoreFour.SetActive(false);
+        }
+
+        if (angerScore>7& angerScore<8)
+      {
+        angerScoreEight.SetActive(true);
+        angerScoreSix.SetActive(false);
+        }
+
+
     }
 }
