@@ -125,7 +125,6 @@ public class GameManager : MonoBehaviour
         StartCoroutine(_uiManager.ShowingPopUpError());
         _emailManager.ShowEmailErrorTab();
         _emailManager.PutEmailErrorOnTop();
-        _uiManager.OpenVerkaufsportalAfterError();
         _browserManager.blocker.SetActive(false);
     }
 
@@ -133,11 +132,12 @@ public class GameManager : MonoBehaviour
     {
         if (isBartyActive)
         {
+            _browserManager.CloseBrowser();
             StartCoroutine(OpenBrowserAgain());
         }
         else 
         {
-            _browserManager.OpenBrowser();
+            _browserManager.CloseBrowser();
         }
     }
 
@@ -151,6 +151,7 @@ public class GameManager : MonoBehaviour
     public void VerkaufsportalAfterError()
     {
         _browserManager.OpenBrowser();
+        _browserManager.PutVerkaufsportalOnFront();
         _uiManager.OpenVerkaufsportal();
         _uiManager.OpenVerkaufsportalAfterError();
     }
