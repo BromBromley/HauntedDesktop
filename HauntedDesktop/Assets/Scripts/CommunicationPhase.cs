@@ -407,11 +407,11 @@ public class CommunicationPhase : MonoBehaviour
 
             if (completedC)
             {
-                buttonMiddle.onClick.AddListener(StartC);
+                buttonMiddle.onClick.AddListener(StartD);
             }
             else
             {
-                buttonMiddle.onClick.AddListener(StartD);
+                buttonMiddle.onClick.AddListener(StartC);
             }
         }
     }
