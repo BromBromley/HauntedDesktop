@@ -46,8 +46,6 @@ public class AdChecker : MonoBehaviour
                 des_verkaufsportal[i].GetComponent<DragAds>().enabled = false;
             }
         }
-
-        CheckIfSortedCorrectly();
     }
     
     public void CheckIfSortedCorrectly()

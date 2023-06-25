@@ -89,6 +89,7 @@ public class GameManager : MonoBehaviour
         {
             StartCoroutine(_uiManager.ShowingPopUpArthur());
             _emailManager.ShowNewEmailArthurTab();
+            _emailManager.ShowNotificationArthur();
             _uiManager.feedbackEbooh.SetActive(true);
             _adChecker.postButton.SetActive(false);
             // show checkmark
@@ -120,7 +121,7 @@ public class GameManager : MonoBehaviour
         Cursor.visible = true;
         StartCoroutine(_uiManager.ShowingPopUpError());
         _emailManager.ShowEmailErrorTab();
-        _emailManager.PutEmailErrorOnTop();
+        _emailManager.ShowNotificationError();
         _browserManager.blocker.SetActive(false);
     }
 

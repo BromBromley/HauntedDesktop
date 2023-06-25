@@ -17,11 +17,16 @@ public class EmailManager : MonoBehaviour
     [SerializeField] GameObject tabNewEmailArthur;
     [SerializeField] GameObject tabEmailError;
 
+    [SerializeField] GameObject unreadNotificationArthur;
+    [SerializeField] GameObject unreadNotificationError;
+
     void Start()
     {
         emails.SetActive(false);
         tabNewEmailArthur.SetActive(false);
         tabEmailError.SetActive(false);
+        unreadNotificationArthur.SetActive(false);
+        unreadNotificationError.SetActive(false);
         ShowNoEmail();
     }
 
@@ -33,6 +38,7 @@ public class EmailManager : MonoBehaviour
 
     public void CloseEmails()
     {
+        ShowNoEmail();
         emails.SetActive(false);
     }
 
@@ -55,6 +61,39 @@ public class EmailManager : MonoBehaviour
     public void ShowEmailErrorTab()
     {
         tabEmailError.SetActive(true);
+    }
+
+    // shows the little unread signs on the email tabs
+    public void ShowNotificationArthur()
+    {
+        unreadNotificationArthur.SetActive(true);
+    }
+
+    public void ClickedOnEmailArthur()
+    {
+        StartCoroutine(ShowingNotificationArthur());
+    }
+
+    IEnumerator ShowingNotificationArthur()
+    {
+        yield return new WaitForSeconds(2);
+        unreadNotificationArthur.SetActive(false);
+    }
+
+    public void ShowNotificationError()
+    {
+        unreadNotificationError.SetActive(true);
+    }
+
+    public void ClickedOnEmailError()
+    {
+        StartCoroutine(ShowingNotificationError());
+    }
+
+    IEnumerator ShowingNotificationError()
+    {
+        yield return new WaitForSeconds(2);
+        unreadNotificationError.SetActive(false);
     }
 
     // puts whatever email has been clicked on top
