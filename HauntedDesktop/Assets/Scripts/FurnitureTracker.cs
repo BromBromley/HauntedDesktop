@@ -14,6 +14,7 @@ public class FurnitureTracker : MonoBehaviour
     [SerializeField] GameObject[] verkaufsportalPics;
     [SerializeField] GameObject[] verkaufsportalDes;
 
+    // resets the raumplaner furniture when GameManager calls it
     public void ResetPosition()
     {
         foreach (GameObject furniture in raumplanerIcons)
@@ -23,6 +24,7 @@ public class FurnitureTracker : MonoBehaviour
         } 
     }
 
+    // resets the ad pictures and descriptions when GameManager calls it
     public void ResetAdPosition()
     {
         foreach (GameObject ad in verkaufsportalPics)
@@ -43,108 +45,27 @@ public class FurnitureTracker : MonoBehaviour
         }
     }
 
+    // activates the furniture that should be sold or its counterpart for ebooh
     public void SellFurniture()
     {
-        if (raumplanerIcons[0].tag == "Sell")
+        for (int i = 0; i < 6; i++)
         {
-            raumplanerPics[0].SetActive(true);
-            raumplanerDes[0].SetActive(true);
+            if (raumplanerIcons[i].tag == "Sell")
+            {
+                raumplanerPics[i].SetActive(true);
+                raumplanerDes[i].SetActive(true);
 
-            verkaufsportalPics[0].SetActive(false);
-            verkaufsportalDes[0].SetActive(false);
-        }
+                verkaufsportalPics[i].SetActive(false);
+                verkaufsportalDes[i].SetActive(false);
+            }
         else
-        {
-            raumplanerPics[0].SetActive(false);
-            raumplanerDes[0].SetActive(false);
+            {
+                raumplanerPics[i].SetActive(false);
+                raumplanerDes[i].SetActive(false);
 
-            verkaufsportalPics[0].SetActive(true);
-            verkaufsportalDes[0].SetActive(true);
-        }   
-
-        if (raumplanerIcons[1].tag == "Sell")
-        {
-            raumplanerPics[1].SetActive(true);
-            raumplanerDes[1].SetActive(true);
-
-            verkaufsportalPics[1].SetActive(false);
-            verkaufsportalDes[1].SetActive(false);
+                verkaufsportalPics[i].SetActive(true);
+                verkaufsportalDes[i].SetActive(true);
+            } 
         }
-        else
-        {
-            raumplanerPics[1].SetActive(false);
-            raumplanerDes[1].SetActive(false);
-
-            verkaufsportalPics[1].SetActive(true);
-            verkaufsportalDes[1].SetActive(true);
-        } 
-
-        if (raumplanerIcons[2].tag == "Sell")
-        {
-            raumplanerPics[2].SetActive(true);
-            raumplanerDes[2].SetActive(true);
-
-            verkaufsportalPics[2].SetActive(false);
-            verkaufsportalDes[2].SetActive(false);
-        }
-        else
-        {
-            raumplanerPics[2].SetActive(false);
-            raumplanerDes[2].SetActive(false);
-
-            verkaufsportalPics[2].SetActive(true);
-            verkaufsportalDes[2].SetActive(true);
-        } 
-
-        if (raumplanerIcons[3].tag == "Sell")
-        {
-            raumplanerPics[3].SetActive(true);
-            raumplanerDes[3].SetActive(true);
-
-            verkaufsportalPics[3].SetActive(false);
-            verkaufsportalDes[3].SetActive(false);
-        }
-        else
-        {
-            raumplanerPics[3].SetActive(false);
-            raumplanerDes[3].SetActive(false);
-
-            verkaufsportalPics[3].SetActive(true);
-            verkaufsportalDes[3].SetActive(true);
-        } 
-
-        if (raumplanerIcons[4].tag == "Sell")
-        {
-            raumplanerPics[4].SetActive(true);
-            raumplanerDes[4].SetActive(true);
-
-            verkaufsportalPics[4].SetActive(false);
-            verkaufsportalDes[4].SetActive(false);
-        }
-        else
-        {
-            raumplanerPics[4].SetActive(false);
-            raumplanerDes[4].SetActive(false);
-
-            verkaufsportalPics[4].SetActive(true);
-            verkaufsportalDes[4].SetActive(true);
-        } 
-
-        if (raumplanerIcons[5].tag == "Sell")
-        {
-            raumplanerPics[5].SetActive(true);
-            raumplanerDes[5].SetActive(true);
-
-            verkaufsportalPics[5].SetActive(false);
-            verkaufsportalDes[5].SetActive(false);
-        }
-        else
-        {
-            raumplanerPics[5].SetActive(false);
-            raumplanerDes[5].SetActive(false);
-
-            verkaufsportalPics[5].SetActive(true);
-            verkaufsportalDes[5].SetActive(true);
-        } 
     }
 }
