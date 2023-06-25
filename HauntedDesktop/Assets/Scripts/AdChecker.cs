@@ -35,11 +35,14 @@ public class AdChecker : MonoBehaviour
     [SerializeField] GameObject des_mirror;
     [SerializeField] GameObject des_stool;
 
-    [SerializeField] private int tracker = 0;
+    [SerializeField] public GameObject postButton;
+
+    private int tracker = 0;
     public bool correctlySorted = false;
 
     public void CheckForCorrectFurniture()
     {
+        postButton.SetActive(true);
         if (pic_couch.tag == des_couch.tag && pic_couch.tag != "Unassigned")
         {
             if (pic_couch.GetComponent<DragAds>().enabled == true)
@@ -158,5 +161,90 @@ public class AdChecker : MonoBehaviour
         {
             correctlySorted = true;
         }
+    }
+
+    public void ResetAdChecker()
+    {
+        postButton.SetActive(true);
+        tracker = 0;
+        correctlySorted = false;
+
+        pic_couch.tag = "Unassigned";
+        pic_armchair.tag = "Unassigned";
+        pic_table.tag = "Unassigned";
+        pic_sidetable.tag = "Unassigned";
+        pic_shelf.tag = "Unassigned";
+        pic_lamp.tag = "Unassigned";
+        des_couch.tag = "Unassigned";
+        des_armchair.tag = "Unassigned";
+        des_table.tag = "Unassigned";
+        des_sidetable.tag = "Unassigned";
+        des_shelf.tag = "Unassigned";
+        des_lamp.tag = "Unassigned";
+
+        pic_vase01.tag = "Unassigned";
+        pic_vase02.tag = "Unassigned";;
+        pic_tablelamp.tag = "Unassigned";
+        pic_chair.tag = "Unassigned";
+        pic_mirror.tag = "Unassigned";
+        pic_stool.tag = "Unassigned";
+        des_vase01.tag = "Unassigned";
+        des_vase02.tag = "Unassigned";
+        des_tablelamp.tag = "Unassigned";
+        des_chair.tag = "Unassigned";
+        des_mirror.tag = "Unassigned";
+        des_stool.tag = "Unassigned";
+
+        pic_couch.GetComponent<DragAds>().enabled = true;
+        pic_armchair.GetComponent<DragAds>().enabled = true;
+        pic_table.GetComponent<DragAds>().enabled = true;
+        pic_sidetable.GetComponent<DragAds>().enabled = true;
+        pic_shelf.GetComponent<DragAds>().enabled = true;
+        pic_lamp.GetComponent<DragAds>().enabled = true;
+        des_couch.GetComponent<DragAds>().enabled = true;
+        des_armchair.GetComponent<DragAds>().enabled = true;
+        des_table.GetComponent<DragAds>().enabled = true;
+        des_sidetable.GetComponent<DragAds>().enabled = true;
+        des_shelf.GetComponent<DragAds>().enabled = true;
+        des_lamp.GetComponent<DragAds>().enabled = true;
+
+        pic_vase01.GetComponent<DragAds>().enabled = true;
+        pic_vase02.GetComponent<DragAds>().enabled = true;
+        pic_tablelamp.GetComponent<DragAds>().enabled = true;
+        pic_chair.GetComponent<DragAds>().enabled = true;
+        pic_mirror.GetComponent<DragAds>().enabled = true;
+        pic_stool.GetComponent<DragAds>().enabled = true;
+        des_vase01.GetComponent<DragAds>().enabled = true;
+        des_vase02.GetComponent<DragAds>().enabled = true;
+        des_tablelamp.GetComponent<DragAds>().enabled = true;
+        des_chair.GetComponent<DragAds>().enabled = true;
+        des_mirror.GetComponent<DragAds>().enabled = true;
+        des_stool.GetComponent<DragAds>().enabled = true;
+
+        pic_couch.GetComponent<DragAds>().ResetParent();
+        pic_armchair.GetComponent<DragAds>().ResetParent();
+        pic_table.GetComponent<DragAds>().ResetParent();
+        pic_sidetable.GetComponent<DragAds>().ResetParent();
+        pic_shelf.GetComponent<DragAds>().ResetParent();
+        pic_lamp.GetComponent<DragAds>().ResetParent();
+        des_couch.GetComponent<DragAds>().ResetParent();
+        des_armchair.GetComponent<DragAds>().ResetParent();
+        des_table.GetComponent<DragAds>().ResetParent();
+        des_sidetable.GetComponent<DragAds>().ResetParent();
+        des_shelf.GetComponent<DragAds>().ResetParent();
+        des_lamp.GetComponent<DragAds>().ResetParent();
+
+        pic_vase01.GetComponent<DragAds>().ResetParent();
+        pic_vase02.GetComponent<DragAds>().ResetParent();
+        pic_tablelamp.GetComponent<DragAds>().ResetParent();
+        pic_chair.GetComponent<DragAds>().ResetParent();
+        pic_mirror.GetComponent<DragAds>().ResetParent();
+        pic_stool.GetComponent<DragAds>().ResetParent();
+        des_vase01.GetComponent<DragAds>().ResetParent();
+        des_vase02.GetComponent<DragAds>().ResetParent();
+        des_tablelamp.GetComponent<DragAds>().ResetParent();
+        des_chair.GetComponent<DragAds>().ResetParent();
+        des_mirror.GetComponent<DragAds>().ResetParent();
+        des_stool.GetComponent<DragAds>().ResetParent();
     }
 }

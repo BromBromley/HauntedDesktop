@@ -23,6 +23,26 @@ public class FurnitureTracker : MonoBehaviour
         } 
     }
 
+    public void ResetAdPosition()
+    {
+        foreach (GameObject ad in verkaufsportalPics)
+        {
+            ad.transform.position = ad.GetComponent<DragAds>().startPositionAd;
+        }
+        foreach (GameObject ad in verkaufsportalDes)
+        {
+            ad.transform.position = ad.GetComponent<DragAds>().startPositionAd;
+        }
+        foreach (GameObject ad in raumplanerPics)
+        {
+            ad.transform.position = ad.GetComponent<DragAds>().startPositionAd;
+        }
+        foreach (GameObject ad in raumplanerDes)
+        {
+            ad.transform.position = ad.GetComponent<DragAds>().startPositionAd;
+        }
+    }
+
     public void SellFurniture()
     {
         if (raumplanerIcons[0].tag == "Sell")

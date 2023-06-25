@@ -127,9 +127,8 @@ public class UIManager : MonoBehaviour
         popUpEmailError.SetActive(false);
     }
 
-    public void OpenVerkaufsportalAfterError()
+    public void ShowGeisterscannerAd()
     {
-        minigameLayout.SetActive(false);
         adGeisterscanner.SetActive(true);
     }
 

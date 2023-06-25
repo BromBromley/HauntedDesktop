@@ -15,6 +15,7 @@ public class DragAds : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragH
     private AdChecker _adChecker;
 
     private Transform originalParent;
+    public  Vector3 startPositionAd;
 
     public delegate void DragEndedDelegate(DragAds draggable);
     public DragEndedDelegate dragEndedCallback;
@@ -24,6 +25,12 @@ public class DragAds : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragH
         draggableObject = transform as RectTransform;
         _adChecker = FindObjectOfType<AdChecker>();
         originalParent = draggableObject.transform.parent;
+        startPositionAd = draggableObject.position;
+    }
+
+    public void ResetParent()
+    {
+        draggableObject.SetParent(originalParent);
     }
 
     public void OnBeginDrag(PointerEventData eventData)

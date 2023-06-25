@@ -23,7 +23,7 @@ public class GameManager : MonoBehaviour
     public bool isBartyActive;
 
 // Feedback for buttins (raumplaner 1 und Ebuy 1) (added by alina)
-    [SerializeField] private GameObject feedbackeBuy;
+    [SerializeField] private GameObject feedbackEbooh;
     [SerializeField] private GameObject feedbackraumPlan;
 
     //public Texture2D planchette;
@@ -93,8 +93,8 @@ public class GameManager : MonoBehaviour
         {
             StartCoroutine(_uiManager.ShowingPopUpArthur());
             _emailManager.ShowNewEmailArthurTab();
-            feedbackeBuy.SetActive(true);
-            //_emailManager.ShowNoEmail();
+            feedbackEbooh.SetActive(true);
+            _adChecker.postButton.SetActive(false);
             // show checkmark
         }
     }
@@ -152,13 +152,34 @@ public class GameManager : MonoBehaviour
     {
         _browserManager.OpenBrowser();
         _browserManager.PutVerkaufsportalOnFront();
-        _uiManager.OpenVerkaufsportal();
-        _uiManager.OpenVerkaufsportalAfterError();
+        feedbackEbooh.SetActive(false);
+        _adChecker.ResetAdChecker();
+        _adChecker.postButton.SetActive(true);
+        _furnitureTracker.ResetAdPosition();
+        StartCoroutine(HauntingRoundTwo());
+    }
+
+    // manages Barty's behaviour upon reopening ebooh
+    IEnumerator HauntingRoundTwo()
+    {
+        isBartyActive = true;
+        _mouseBehaviour.enabled = true;
+        StartCoroutine(_mouseBehaviour.BartyActivity());
+
+        yield return new WaitForSeconds(25);
+
+        _uiManager.ShowGeisterscannerAd();
+        _browserManager.blocker.SetActive(false);
     }
 
     // opens the Geisterscanner website when ad is clicked
     public void ClickOnGeisterscannerAd()
     {
+        isBartyActive = false;
+        _mouseBehaviour.fakeCursor.SetActive(false);
+        _mouseBehaviour.enabled = false;
+        Cursor.visible = true;
+
         _uiManager.OpenGeisterscannerWebsite();
         _browserManager.PutGeisterscannerOnFront();
         _browserManager.ShowGeisterscannerTab();
