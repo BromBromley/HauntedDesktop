@@ -34,11 +34,8 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject documentGrundriss;
     [SerializeField] private GameObject documentFotoFront;
 
-    [SerializeField] private GameObject feedbackEbuy;
-    [SerializeField] private GameObject feedbackGrundriss;
-
-
-    
+    public GameObject feedbackEbooh;
+    public GameObject feedbackRaumplaner;
 
     private void Start() 
     {
@@ -63,8 +60,8 @@ public class UIManager : MonoBehaviour
         documentErbschein.SetActive(false);
         documentGrundriss.SetActive(false);
         documentFotoFront.SetActive(false);
-        feedbackEbuy.SetActive(false);
-        feedbackGrundriss.SetActive(false);
+        feedbackEbooh.SetActive(false);
+        feedbackRaumplaner.SetActive(false);
     }
 
 

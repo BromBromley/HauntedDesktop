@@ -22,10 +22,6 @@ public class GameManager : MonoBehaviour
 
     public bool isBartyActive;
 
-// Feedback for buttins (raumplaner 1 und Ebuy 1) (added by alina)
-    [SerializeField] private GameObject feedbackEbooh;
-    [SerializeField] private GameObject feedbackraumPlan;
-
     //public Texture2D planchette;
 
     void Awake()
@@ -71,7 +67,7 @@ public class GameManager : MonoBehaviour
     public void RaumplanerOneDone()
     {
         dragBlocker.SetActive(true);
-        feedbackraumPlan.SetActive(true);
+        _uiManager.feedbackRaumplaner.SetActive(true);
     }
 
     // activated when link on to do list is pressed
@@ -82,7 +78,7 @@ public class GameManager : MonoBehaviour
         _uiManager.OpenVerkaufsportal();
         _browserManager.ShowVerkaufsportalTab();
         _browserManager.PutVerkaufsportalOnFront();
-        feedbackraumPlan.SetActive(false);
+        _uiManager.feedbackRaumplaner.SetActive(false);
     }
 
     // activated when 'Post' button is clicked
@@ -93,7 +89,7 @@ public class GameManager : MonoBehaviour
         {
             StartCoroutine(_uiManager.ShowingPopUpArthur());
             _emailManager.ShowNewEmailArthurTab();
-            feedbackEbooh.SetActive(true);
+            _uiManager.feedbackEbooh.SetActive(true);
             _adChecker.postButton.SetActive(false);
             // show checkmark
         }
@@ -152,7 +148,7 @@ public class GameManager : MonoBehaviour
     {
         _browserManager.OpenBrowser();
         _browserManager.PutVerkaufsportalOnFront();
-        feedbackEbooh.SetActive(false);
+        _uiManager.feedbackEbooh.SetActive(false);
         _adChecker.ResetAdChecker();
         _adChecker.postButton.SetActive(true);
         _furnitureTracker.ResetAdPosition();
