@@ -58,7 +58,7 @@ public class MediumMatch : MonoBehaviour
         witchAnswers[3] = "darkness";
         witchAnswers[4] = "exorcism";
 
-        hippieAnswers[0] = "impartiality";
+        hippieAnswers[0] = "open-mindedness";
         hippieAnswers[1] = "avocado green andsunshine yellow";
         hippieAnswers[2] = "yoga retreat";
         hippieAnswers[3] = "loneliness";
@@ -231,7 +231,7 @@ public class MediumMatch : MonoBehaviour
         button3.SetActive(false);
 
         displayedQuestion.text = "";
-        resultsText.text = "Dir kann am besten " + results[resultsInt] + " helfen!";
+        resultsText.text = "The medium " + results[resultsInt] + " fits to you!";
         toSelection.SetActive(true);
     }
 
