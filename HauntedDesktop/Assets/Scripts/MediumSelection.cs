@@ -14,6 +14,7 @@ public class MediumSelection : MonoBehaviour
     [SerializeField] private GameObject overviewWitch;
     [SerializeField] private GameObject overviewHippie;
     [SerializeField] private GameObject overviewCyber;
+    [SerializeField] private GameObject mediumExplanation;
 
     void Awake()
     {
@@ -24,6 +25,7 @@ public class MediumSelection : MonoBehaviour
         overviewWitch.SetActive(false);
         overviewHippie.SetActive(false);
         overviewCyber.SetActive(false);
+        mediumExplanation.SetActive(false);
     }
 
     public void OpenSelection()
@@ -65,9 +67,16 @@ public class MediumSelection : MonoBehaviour
         mediumMatch.SetActive(true);
     }
 
-    public void OpenCommunication()
+    // should open the medium intro
+    public void OpenExplanation()
     {
         mediumSelection.SetActive(false);
+        mediumExplanation.SetActive(true);
+    }
+
+    public void OpenCommunication()
+    {
+        mediumExplanation.SetActive(false);
         communicationScreen.SetActive(true);
     }
 }
