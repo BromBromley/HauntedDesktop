@@ -24,29 +24,6 @@ public class CommunicationPhase : MonoBehaviour
     [SerializeField] private int angerScore;
     [SerializeField] private int currentDialogue;
 
-    // Score visualization
-    /*[SerializeField] private GameObject sadnessMeter;
-    [SerializeField] private GameObject angerMeter;
-    [SerializeField] private GameObject sadnessScoreMinusEight;
-    [SerializeField] private GameObject sadnessScoreMinusSix;
-    [SerializeField] private GameObject sadnessScoreMinusFour;
-    [SerializeField] private GameObject sadnessScoreMinusTwo;
-    [SerializeField] private GameObject sadnessScoreZero;
-    [SerializeField] private GameObject sadnessScoreTwo;
-    [SerializeField] private GameObject sadnessScoreFour;
-    [SerializeField] private GameObject sadnessScoreSix;
-    [SerializeField] private GameObject sadnessScoreEight;
-
-    [SerializeField] private GameObject angerScoreMinusEight;
-    [SerializeField] private GameObject angerScoreMinusSix;
-    [SerializeField] private GameObject angerScoreMinusFour;
-    [SerializeField] private GameObject angerScoreMinusTwo;
-    [SerializeField] private GameObject angerScoreZero;
-    [SerializeField] private GameObject angerScoreTwo;
-    [SerializeField] private GameObject angerScoreFour;
-    [SerializeField] private GameObject angerScoreSix;
-    [SerializeField] private GameObject angerScoreEight;*/
-
     [SerializeField] private GameObject angerLevel;
     [SerializeField] private GameObject sadnessLevel;
 
@@ -86,6 +63,10 @@ public class CommunicationPhase : MonoBehaviour
     string[] answerLeftD = new string[6];
     string[] answerRightD = new string[6];
 
+    [SerializeField] private GameObject endscreen;
+    [SerializeField] private GameObject goodEndingText;
+    [SerializeField] private GameObject badEndingText;
+
     void Start()
     {
         buttonLeft = buttonLeft.GetComponent<Button>();
@@ -103,6 +84,8 @@ public class CommunicationPhase : MonoBehaviour
 
         textBarty = textBarty.GetComponent<TMP_Text>();
         textBarty.text = "";
+
+        endscreen.SetActive(false);
     }
 
     private void AssignArrays()
@@ -483,18 +466,33 @@ public class CommunicationPhase : MonoBehaviour
         }
         else
         {
-            buttonLeft.gameObject.SetActive(false);
-            buttonRight.gameObject.SetActive(false);
+            ShowMiddleButton();
+            textAnswerMiddle.text = "End communication";
 
             if (sadnessScore < -4)
             {
                 textBarty.text = "You know what, I don't trust you. I will stay here forever and keep an eye on everything. I will watch you and you won't change anything in the house!";
+                buttonMiddle.onClick.AddListener(ShowBadEnding);
             }
             else
             {
                 textBarty.text = "Thank you for your help, goodbye!";
+                buttonMiddle.onClick.AddListener(ShowGoodEnding);
             }
         }
+    }
+
+    // opens the endscreen based on the outcome of the conversation
+    private void ShowGoodEnding()
+    {
+        endscreen.SetActive(true);
+        goodEndingText.SetActive(true);
+    }
+
+    private void ShowBadEnding()
+    {
+        endscreen.SetActive(true);
+        badEndingText.SetActive(true);
     }
 
     // checks which dialogue was chosen based on a bool and current dialogue and changes the scores accordingly
