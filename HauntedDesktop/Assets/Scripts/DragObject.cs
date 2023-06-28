@@ -11,6 +11,7 @@ public class DragObject : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
     // attached to each draggable object
 
     private RectTransform draggableObject;
+    [SerializeField] private GameObject picture;
     private Vector3 velocity = Vector3.zero;
     private float dampingSpeed = 0.03f;
     private bool dragging = false;
@@ -31,6 +32,7 @@ public class DragObject : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
     private void Awake()
     {
         draggableObject = transform as RectTransform;
+        picture.SetActive(false);
         startPosition = draggableObject.position;
         startRotation = draggableObject.rotation;
         originalParent = draggableObject.transform.parent;
@@ -58,6 +60,16 @@ public class DragObject : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
         if (RectTransformUtility.ScreenPointToWorldPointInRectangle(draggableObject, eventData.position, eventData.pressEventCamera, out var mousePosition))
         {
             draggableObject.position = Vector3.SmoothDamp(draggableObject.position, mousePosition, ref velocity, dampingSpeed);
+            if (draggableObject.transform.position.x < 1025)
+            {
+                picture.SetActive(true);
+                draggableObject.GetComponent<Image>().enabled = false;
+            }
+            else
+            {
+                picture.SetActive(false);
+                draggableObject.GetComponent<Image>().enabled = true;
+            }
         }
     }
 
