@@ -25,7 +25,7 @@ public class CommunicationPhase : MonoBehaviour
     [SerializeField] private int currentDialogue;
 
     // Score visualization
-    [SerializeField] private GameObject sadnessMeter;
+    /*[SerializeField] private GameObject sadnessMeter;
     [SerializeField] private GameObject angerMeter;
     [SerializeField] private GameObject sadnessScoreMinusEight;
     [SerializeField] private GameObject sadnessScoreMinusSix;
@@ -45,8 +45,12 @@ public class CommunicationPhase : MonoBehaviour
     [SerializeField] private GameObject angerScoreTwo;
     [SerializeField] private GameObject angerScoreFour;
     [SerializeField] private GameObject angerScoreSix;
-    [SerializeField] private GameObject angerScoreEight;
-    
+    [SerializeField] private GameObject angerScoreEight;*/
+
+    [SerializeField] private GameObject angerLevel;
+    [SerializeField] private GameObject sadnessLevel;
+
+    Vector3 scaleChange = new Vector3(0.0f, 0.1f, 0.0f);
 
     private bool doingA;
     private bool doingB;
@@ -96,9 +100,6 @@ public class CommunicationPhase : MonoBehaviour
         buttonMiddle.gameObject.SetActive(false);
 
         textMedium.SetActive(true);
-
-        angerMeter.SetActive(false);
-        sadnessMeter.SetActive(false);
 
         textBarty = textBarty.GetComponent<TMP_Text>();
         textBarty.text = "";
@@ -172,11 +173,11 @@ public class CommunicationPhase : MonoBehaviour
         buttonMiddle.onClick.AddListener(BartyAppears);
         textAnswerMiddle.text = "Hello";
         textMedium.SetActive(true);
-        
     }
 
     private void BartyAppears()
     {
+        MeterTracking();
         textMedium.SetActive(false);
         
         textBarty.text = "Who is this?";
@@ -187,13 +188,11 @@ public class CommunicationPhase : MonoBehaviour
         
         textAnswerRight.text = "Someone who wants to get to know you.";
         buttonRight.onClick.AddListener(StartB);
-        
-        MeterTracking();
-
     }
 
     private void StartA()
     {
+        MeterTracking();
         currentDialogue = 0;
         doingA = true;
         RemoveListeners();
@@ -206,19 +205,17 @@ public class CommunicationPhase : MonoBehaviour
 
         textAnswerLeft.text = answerLeftA[currentDialogue];
         textAnswerRight.text = answerRightA[currentDialogue];
-        MeterTracking();
-    
     }
 
     private void NextDialogueA()
     {
+        MeterTracking();
         if (currentDialogue < 3)
         {
             textBarty.text = bartyA[currentDialogue];
 
             textAnswerLeft.text = answerLeftA[currentDialogue];
             textAnswerRight.text = answerRightA[currentDialogue];
-            MeterTracking();
         }
         else
         {
@@ -229,7 +226,6 @@ public class CommunicationPhase : MonoBehaviour
 
             sadnessScore += 2;
             angerScore += 2;
-            MeterTracking();
 
             doingA = false;
             completedA = true;
@@ -247,6 +243,7 @@ public class CommunicationPhase : MonoBehaviour
 
     private void StartB()
     {
+        MeterTracking();
         currentDialogue = 0;
         doingB = true;
         RemoveListeners();
@@ -259,18 +256,17 @@ public class CommunicationPhase : MonoBehaviour
 
         textAnswerLeft.text = answerLeftB[currentDialogue];
         textAnswerRight.text = answerRightB[currentDialogue];
-        MeterTracking();
     }
 
     private void NextDialogueB()
     {
+        MeterTracking();
         if (currentDialogue < 2)
         {
             textBarty.text = bartyB[currentDialogue];
 
             textAnswerLeft.text = answerLeftB[currentDialogue];
             textAnswerRight.text = answerRightB[currentDialogue];
-            MeterTracking();
         }
         else
         {
@@ -281,7 +277,6 @@ public class CommunicationPhase : MonoBehaviour
 
             sadnessScore++;
             angerScore++;
-            MeterTracking();
 
             doingB = false;
             completedB = true;
@@ -300,6 +295,7 @@ public class CommunicationPhase : MonoBehaviour
 
     private void StartC()
     {
+        MeterTracking();
         currentDialogue = 0;
         RemoveListeners();
         buttonMiddle.gameObject.SetActive(false);
@@ -311,19 +307,18 @@ public class CommunicationPhase : MonoBehaviour
             buttonRight.gameObject.SetActive(true);
             textAnswerRight.text = "Maybe something is holding you back.";
             buttonRight.onClick.AddListener(ContinueC);
-            MeterTracking();
         }
         if (completedC0 == false)
         {
             buttonLeft.gameObject.SetActive(true);
             textAnswerLeft.text = "Maybe it has something to do with how you died.";
             buttonLeft.onClick.AddListener(ContinueC0);
-            MeterTracking();
         }
     }
 
     private void ContinueC()
     {
+        MeterTracking();
         doingC = true;
         RemoveListeners();
 
@@ -337,7 +332,6 @@ public class CommunicationPhase : MonoBehaviour
 
             textAnswerLeft.text = answerLeftC[currentDialogue];
             textAnswerRight.text = answerRightC[currentDialogue];
-            MeterTracking();
         }
         else
         {
@@ -350,23 +344,21 @@ public class CommunicationPhase : MonoBehaviour
 
             doingC = false;
             completedC = true;
-            MeterTracking();
 
             if (angerScore <= -3)
             {
                 buttonMiddle.onClick.AddListener(StartX);
-                MeterTracking();
             }
             else
             {
                 buttonMiddle.onClick.AddListener(StartD);
-                MeterTracking();
             }
         }
     }
 
     private void ContinueC0()
     {
+        MeterTracking();
         doingC0 = true;
         RemoveListeners();
 
@@ -380,7 +372,6 @@ public class CommunicationPhase : MonoBehaviour
 
             textAnswerLeft.text = "An object was involved in you death.";
             textAnswerRight.text = "The vase killed you.";
-            MeterTracking();
         }
         else if (currentDialogue == 1)
         {
@@ -390,7 +381,6 @@ public class CommunicationPhase : MonoBehaviour
             ShowMiddleButton();
             buttonMiddle.onClick.AddListener(ContinueC0);
             textAnswerMiddle.text = "I could destroy the vase. What do you think?";
-            MeterTracking();
         }
         else if (currentDialogue > 1)
         {
@@ -399,7 +389,6 @@ public class CommunicationPhase : MonoBehaviour
 
             sadnessScore -= 2;
             angerScore -= 2;
-            MeterTracking();
 
             doingC0 = false;
             completedC0 = true;
@@ -417,6 +406,7 @@ public class CommunicationPhase : MonoBehaviour
 
     private void StartX()
     {
+        MeterTracking();
         currentDialogue = 0;
         doingX = true;
         RemoveListeners();
@@ -429,18 +419,17 @@ public class CommunicationPhase : MonoBehaviour
 
         textAnswerLeft.text = answerLeftX[currentDialogue];
         textAnswerRight.text = answerRightX[currentDialogue];
-        MeterTracking();
     }
 
     private void NextDialogueX()
     {
+        MeterTracking();
         if (currentDialogue < 2)
         {
             textBarty.text = bartyX[currentDialogue];
 
             textAnswerLeft.text = answerLeftX[currentDialogue];
             textAnswerRight.text = answerRightX[currentDialogue];
-            MeterTracking();
         }
         else
         {
@@ -451,25 +440,23 @@ public class CommunicationPhase : MonoBehaviour
 
             sadnessScore++;
             angerScore++;
-            MeterTracking();
 
             doingX = false;
 
             if (completedC)
             {
                 buttonMiddle.onClick.AddListener(StartD);
-                MeterTracking();
             }
             else
             {
                 buttonMiddle.onClick.AddListener(StartC);
-                MeterTracking();
             }
         }
     }
 
     private void StartD()
     {
+        MeterTracking();
         currentDialogue = 0;
         doingD = true;
         RemoveListeners();
@@ -482,18 +469,17 @@ public class CommunicationPhase : MonoBehaviour
 
         textAnswerLeft.text = answerLeftD[currentDialogue];
         textAnswerRight.text = answerRightD[currentDialogue];
-        MeterTracking();
     }
 
     private void NextDialogueD()
     {
+        MeterTracking();
         if (currentDialogue < 6)
         {
             textBarty.text = bartyD[currentDialogue];
 
             textAnswerLeft.text = answerLeftD[currentDialogue];
             textAnswerRight.text = answerRightD[currentDialogue];
-            MeterTracking();
         }
         else
         {
@@ -503,16 +489,15 @@ public class CommunicationPhase : MonoBehaviour
             if (sadnessScore < -4)
             {
                 textBarty.text = "You know what, I don't trust you. I will stay here forever and keep an eye on everything. I will watch you and you won't change anything in the house!";
-            MeterTracking();
             }
             else
             {
                 textBarty.text = "Thank you for your help, goodbye!";
-                MeterTracking();
             }
         }
     }
 
+    // checks which dialogue was chosen based on a bool and current dialogue and changes the scores accordingly
     private void ChoseLeft()
     {
         currentDialogue++;
@@ -520,7 +505,6 @@ public class CommunicationPhase : MonoBehaviour
         {
             sadnessScore--;
             angerScore--;
-            MeterTracking();
             NextDialogueA();
             
         }
@@ -528,7 +512,6 @@ public class CommunicationPhase : MonoBehaviour
         {
             sadnessScore--;
             angerScore--;
-            MeterTracking();
             NextDialogueB();
         }
         if (doingC)
@@ -537,13 +520,11 @@ public class CommunicationPhase : MonoBehaviour
             {
                 sadnessScore--;
                 angerScore++;
-                MeterTracking();
             }
             if (currentDialogue == 2)
             {
                 sadnessScore--;
                 angerScore++;
-                MeterTracking();
             }
             ContinueC();
         }
@@ -553,7 +534,6 @@ public class CommunicationPhase : MonoBehaviour
             {
                 sadnessScore -= 2;
                 angerScore--;
-                MeterTracking();
                 ContinueC0();
             }
         }
@@ -561,7 +541,6 @@ public class CommunicationPhase : MonoBehaviour
         {
             sadnessScore++;
             angerScore++;
-            MeterTracking();
             NextDialogueX();
         }
         if (doingD)
@@ -570,13 +549,11 @@ public class CommunicationPhase : MonoBehaviour
             {
                 sadnessScore -= 2;
                 angerScore--;
-                MeterTracking();
             }
             else
             {
                 sadnessScore--;
                 angerScore--;
-                MeterTracking();
             }
             NextDialogueD();
         }
@@ -589,14 +566,12 @@ public class CommunicationPhase : MonoBehaviour
         {
             sadnessScore--;
             angerScore++;
-            MeterTracking();
             NextDialogueA();
         }
         if (doingB)
         {
             sadnessScore++;
             angerScore++;
-            MeterTracking();
             NextDialogueB();
         }
         if (doingC)
@@ -605,12 +580,10 @@ public class CommunicationPhase : MonoBehaviour
             {
                 sadnessScore++;
                 angerScore--;
-                MeterTracking();
             }
             if (currentDialogue == 2)
             {
                 sadnessScore--;
-                MeterTracking();
             }
             ContinueC();
         }
@@ -620,7 +593,6 @@ public class CommunicationPhase : MonoBehaviour
             {
                 sadnessScore -= 2;
                 angerScore -= 2;
-                MeterTracking();
                 ContinueC0();
             }
         }
@@ -628,7 +600,6 @@ public class CommunicationPhase : MonoBehaviour
         {
             sadnessScore++;
             angerScore++;
-            MeterTracking();
             NextDialogueX();
         }
         if (doingD)
@@ -637,18 +608,17 @@ public class CommunicationPhase : MonoBehaviour
             {
                 sadnessScore++;
                 angerScore++;
-                MeterTracking();
             }
             else
             {
                 sadnessScore += 2;
                 angerScore++;
-                MeterTracking();
             }
             NextDialogueD();
         }
     }
 
+    // shows the left and right button every time there's two dialogue options
     private void ShowTwoButtons()
     {
         buttonLeft.gameObject.SetActive(true);
@@ -656,6 +626,7 @@ public class CommunicationPhase : MonoBehaviour
         buttonMiddle.gameObject.SetActive(false);
     }
 
+    // shows the middle button every time there's only one dialogue option
     private void ShowMiddleButton()
     {
         buttonLeft.gameObject.SetActive(false);
@@ -663,6 +634,7 @@ public class CommunicationPhase : MonoBehaviour
         buttonMiddle.gameObject.SetActive(true);
     }
 
+    // removes all listeners from the answer buttons
     private void RemoveListeners()
     {
         buttonLeft.onClick.RemoveAllListeners();
@@ -670,311 +642,105 @@ public class CommunicationPhase : MonoBehaviour
         buttonMiddle.onClick.RemoveAllListeners();   
     }
 
+    // changes the shown level of sadness and anger according to the scores
     private void MeterTracking()
     {
-        sadnessMeter.SetActive(true);
-        angerMeter.SetActive(true);
-        sadnessScoreEight.SetActive(false);
-        sadnessScoreSix.SetActive(false);
-        sadnessScoreFour.SetActive(false);
-        sadnessScoreTwo.SetActive(false);
-        sadnessScoreZero.SetActive(true);
-        sadnessScoreMinusTwo.SetActive(false);
-        sadnessScoreMinusFour.SetActive(false);
-        sadnessScoreMinusSix.SetActive(false);
-        sadnessScoreMinusEight.SetActive(false);
-
-        angerScoreEight.SetActive(false);
-        angerScoreSix.SetActive(false);
-        angerScoreFour.SetActive(false);
-        angerScoreTwo.SetActive(false);
-        angerScoreZero.SetActive(true);
-        angerScoreMinusTwo.SetActive(false);
-        angerScoreMinusFour.SetActive(false);
-        angerScoreMinusSix.SetActive(false);
-        angerScoreMinusEight.SetActive(false);
-        // Sadness_Meter 
-      if (sadnessScore== -8)
-      {
-        sadnessScoreMinusEight.SetActive(true);
-        sadnessScoreEight.SetActive(false);
-        sadnessScoreSix.SetActive(false);
-        sadnessScoreFour.SetActive(false);
-        sadnessScoreTwo.SetActive(false);
-        sadnessScoreZero.SetActive(false);
-        sadnessScoreMinusTwo.SetActive(false);
-        sadnessScoreMinusFour.SetActive(false);
-        sadnessScoreMinusSix.SetActive(false);
-        }
-
-        if (sadnessScore== -7)
-      {
-        sadnessScoreMinusEight.SetActive(true);
-        sadnessScoreEight.SetActive(false);
-        sadnessScoreSix.SetActive(false);
-        sadnessScoreFour.SetActive(false);
-        sadnessScoreTwo.SetActive(false);
-        sadnessScoreZero.SetActive(false);
-        sadnessScoreMinusTwo.SetActive(false);
-        sadnessScoreMinusFour.SetActive(false);
-        sadnessScoreMinusSix.SetActive(false);
-        }
-        
-
-        if (sadnessScore== -6)
+        if (angerScore > 10)
         {
-        sadnessScoreEight.SetActive(false);
-        sadnessScoreSix.SetActive(false);
-        sadnessScoreFour.SetActive(false);
-        sadnessScoreTwo.SetActive(false);
-        sadnessScoreZero.SetActive(false);
-        sadnessScoreMinusTwo.SetActive(false);
-        sadnessScoreMinusFour.SetActive(false);
-        sadnessScoreMinusSix.SetActive(true);
-        sadnessScoreMinusEight.SetActive(false);
+            angerLevel.transform.localScale = new Vector3(1f, 0.0f, 1f);
         }
-
-        if (sadnessScore== -5)
+        if (angerScore == 10 || angerScore == 9)
         {
-        sadnessScoreEight.SetActive(false);
-        sadnessScoreSix.SetActive(false);
-        sadnessScoreFour.SetActive(false);
-        sadnessScoreTwo.SetActive(false);
-        sadnessScoreZero.SetActive(false);
-        sadnessScoreMinusTwo.SetActive(false);
-        sadnessScoreMinusFour.SetActive(false);
-        sadnessScoreMinusSix.SetActive(true);
-        sadnessScoreMinusEight.SetActive(false);
+            angerLevel.transform.localScale = new Vector3(1f, 0.09f, 1f);
         }
-
-        if (sadnessScore== -4)
+        if (angerScore == 8 || angerScore == 7) 
         {
-        sadnessScoreEight.SetActive(false);
-        sadnessScoreSix.SetActive(false);
-        sadnessScoreFour.SetActive(false);
-        sadnessScoreTwo.SetActive(false);
-        sadnessScoreZero.SetActive(false);
-        sadnessScoreMinusTwo.SetActive(false);
-        sadnessScoreMinusFour.SetActive(true);
-        sadnessScoreMinusSix.SetActive(false);
-        sadnessScoreMinusEight.SetActive(false);
+            angerLevel.transform.localScale = new Vector3(1f, 0.18f, 1f);
         }
-        
-        if (sadnessScore== -3)
+        if (angerScore == 6 || angerScore == 5)
         {
-        sadnessScoreEight.SetActive(false);
-        sadnessScoreSix.SetActive(false);
-        sadnessScoreFour.SetActive(false);
-        sadnessScoreTwo.SetActive(false);
-        sadnessScoreZero.SetActive(false);
-        sadnessScoreMinusTwo.SetActive(false);
-        sadnessScoreMinusFour.SetActive(true);
-        sadnessScoreMinusSix.SetActive(false);
-        sadnessScoreMinusEight.SetActive(false);
+            angerLevel.transform.localScale = new Vector3(1f, 0.27f, 1f);
         }
-        
-        if (sadnessScore== -2)
+        if (angerScore == 4 || angerScore == 3)
         {
-        sadnessScoreEight.SetActive(false);
-        sadnessScoreSix.SetActive(false);
-        sadnessScoreFour.SetActive(false);
-        sadnessScoreTwo.SetActive(false);
-        sadnessScoreZero.SetActive(false);
-        sadnessScoreMinusTwo.SetActive(true);
-        sadnessScoreMinusFour.SetActive(false);
-        sadnessScoreMinusSix.SetActive(false);
-        sadnessScoreMinusEight.SetActive(false);
+            angerLevel.transform.localScale = new Vector3(1f, 0.36f, 1f);
         }
-        if (sadnessScore== -1)
+        if (angerScore == 2 || angerScore == 1)
         {
-        sadnessScoreEight.SetActive(false);
-        sadnessScoreSix.SetActive(false);
-        sadnessScoreFour.SetActive(false);
-        sadnessScoreTwo.SetActive(false);
-        sadnessScoreZero.SetActive(false);
-        sadnessScoreMinusTwo.SetActive(true);
-        sadnessScoreMinusFour.SetActive(false);
-        sadnessScoreMinusSix.SetActive(false);
-        sadnessScoreMinusEight.SetActive(false);
+            angerLevel.transform.localScale = new Vector3(1f, 0.45f, 1f);
         }
-        
-      if (sadnessScore== 0)
+        if (angerScore == 0 || angerScore == -1)
         {
-        sadnessScoreEight.SetActive(false);
-        sadnessScoreSix.SetActive(false);
-        sadnessScoreFour.SetActive(false);
-        sadnessScoreTwo.SetActive(false);
-        sadnessScoreZero.SetActive(true);
-        sadnessScoreMinusTwo.SetActive(false);
-        sadnessScoreMinusFour.SetActive(false);
-        sadnessScoreMinusSix.SetActive(false);
-        sadnessScoreMinusEight.SetActive(false);
+            angerLevel.transform.localScale = new Vector3(1f, 0.54f, 1f);
         }
-
-        if (sadnessScore== 1)
+        if (angerScore == -2 || angerScore == -3)
         {
-        sadnessScoreEight.SetActive(false);
-        sadnessScoreSix.SetActive(false);
-        sadnessScoreFour.SetActive(false);
-        sadnessScoreTwo.SetActive(false);
-        sadnessScoreZero.SetActive(true);
-        sadnessScoreMinusTwo.SetActive(false);
-        sadnessScoreMinusFour.SetActive(false);
-        sadnessScoreMinusSix.SetActive(false);
-        sadnessScoreMinusEight.SetActive(false);
+            angerLevel.transform.localScale = new Vector3(1f, 0.63f, 1f);
         }
-
-        if (sadnessScore== 2)
+        if (angerScore == -4 || angerScore == -5)
         {
-        sadnessScoreEight.SetActive(false);
-        sadnessScoreSix.SetActive(false);
-        sadnessScoreFour.SetActive(false);
-        sadnessScoreTwo.SetActive(true);
-        sadnessScoreZero.SetActive(false);
-        sadnessScoreMinusTwo.SetActive(false);
-        sadnessScoreMinusFour.SetActive(false);
-        sadnessScoreMinusSix.SetActive(false);
-        sadnessScoreMinusEight.SetActive(false);
+            angerLevel.transform.localScale = new Vector3(1f, 0.72f, 1f);
         }
-        
-        if (sadnessScore== 3)
+        if (angerScore == -6 || angerScore == -7)
         {
-        sadnessScoreEight.SetActive(false);
-        sadnessScoreSix.SetActive(false);
-        sadnessScoreFour.SetActive(false);
-        sadnessScoreTwo.SetActive(true);
-        sadnessScoreZero.SetActive(false);
-        sadnessScoreMinusTwo.SetActive(false);
-        sadnessScoreMinusFour.SetActive(false);
-        sadnessScoreMinusSix.SetActive(false);
-        sadnessScoreMinusEight.SetActive(false);
+            angerLevel.transform.localScale = new Vector3(1f, 0.81f, 1f);
         }
-
-        if (sadnessScore== 4)
+        if (angerScore < -7)
         {
-        sadnessScoreEight.SetActive(false);
-        sadnessScoreSix.SetActive(false);
-        sadnessScoreFour.SetActive(true);
-        sadnessScoreTwo.SetActive(false);
-        sadnessScoreZero.SetActive(false);
-        sadnessScoreMinusTwo.SetActive(false);
-        sadnessScoreMinusFour.SetActive(false);
-        sadnessScoreMinusSix.SetActive(false);
-        sadnessScoreMinusEight.SetActive(false);
+            angerLevel.transform.localScale = new Vector3(1f, 0.9f, 1f);
         }
-
-        if (sadnessScore== 5)
+        /*if (angerScore ??)
         {
-        sadnessScoreEight.SetActive(false);
-        sadnessScoreSix.SetActive(false);
-        sadnessScoreFour.SetActive(true);
-        sadnessScoreTwo.SetActive(false);
-        sadnessScoreZero.SetActive(false);
-        sadnessScoreMinusTwo.SetActive(false);
-        sadnessScoreMinusFour.SetActive(false);
-        sadnessScoreMinusSix.SetActive(false);
-        sadnessScoreMinusEight.SetActive(false);
-        }
+            angerLevel.transform.localScale = new Vector3(1f, 1f, 1f);
+        }*/
 
-        if (sadnessScore== 6)
+        if (sadnessScore > 3)
         {
-        sadnessScoreEight.SetActive(false);
-        sadnessScoreSix.SetActive(true);
-        sadnessScoreFour.SetActive(false);
-        sadnessScoreTwo.SetActive(false);
-        sadnessScoreZero.SetActive(false);
-        sadnessScoreMinusTwo.SetActive(false);
-        sadnessScoreMinusFour.SetActive(false);
-        sadnessScoreMinusSix.SetActive(false);
-        sadnessScoreMinusEight.SetActive(false);
+            sadnessLevel.transform.localScale = Vector3.zero;
         }
-         if (sadnessScore== 7)
+        if (sadnessScore == 3 || sadnessScore == 2)
         {
-        sadnessScoreEight.SetActive(false);
-        sadnessScoreSix.SetActive(true);
-        sadnessScoreFour.SetActive(false);
-        sadnessScoreTwo.SetActive(false);
-        sadnessScoreZero.SetActive(false);
-        sadnessScoreMinusTwo.SetActive(false);
-        sadnessScoreMinusFour.SetActive(false);
-        sadnessScoreMinusSix.SetActive(false);
-        sadnessScoreMinusEight.SetActive(false);
+            sadnessLevel.transform.localScale = new Vector3(1f, 0.09f, 1f);
         }
-
-        if (sadnessScore== 8)
-      {
-        sadnessScoreEight.SetActive(true);
-        sadnessScoreSix.SetActive(false);
-        sadnessScoreFour.SetActive(false);
-        sadnessScoreTwo.SetActive(false);
-        sadnessScoreZero.SetActive(false);
-        sadnessScoreMinusTwo.SetActive(false);
-        sadnessScoreMinusFour.SetActive(false);
-        sadnessScoreMinusSix.SetActive(false);
-        sadnessScoreMinusEight.SetActive(false);
-        }
-
-        // Anger_Meter 
-      if (angerScore>-8& angerScore<-7)
-      {
-        angerScoreMinusEight.SetActive(true);
-        angerScoreMinusSix.SetActive(false);
-        }
-
-        if (angerScore>-6& angerScore<=-5)
+        if (sadnessScore == 1 || sadnessScore == 0)
         {
-          angerScoreMinusSix.SetActive(true);
-          angerScoreMinusEight.SetActive(false);
-          angerScoreMinusFour.SetActive(false);
+            sadnessLevel.transform.localScale = new Vector3(1f, 0.18f, 1f);
         }
-
-        if (angerScore>-4& angerScore<-3)
-       {
-          angerScoreMinusFour.SetActive(true);
-          angerScoreMinusTwo.SetActive(false);
-          angerScoreMinusSix.SetActive(false);
-        }
-        if (angerScore>-2& angerScore<-1)
-       {
-          angerScoreMinusTwo.SetActive(true);
-          angerScoreZero.SetActive(false);
-          angerScoreMinusFour.SetActive(false);
-        }
-        
-        if (angerScore>0& angerScore<1)
-       {
-         angerScoreZero.SetActive(true);
-          angerScoreMinusTwo.SetActive(false);
-          angerScoreTwo.SetActive(false);
-        }
-
-        if (angerScore>2& angerScore<3)
-       {
-          angerScoreTwo.SetActive(true);
-          angerScoreZero.SetActive(false);
-          angerScoreFour.SetActive(false);
-        }
-
-        if (angerScore>4& angerScore<5)
-       {
-          angerScoreFour.SetActive(true);
-         angerScoreTwo.SetActive(false);
-         angerScoreSix.SetActive(false);
-        }
-
-        if (angerScore>5& angerScore<6)
+        if (sadnessScore == -1 || sadnessScore == -2)
         {
-          angerScoreSix.SetActive(true);
-          angerScoreEight.SetActive(false);
-          angerScoreFour.SetActive(false);
+            sadnessLevel.transform.localScale = new Vector3(1f, 0.27f, 1f);
         }
-
-        if (angerScore>7& angerScore<8)
-      {
-        angerScoreEight.SetActive(true);
-        angerScoreSix.SetActive(false);
+        if (sadnessScore == -3 || sadnessScore == -4)
+        {
+            sadnessLevel.transform.localScale = new Vector3(1f, 0.36f, 1f);
         }
-
-
+        if (sadnessScore == -5 || sadnessScore == -6)
+        {
+            sadnessLevel.transform.localScale = new Vector3(1f, 0.45f, 1f);
+        }
+        if (sadnessScore == -7 || sadnessScore == -8)
+        {
+            sadnessLevel.transform.localScale = new Vector3(1f, 0.54f, 1f);
+        }
+        if (sadnessScore == -9 || sadnessScore == -10)
+        {
+            sadnessLevel.transform.localScale = new Vector3(1f, 0.63f, 1f);
+        }
+        if (sadnessScore == -11 || sadnessScore == -12)
+        {
+            sadnessLevel.transform.localScale = new Vector3(1f, 0.72f, 1f);
+        }
+        if (sadnessScore == -13 || sadnessScore == -14)
+        {
+            sadnessLevel.transform.localScale = new Vector3(1f, 0.81f, 1f);
+        }
+        if (sadnessScore == -15 || sadnessScore == -16)
+        {
+            sadnessLevel.transform.localScale = new Vector3(1f, 0.9f, 1f);
+        }
+        if (sadnessScore < -16)
+        {
+            sadnessLevel.transform.localScale = new Vector3(1f, 1f, 1f);
+        }
     }
 }
