@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class GameManager : MonoBehaviour
 {
@@ -8,7 +9,9 @@ public class GameManager : MonoBehaviour
     // functions are (mostly) written in chronological order 
 
     [SerializeField] private GameObject dragBlocker;
-    
+    [SerializeField] private TMP_Text nameFamilyTree;
+    [SerializeField] private TMP_Text nameInheritance;
+    private string displayedName;
     private AudioManager _audioManager;
     private UIManager _uiManager;
     private BrowserManager _browserManager;
@@ -40,10 +43,13 @@ public class GameManager : MonoBehaviour
         dragBlocker.SetActive(false);       
    }
 
-    /*void Start()
+    void Start()
     {
-        Cursor.SetCursor(planchette, Vector2.zero, CursorMode.Auto);
-    }*/
+        // Cursor.SetCursor(planchette, Vector2.zero, CursorMode.Auto);
+        displayedName = PlayerPrefs.GetString("playerName");
+        nameFamilyTree.text = displayedName;
+        nameInheritance.text = displayedName;
+    }
 
     // activated when link in Katy's email is clicked
     public void FindArticleReginald()
@@ -219,5 +225,10 @@ public class GameManager : MonoBehaviour
     {
         _communicationPhase.StartConversation();
         _mediumSelection.OpenCommunication();
+    }
+
+    public void QuitGame()
+    {
+        Application.Quit();
     }
 }

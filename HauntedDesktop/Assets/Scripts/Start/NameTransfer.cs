@@ -4,15 +4,17 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class NameTransfer : MonoBehaviour
-
 {
-    public string theName;
+    public static string nameInput;
     public GameObject inputField;
     public GameObject textDisplay;
 
+
+
     public void StoreName()
     {
-        theName = inputField.GetComponent<TMPro.TextMeshProUGUI>().text;
-        textDisplay.GetComponent<TMPro.TextMeshProUGUI>().text = theName;
+        nameInput = inputField.GetComponent<TMPro.TextMeshProUGUI>().text;
+        textDisplay.GetComponent<TMPro.TextMeshProUGUI>().text = nameInput;
+        PlayerPrefs.SetString("playerName", nameInput);
     }
 }

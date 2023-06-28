@@ -14,9 +14,8 @@ public class Startscript : MonoBehaviour
 
     public GameObject invisibleButton;
 
-   
+    [SerializeField] private GameObject shutDownPopUp;
 
-    // Start is called before the first frame update
     void Start()
     {
        finalAvatar1.SetActive(false);
@@ -28,13 +27,11 @@ public class Startscript : MonoBehaviour
 
        panel.SetActive(false);
        invisibleButton.SetActive(false);
-
+       shutDownPopUp.SetActive(false);
     }
 
-    // Update is called once per frame
-    void Update()
+    public void QuitGame()
     {
-        
+        Application.Quit();
     }
-   
 }
