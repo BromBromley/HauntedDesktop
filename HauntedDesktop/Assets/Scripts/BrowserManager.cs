@@ -24,12 +24,17 @@ public class BrowserManager : MonoBehaviour
     [SerializeField] GameObject tabBoogle;
     [SerializeField] GameObject tabMedien;
 
+    [SerializeField] GameObject glitchTabRaumplaner;
+    [SerializeField] GameObject glitchTabVerkaufsportal;
+
     void Start()
     {
         CloseBrowser();
         HideAllTabs();
         HideAllWebsites();
         blocker.SetActive(false);
+        glitchTabRaumplaner.SetActive(false);
+        glitchTabVerkaufsportal.SetActive(false);
     }
 
     public void OpenBrowser()
@@ -93,16 +98,17 @@ public class BrowserManager : MonoBehaviour
         tabMedien.SetActive(true);
     }
 
+    // hides the original tabs and instead shows some glitch so the sites can't be opened again
     public void HideRaumplanerTab()
     {
         tabRaumplaner.SetActive(false);
-        // show some weird glitchy thing
+        glitchTabRaumplaner.SetActive(true);
     }
     
     public void HideVerkaufsportalTab()
     {
         tabVerkaufsportal.SetActive(false);
-        // show some weird glitchy thing
+        glitchTabVerkaufsportal.SetActive(true);
     }
 
     // puts whatever tab has been pressed on front

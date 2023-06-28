@@ -149,6 +149,7 @@ public class GameManager : MonoBehaviour
     {
         _browserManager.OpenBrowser();
         _browserManager.PutVerkaufsportalOnFront();
+        _browserManager.HideRaumplanerTab();
         _uiManager.feedbackEbooh.SetActive(false);
         _adChecker.ResetAdChecker();
         _adChecker.postButton.SetActive(true);
@@ -180,7 +181,7 @@ public class GameManager : MonoBehaviour
         _uiManager.OpenGeisterscannerWebsite();
         _browserManager.PutGeisterscannerOnFront();
         _browserManager.ShowGeisterscannerTab();
-        _browserManager.HideRaumplanerTab();
+        _browserManager.HideVerkaufsportalTab();
     }
 
     // opens Geisterscanner program

@@ -34,6 +34,10 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject documentGrundriss;
     [SerializeField] private GameObject documentFotoFront;
 
+    [SerializeField] private GameObject loadingIconBrowser;
+    private float timeLoading;
+    private Quaternion endRotation = new Quaternion(0, 0, 359, 0);
+
     public GameObject feedbackEbooh;
     public GameObject feedbackRaumplaner;
 
@@ -62,6 +66,7 @@ public class UIManager : MonoBehaviour
         documentFotoFront.SetActive(false);
         feedbackEbooh.SetActive(false);
         feedbackRaumplaner.SetActive(false);
+        loadingIconBrowser.SetActive(false);
     }
 
 
@@ -148,13 +153,24 @@ public class UIManager : MonoBehaviour
 
     public void StartBoogleSearch()
     {
+        loadingIconBrowser.SetActive(true);
         StartCoroutine(StartSearch());
     }
 
     IEnumerator StartSearch()
     {
-        yield return new WaitForSeconds(2);
-        boogleResults.SetActive(true);
+        while (true)
+        {
+            loadingIconBrowser.GetComponent<RectTransform>().transform.Rotate(0.0f, 0.0f, -5.0f, Space.Self); 
+            timeLoading += 0.01f;
+            if (timeLoading >= 2f)
+            {
+                boogleResults.SetActive(true);
+                loadingIconBrowser.SetActive(false);
+                yield break;
+            }
+            yield return null;
+        }
     }
 
     public void OpenMediumWebsite()
