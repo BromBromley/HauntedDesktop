@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
     // this script connects all other managers
     // functions are (mostly) written in chronological order 
 
+    
     [SerializeField] private GameObject dragBlocker;
     [SerializeField] private TMP_Text nameFamilyTree;
     [SerializeField] private TMP_Text nameInheritance;
@@ -25,6 +26,9 @@ public class GameManager : MonoBehaviour
     private MouseBehaviour _mouseBehaviour;
 
     public bool isBartyActive;
+    
+    //for name Transfer 
+    public string display_player_name;
 
     //public Texture2D planchette;
 
@@ -41,7 +45,8 @@ public class GameManager : MonoBehaviour
         _communicationPhase = FindObjectOfType<CommunicationPhase>();
         _mouseBehaviour = GetComponent<MouseBehaviour>();
         _mouseBehaviour.enabled = false; 
-        dragBlocker.SetActive(false);       
+        dragBlocker.SetActive(false);
+        display_player_name = NameTransfer.nameInput;      
    }
 
     void Start()

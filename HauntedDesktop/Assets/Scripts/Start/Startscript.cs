@@ -11,6 +11,7 @@ public class Startscript : MonoBehaviour
     public GameObject finalAvatar5;
     public GameObject finalAvatar6;
     public GameObject panel;
+    public GameObject startButton;
 
     public GameObject invisibleButton;
 
@@ -28,6 +29,7 @@ public class Startscript : MonoBehaviour
        panel.SetActive(false);
        invisibleButton.SetActive(false);
        shutDownPopUp.SetActive(false);
+       startButton.SetActive(false);
     }
 
     public void QuitGame()
