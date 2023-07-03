@@ -20,8 +20,8 @@ public class DragObject : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
 
     private Transform originalParent;
 
-    public  Vector3 startPosition;
-    public Quaternion startRotation;
+    private  Vector3 startPosition;
+    private Quaternion startRotation;
 
     private float timeSinceStartedReturning = 0f;
     private int timeBeforeReturning;
@@ -88,6 +88,7 @@ public class DragObject : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
     {
         timeBeforeReturning = Random.Range(1, 4);
         yield return new WaitForSeconds(timeBeforeReturning);
+        HidePicture();
         while (true)
         {
             timeSinceStartedReturning += Time.deltaTime;
@@ -106,6 +107,21 @@ public class DragObject : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
         if (Input.GetMouseButtonDown(1))
         {
             draggableObject.Rotate(0.0f, 0.0f, 90.0f);
+            picture.transform.Rotate(0.0f, 0.0f, -90.0f);
         }
+    }
+
+    private void HidePicture()
+    {
+        picture.SetActive(false);
+        draggableObject.GetComponent<Image>().enabled = true;
+    }
+
+    public void ResetPositionAndRotation()
+    {
+        draggableObject.position = startPosition;
+        draggableObject.transform.rotation = startRotation;
+        picture.transform.rotation = startRotation;
+        HidePicture();
     }
 }

@@ -178,6 +178,10 @@ public class GameManager : MonoBehaviour
 
         yield return new WaitForSeconds(25);
 
+        isBartyActive = false;
+        _mouseBehaviour.fakeCursor.SetActive(false);
+        _mouseBehaviour.enabled = false;
+        Cursor.visible = true;
         _uiManager.ShowGeisterscannerAd();
         _browserManager.blocker.SetActive(false);
     }

@@ -19,8 +19,7 @@ public class FurnitureTracker : MonoBehaviour
     {
         foreach (GameObject furniture in raumplanerIcons)
         {
-            furniture.transform.position = furniture.GetComponent<DragObject>().startPosition;
-            furniture.transform.rotation = furniture.GetComponent<DragObject>().startRotation;
+            furniture.GetComponent<DragObject>().ResetPositionAndRotation();
         } 
     }
 
