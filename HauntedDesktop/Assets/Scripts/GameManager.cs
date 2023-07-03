@@ -30,7 +30,7 @@ public class GameManager : MonoBehaviour
     //for name Transfer 
     public string display_player_name;
 
-    //public Texture2D planchette;
+    [SerializeField] Texture2D planchette;
 
     void Awake()
     {
@@ -51,7 +51,7 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        // Cursor.SetCursor(planchette, Vector2.zero, CursorMode.Auto);
+        Cursor.SetCursor(planchette, Vector2.zero, CursorMode.Auto);
         displayedName = PlayerPrefs.GetString("playerName");
         nameFamilyTree.text = displayedName;
         nameInheritance.text = displayedName;
