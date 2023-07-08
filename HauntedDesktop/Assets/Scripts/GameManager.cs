@@ -8,7 +8,6 @@ public class GameManager : MonoBehaviour
 {
     // this script connects all other managers
     // functions are (mostly) written in chronological order 
-
     
     [SerializeField] private GameObject dragBlocker;
     [SerializeField] private TMP_Text nameFamilyTree;
@@ -179,6 +178,7 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(25);
 
         isBartyActive = false;
+        StopCoroutine(_mouseBehaviour.BartyActivity());
         _mouseBehaviour.fakeCursor.SetActive(false);
         _mouseBehaviour.enabled = false;
         Cursor.visible = true;

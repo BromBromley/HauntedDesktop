@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Startscript : MonoBehaviour
+public class StartScript : MonoBehaviour
 {
     public GameObject finalAvatar1;
     public GameObject finalAvatar2;
@@ -16,6 +16,8 @@ public class Startscript : MonoBehaviour
     public GameObject invisibleButton;
 
     [SerializeField] private GameObject shutDownPopUp;
+    [SerializeField] private GameObject settings;
+    [SerializeField] private GameObject home;
 
     void Start()
     {
@@ -29,6 +31,8 @@ public class Startscript : MonoBehaviour
        panel.SetActive(false);
        invisibleButton.SetActive(false);
        shutDownPopUp.SetActive(false);
+       settings.SetActive(false);
+       home.SetActive(false);
        startButton.SetActive(false);
     }
 

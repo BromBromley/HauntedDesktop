@@ -10,6 +10,7 @@ public class UIManager : MonoBehaviour
 
     private AudioManager _audioManager;
     [SerializeField] private GameObject settings;
+    [SerializeField] private GameObject home;
     [SerializeField] private GameObject documentFolder;
     [SerializeField] private GameObject toDoListe;
     [SerializeField] private GameObject articleReginald;
@@ -45,6 +46,7 @@ public class UIManager : MonoBehaviour
     {
         _audioManager = FindObjectOfType<AudioManager>();
         settings.SetActive(false);
+        home.SetActive(false);
         documentFolder.SetActive(false);
         toDoListe.SetActive(false); 
         articleReginald.SetActive(false);
