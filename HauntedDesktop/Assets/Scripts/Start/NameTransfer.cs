@@ -6,18 +6,17 @@ using TMPro;
 
 public class NameTransfer : MonoBehaviour
 {
+    // this script saves the name the player types in
+
     public static NameTransfer nameTransfer;
     public static string nameInput;
-    public GameObject inputField;
-    public GameObject textDisplay;
-
-
-
+    [SerializeField] private GameObject inputField;
+    [SerializeField] TMP_Text showName;
 
     public void StoreName()
     {
         nameInput = inputField.GetComponent<TMPro.TextMeshProUGUI>().text;
-        textDisplay.GetComponent<TMPro.TextMeshProUGUI>().text = nameInput;
         PlayerPrefs.SetString("playerName", nameInput); 
+        showName.text = nameInput;
     }
 }

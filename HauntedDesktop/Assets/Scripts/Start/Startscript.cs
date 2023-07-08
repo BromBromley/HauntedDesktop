@@ -11,9 +11,9 @@ public class StartScript : MonoBehaviour
     public GameObject finalAvatar5;
     public GameObject finalAvatar6;
     public GameObject panel;
-    public GameObject startButton;
+    public GameObject signInButton;
 
-    public GameObject invisibleButton;
+    public GameObject chooseAvatarButton;
 
     [SerializeField] private GameObject shutDownPopUp;
     [SerializeField] private GameObject settings;
@@ -29,11 +29,11 @@ public class StartScript : MonoBehaviour
        finalAvatar6.SetActive(false);
 
        panel.SetActive(false);
-       invisibleButton.SetActive(false);
+       chooseAvatarButton.SetActive(false);
        shutDownPopUp.SetActive(false);
        settings.SetActive(false);
        home.SetActive(false);
-       startButton.SetActive(false);
+       signInButton.SetActive(false);
     }
 
     public void QuitGame()
