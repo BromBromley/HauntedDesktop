@@ -26,7 +26,7 @@ public class GameManager : MonoBehaviour
 
     public bool isBartyActive;
     
-    //for name Transfer 
+    //for name Transfer -> steht schon oben als displayedName
     public string display_player_name;
 
     [SerializeField] Texture2D planchette;

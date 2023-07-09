@@ -17,7 +17,9 @@ public class EmailManager : MonoBehaviour
     [SerializeField] GameObject tabNewEmailArthur;
     [SerializeField] GameObject tabEmailError;
 
+    [SerializeField] GameObject unreadNotificationKaty;
     [SerializeField] GameObject unreadNotificationArthur;
+    [SerializeField] GameObject unreadNotificationNewArthur;
     [SerializeField] GameObject unreadNotificationError;
 
     void Start()
@@ -25,7 +27,9 @@ public class EmailManager : MonoBehaviour
         emails.SetActive(false);
         tabNewEmailArthur.SetActive(false);
         tabEmailError.SetActive(false);
-        unreadNotificationArthur.SetActive(false);
+        unreadNotificationKaty.SetActive(true);
+        unreadNotificationArthur.SetActive(true);
+        unreadNotificationNewArthur.SetActive(false);
         unreadNotificationError.SetActive(false);
         ShowNoEmail();
     }
@@ -64,9 +68,16 @@ public class EmailManager : MonoBehaviour
     }
 
     // shows the little unread signs on the email tabs
-    public void ShowNotificationArthur()
+
+    public void ClickedOnEmailKaty()
     {
-        unreadNotificationArthur.SetActive(true);
+        StartCoroutine(ShowingNotificationKaty());
+    }
+
+    IEnumerator ShowingNotificationKaty()
+    {
+        yield return new WaitForSeconds(2);
+        unreadNotificationKaty.SetActive(false);
     }
 
     public void ClickedOnEmailArthur()
@@ -78,6 +89,22 @@ public class EmailManager : MonoBehaviour
     {
         yield return new WaitForSeconds(2);
         unreadNotificationArthur.SetActive(false);
+    }
+
+    public void ShowNotificationArthur()
+    {
+        unreadNotificationNewArthur.SetActive(true);
+    }
+
+    public void ClickedOnNewEmailArthur()
+    {
+        StartCoroutine(ShowingNotificationNewArthur());
+    }
+
+    IEnumerator ShowingNotificationNewArthur()
+    {
+        yield return new WaitForSeconds(2);
+        unreadNotificationNewArthur.SetActive(false);
     }
 
     public void ShowNotificationError()
