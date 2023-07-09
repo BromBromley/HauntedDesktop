@@ -1864,7 +1864,19 @@ MonoBehaviour:
       m_Calls: []
   m_OnSelect:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1003887345}
+        m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
+        m_MethodName: PlayMouseClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_OnDeselect:
     m_PersistentCalls:
       m_Calls: []
@@ -2075,6 +2087,18 @@ MonoBehaviour:
       - m_Target: {fileID: 1742314511}
         m_TargetAssemblyTypeName: StartButtons, Assembly-CSharp
         m_MethodName: PlayButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1003887345}
+        m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
+        m_MethodName: PlayMouseClick
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5298,13 +5322,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a5814f3bec3248718e18f0440f9ad2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audioSource: {fileID: 0}
+  sfxSource: {fileID: 1003887344}
+  musicSource: {fileID: 0}
   sfxVolume: 0
   musicVolume: 0
-  mouseClick: {fileID: 8300000, guid: d620731000b3448a18ffe896b1817941, type: 3}
-  notificationSound: {fileID: 8300000, guid: a2855030febec4f359e83b3bcb38bde0, type: 3}
   sfxSlider: {fileID: 1329809729}
   musicSlider: {fileID: 1042343418}
+  mouseClick: {fileID: 8300000, guid: d620731000b3448a18ffe896b1817941, type: 3}
+  notificationSound: {fileID: 8300000, guid: a2855030febec4f359e83b3bcb38bde0, type: 3}
+  phase1: {fileID: 0}
+  phase2: {fileID: 0}
+  phase3: {fileID: 0}
 --- !u!4 &1003887346
 Transform:
   m_ObjectHideFlags: 0
@@ -9375,8 +9403,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: Startscript, Assembly-CSharp
+      - m_Target: {fileID: 1091032296}
+        m_TargetAssemblyTypeName: StartScript, Assembly-CSharp
         m_MethodName: QuitGame
         m_Mode: 1
         m_Arguments:

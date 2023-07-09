@@ -103,7 +103,7 @@ public class GameManager : MonoBehaviour
             _emailManager.ShowNotificationArthur();
             _uiManager.feedbackEbooh.SetActive(true);
             _adChecker.postButton.SetActive(false);
-            // show checkmark
+            _audioManager.FadeOutMusic();
         }
     }
 
@@ -181,6 +181,7 @@ public class GameManager : MonoBehaviour
         _mouseBehaviour.enabled = false;
         _uiManager.ShowGeisterscannerAd();
         _browserManager.blocker.SetActive(false);
+        _audioManager.FadeOutMusic();
     }
 
     // opens the Geisterscanner website when ad is clicked
@@ -190,6 +191,7 @@ public class GameManager : MonoBehaviour
         _browserManager.PutGeisterscannerOnFront();
         _browserManager.ShowGeisterscannerTab();
         _browserManager.HideVerkaufsportalTab();
+        _audioManager.PlayMusicPhase1();
     }
 
     // opens Geisterscanner program
