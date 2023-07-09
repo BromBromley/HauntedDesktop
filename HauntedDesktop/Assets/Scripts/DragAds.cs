@@ -37,7 +37,7 @@ public class DragAds : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragH
     {
         draggableObject.tag = "Unassigned";
         draggableObject.SetAsLastSibling();
-        draggableObject.SetParent(originalParent);
+        ResetParent();
     }
 
     public void OnDrag(PointerEventData eventData)

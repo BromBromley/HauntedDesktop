@@ -27,6 +27,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject boogle;
     [SerializeField] private GameObject boogleSearch;
     [SerializeField] private GameObject boogleResults;
+    [SerializeField] private GameObject bartyArticle;
     [SerializeField] private GameObject medienWebsite;
     [SerializeField] private GameObject documentFotoHall;
     [SerializeField] private GameObject documentErbschein;
@@ -60,6 +61,7 @@ public class UIManager : MonoBehaviour
         geisterscannerApp.SetActive(false);
         boogle.SetActive(false);
         boogleResults.SetActive(false);
+        bartyArticle.SetActive(false);
         medienWebsite.SetActive(false);
         documentFotoHall.SetActive(false);
         documentStammBaum.SetActive(false);
@@ -165,7 +167,7 @@ public class UIManager : MonoBehaviour
         {
             loadingIconBrowser.GetComponent<RectTransform>().transform.Rotate(0.0f, 0.0f, -5.0f, Space.Self); 
             timeLoading += 0.01f;
-            if (timeLoading >= 2f)
+            if (timeLoading >= 1.5f)
             {
                 boogleResults.SetActive(true);
                 loadingIconBrowser.SetActive(false);

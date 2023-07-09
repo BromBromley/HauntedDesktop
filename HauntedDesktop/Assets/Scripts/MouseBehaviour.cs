@@ -32,6 +32,7 @@ public class MouseBehaviour : MonoBehaviour
         }
     }
 
+    // this manages the intervalls in which Barty is active during the Raumplaner
     public IEnumerator BartyActivity()
     {
         yield return new WaitForSeconds(5);
@@ -55,6 +56,36 @@ public class MouseBehaviour : MonoBehaviour
         HideFakeCursor();
 
         timeActive = Random.Range(5, 8);
+        yield return new WaitForSeconds(timeActive);
+
+        ShowFakeCursor();
+
+        yield return null;
+    }
+
+    // this manages the intervalls in which Barty is active during the Verkaufsportal
+    public IEnumerator SecondBartyActivity()
+    {
+        yield return new WaitForSeconds(3);
+
+        ShowFakeCursor();
+
+        timeActive = Random.Range(4, 6);
+        yield return new WaitForSeconds(timeActive);
+
+        HideFakeCursor();
+
+        timeActive = Random.Range(3, 5);
+        yield return new WaitForSeconds(timeActive);
+
+        ShowFakeCursor();
+
+        timeActive = Random.Range(4, 6);
+        yield return new WaitForSeconds(timeActive);
+
+        HideFakeCursor();
+
+        timeActive = Random.Range(3, 5);
         yield return new WaitForSeconds(timeActive);
 
         ShowFakeCursor();

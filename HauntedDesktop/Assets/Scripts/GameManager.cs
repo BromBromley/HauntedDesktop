@@ -127,9 +127,8 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(45);
 
         isBartyActive = false;
-        _mouseBehaviour.fakeCursor.SetActive(false);
+        _mouseBehaviour.HideFakeCursor();
         _mouseBehaviour.enabled = false;
-        Cursor.visible = true;
         StartCoroutine(_uiManager.ShowingPopUpError());
         _emailManager.ShowEmailErrorTab();
         _emailManager.ShowNotificationError();
@@ -173,15 +172,13 @@ public class GameManager : MonoBehaviour
     {
         isBartyActive = true;
         _mouseBehaviour.enabled = true;
-        StartCoroutine(_mouseBehaviour.BartyActivity());
+        StartCoroutine(_mouseBehaviour.SecondBartyActivity());
 
         yield return new WaitForSeconds(25);
 
         isBartyActive = false;
-        StopCoroutine(_mouseBehaviour.BartyActivity());
-        _mouseBehaviour.fakeCursor.SetActive(false);
+        _mouseBehaviour.HideFakeCursor();
         _mouseBehaviour.enabled = false;
-        Cursor.visible = true;
         _uiManager.ShowGeisterscannerAd();
         _browserManager.blocker.SetActive(false);
     }
@@ -189,11 +186,6 @@ public class GameManager : MonoBehaviour
     // opens the Geisterscanner website when ad is clicked
     public void ClickOnGeisterscannerAd()
     {
-        isBartyActive = false;
-        _mouseBehaviour.fakeCursor.SetActive(false);
-        _mouseBehaviour.enabled = false;
-        Cursor.visible = true;
-
         _uiManager.OpenGeisterscannerWebsite();
         _browserManager.PutGeisterscannerOnFront();
         _browserManager.ShowGeisterscannerTab();
