@@ -9,7 +9,6 @@ public class StartButtons : MonoBehaviour
      public void PlayButton()
     {
          SceneManager.LoadScene(1);
-         Debug.Log("Funtzt");
     }
         
 }
