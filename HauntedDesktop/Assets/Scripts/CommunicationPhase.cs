@@ -111,7 +111,7 @@ public class CommunicationPhase : MonoBehaviour
 
         bartyC[0] = "What are you thinking of?";
         bartyC[1] = "That's true. My brother keeps everything in order.";
-        bartyC[2] = "hat?! What happened to my brother?";
+        bartyC[2] = "What?! What happened to my brother?";
         answerLeftC[0] = "Since you became a ghost, nothing changed in the house.";
         answerLeftC[1] = "But this is my house now.";
         answerRightC[0] = "You don't like it when things are rearranged in the house.";
