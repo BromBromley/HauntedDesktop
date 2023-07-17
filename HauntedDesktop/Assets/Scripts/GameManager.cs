@@ -116,6 +116,7 @@ public class GameManager : MonoBehaviour
         _furnitureTracker.ResetPosition();
         _browserManager.OpenBrowser();
         _browserManager.PutRaumplanerOnFront();
+        _audioManager.PlayMusicPhase2();
         StartCoroutine(HauntingInAction());
     }
 
@@ -210,7 +211,6 @@ public class GameManager : MonoBehaviour
         _browserManager.PutGeisterscannerOnFront();
         _browserManager.ShowGeisterscannerTab();
         _browserManager.HideVerkaufsportalTab();
-        _audioManager.PlayMusicPhase1();
     }
 
     // opens Geisterscanner program
@@ -224,6 +224,7 @@ public class GameManager : MonoBehaviour
     public void StartGhostScan()
     {
         _ghostScanner.StartScanning();
+        _audioManager.PlayMusicPhase1();
     }
 
     // shows Boogle after Geisterscanner suggested it

@@ -45,9 +45,7 @@ public class AdChecker : MonoBehaviour
                 {
                     tracker++;
                 }
-                pics_verkaufsportal[i].GetComponent<DragAds>().ResetParent();
                 pics_verkaufsportal[i].GetComponent<DragAds>().enabled = false;
-                des_verkaufsportal[i].GetComponent<DragAds>().ResetParent();
                 des_verkaufsportal[i].GetComponent<DragAds>().enabled = false;
             }
         }
@@ -74,21 +72,25 @@ public class AdChecker : MonoBehaviour
         {
             picture.tag = "Unassigned";
             picture.GetComponent<DragAds>().enabled = true;
+            picture.GetComponent<DragAds>().ResetParent();
         } 
         foreach (GameObject description in des_raumplaner)
         {
             description.tag = "Unassigned";
             description.GetComponent<DragAds>().enabled = true;
+            description.GetComponent<DragAds>().ResetParent();
         } 
         foreach (GameObject picture in pics_verkaufsportal)
         {
             picture.tag = "Unassigned";
             picture.GetComponent<DragAds>().enabled = true;
+            picture.GetComponent<DragAds>().ResetParent();
         } 
         foreach (GameObject description in des_verkaufsportal)
         {
             description.tag = "Unassigned";
             description.GetComponent<DragAds>().enabled = true;
+            description.GetComponent<DragAds>().ResetParent();
         } 
     }
 }

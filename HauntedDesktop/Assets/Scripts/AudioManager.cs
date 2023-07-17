@@ -90,7 +90,7 @@ public class AudioManager : MonoBehaviour
         while (musicSource.volume < musicVolume)
         {
             musicSource.volume += Time.deltaTime / fadeDuration;
-            //print(musicSource.volume);
+            print(musicSource.volume);
             yield return null;
         }
     }

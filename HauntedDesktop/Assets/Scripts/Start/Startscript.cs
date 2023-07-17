@@ -19,6 +19,8 @@ public class StartScript : MonoBehaviour
     [SerializeField] private GameObject settings;
     [SerializeField] private GameObject home;
 
+    [SerializeField] Texture2D planchette;
+
     void Start()
     {
        finalAvatar1.SetActive(false);
@@ -34,6 +36,8 @@ public class StartScript : MonoBehaviour
        settings.SetActive(false);
        home.SetActive(false);
        signInButton.SetActive(false);
+
+       Cursor.SetCursor(planchette, Vector2.zero, CursorMode.Auto);
     }
 
     public void QuitGame()
