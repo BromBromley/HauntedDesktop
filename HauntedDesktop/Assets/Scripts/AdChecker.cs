@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class AdChecker : MonoBehaviour
 {
@@ -12,7 +13,7 @@ public class AdChecker : MonoBehaviour
     [SerializeField] GameObject[] pics_verkaufsportal;
     [SerializeField] GameObject[] des_verkaufsportal;
 
-    [SerializeField] public GameObject postButton;
+    public GameObject postButton;
 
     private int tracker = 0;
     public bool correctlySorted = false;
@@ -65,6 +66,7 @@ public class AdChecker : MonoBehaviour
     public void ResetAdChecker()
     {
         postButton.SetActive(true);
+        postButton.GetComponent<Button>().interactable = false;
         tracker = 0;
         correctlySorted = false;
 

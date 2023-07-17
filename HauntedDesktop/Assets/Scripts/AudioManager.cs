@@ -55,6 +55,11 @@ public class AudioManager : MonoBehaviour
         sfxSource.PlayOneShot(notificationSound, sfxVolume);
     }
 
+    public void StopMusic()
+    {
+        musicSource.Stop();
+    }
+
     public void PlayMusicPhase1()
     {
         musicSource.clip = phase1;

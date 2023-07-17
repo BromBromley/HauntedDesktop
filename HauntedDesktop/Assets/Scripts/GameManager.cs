@@ -10,9 +10,10 @@ public class GameManager : MonoBehaviour
     // functions are (mostly) written in chronological order 
     
     [SerializeField] private GameObject dragBlocker;
+    [SerializeField] private GameObject checkmark04;
     [SerializeField] private TMP_Text nameFamilyTree;
     [SerializeField] private TMP_Text nameInheritance;
-    private string displayedName;
+    [SerializeField] private string displayedName;
     private AudioManager _audioManager;
     private UIManager _uiManager;
     private BrowserManager _browserManager;
@@ -24,10 +25,9 @@ public class GameManager : MonoBehaviour
     private CommunicationPhase _communicationPhase;
     private MouseBehaviour _mouseBehaviour;
 
-    public bool isBartyActive;
-    
-    //for name Transfer -> steht schon oben als displayedName
-    public string display_player_name;
+    public bool isBartyActive = false;
+    private bool firstRaumplanerCompleted = false;
+    private bool secondsRaumplanerCompleted = false;
 
     [SerializeField] Texture2D planchette;
 
@@ -45,7 +45,7 @@ public class GameManager : MonoBehaviour
         _mouseBehaviour = GetComponent<MouseBehaviour>();
         _mouseBehaviour.enabled = false; 
         dragBlocker.SetActive(false);
-        display_player_name = NameTransfer.nameInput;      
+        checkmark04.SetActive(false);  
    }
 
     void Start()
@@ -104,6 +104,8 @@ public class GameManager : MonoBehaviour
             _uiManager.feedbackEbooh.SetActive(true);
             _adChecker.postButton.SetActive(false);
             _audioManager.FadeOutMusic();
+            checkmark04.SetActive(true);
+            firstRaumplanerCompleted = true;
         }
     }
 
@@ -133,6 +135,23 @@ public class GameManager : MonoBehaviour
         _emailManager.ShowEmailErrorTab();
         _emailManager.ShowNotificationError();
         _browserManager.blocker.SetActive(false);
+        secondsRaumplanerCompleted = true;
+    }
+
+    public void OpeningBrowser()
+    {
+        if (firstRaumplanerCompleted && secondsRaumplanerCompleted == false)
+        {
+            StartRaumplanerAgain();
+        }
+        if (firstRaumplanerCompleted && secondsRaumplanerCompleted)
+        {
+            VerkaufsportalAfterError();
+        }
+        else
+        {
+            _browserManager.OpenBrowser();
+        }
     }
 
     public void ClosingBrowser()
@@ -229,6 +248,7 @@ public class GameManager : MonoBehaviour
     {
         _communicationPhase.StartConversation();
         _mediumSelection.OpenCommunication();
+        _audioManager.PlayMusicPhase3();
     }
 
     public void QuitGame()
